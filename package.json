@@ -24,6 +24,7 @@
 		"storybook": "storybook dev -p 6006",
 		"storybook:build": "storybook build",
 		"release": "npm run build:all && npm run release-it",
+		"release-it": "release-it",
 		"link:self": "npm link",
 		"prepare": "lefthook install"
 	},
