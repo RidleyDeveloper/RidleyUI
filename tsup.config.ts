@@ -5,7 +5,7 @@ import path from "node:path";
 import { type Options, defineConfig } from "tsup";
 
 const common: Options = {
-	entry: ["src/index.ts", "src/styles/ridley.css"],
+	entry: ["src/index.ts"],
 	treeshake: false,
 	sourcemap: "inline",
 	minify: true,
