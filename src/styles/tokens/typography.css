@@ -1,0 +1,214 @@
+/* -------------------------------
+   Ridley Typography System
+   Font families, sizes, weights, line heights based on Geist
+----------------------------------*/
+
+:root {
+	/* === FONT FAMILIES === */
+	--rui-font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, sans-serif;
+	--rui-font-mono: "SF Mono", Consolas, "Liberation Mono", Menlo, Courier,
+		monospace;
+
+	/* === FONT WEIGHTS === */
+	--rui-font-weight-normal: 400;
+	--rui-font-weight-medium: 500;
+
+	/* === TITLES === */
+	/* XL - font-weight: 500, size: 48px, line height: 40px, -4% letter spacing */
+	--rui-title-xl-size: 3rem; /* 48px */
+	--rui-title-xl-weight: var(--rui-font-weight-medium);
+	--rui-title-xl-line-height: 2.5rem; /* 40px */
+	--rui-title-xl-letter-spacing: -0.04em; /* -4% */
+
+	/* L - font-weight: 500, size: 40px, line height: 40px, -4% letter spacing */
+	--rui-title-l-size: 2.5rem; /* 40px */
+	--rui-title-l-weight: var(--rui-font-weight-medium);
+	--rui-title-l-line-height: 2.5rem; /* 40px */
+	--rui-title-l-letter-spacing: -0.04em; /* -4% */
+
+	/* M - font-weight: 500, size: 24px, line height: 32px, -2% letter spacing */
+	--rui-title-m-size: 1.5rem; /* 24px */
+	--rui-title-m-weight: var(--rui-font-weight-medium);
+	--rui-title-m-line-height: 2rem; /* 32px */
+	--rui-title-m-letter-spacing: -0.02em; /* -2% */
+
+	/* S - font-weight: 500, size: 18px, line height: 24px, -2% letter spacing */
+	--rui-title-s-size: 1.125rem; /* 18px */
+	--rui-title-s-weight: var(--rui-font-weight-medium);
+	--rui-title-s-line-height: 1.5rem; /* 24px */
+	--rui-title-s-letter-spacing: -0.02em; /* -2% */
+
+	/* === PARAGRAPH === */
+	/* M - font-weight: 400, size: 16px, line height: 24px, -2% letter spacing */
+	--rui-paragraph-m-size: 1rem; /* 16px */
+	--rui-paragraph-m-weight: var(--rui-font-weight-normal);
+	--rui-paragraph-m-line-height: 1.5rem; /* 24px */
+	--rui-paragraph-m-letter-spacing: -0.02em; /* -2% */
+
+	/* === LABELS === */
+	/* M - font-weight: 500, size: 16px, line height: 24px, -2% letter spacing */
+	--rui-label-m-size: 1rem; /* 16px */
+	--rui-label-m-weight: var(--rui-font-weight-medium);
+	--rui-label-m-line-height: 1.5rem; /* 24px */
+	--rui-label-m-letter-spacing: -0.02em; /* -2% */
+
+	/* S - font-weight: 500, size: 14px, line height: 26px, -2% letter spacing */
+	--rui-label-s-size: 0.875rem; /* 14px */
+	--rui-label-s-weight: var(--rui-font-weight-medium);
+	--rui-label-s-line-height: 1.625rem; /* 26px */
+	--rui-label-s-letter-spacing: -0.02em; /* -2% */
+
+	/* === BASE FONT SIZES (for compatibility) === */
+	--rui-font-size-xs: 0.75rem; /* 12px */
+	--rui-font-size-sm: var(--rui-label-s-size); /* 14px */
+	--rui-font-size-base: var(--rui-paragraph-m-size); /* 16px */
+	--rui-font-size-lg: var(--rui-title-s-size); /* 18px */
+	--rui-font-size-xl: 1.25rem; /* 20px */
+	--rui-font-size-2xl: var(--rui-title-m-size); /* 24px */
+	--rui-font-size-3xl: 1.875rem; /* 30px */
+	--rui-font-size-4xl: 2.25rem; /* 36px */
+	--rui-font-size-5xl: var(--rui-title-l-size); /* 40px */
+	--rui-font-size-6xl: var(--rui-title-xl-size); /* 48px */
+
+	/* === LINE HEIGHTS (for compatibility) === */
+	--rui-line-height-none: 1;
+	--rui-line-height-tight: 1.25;
+	--rui-line-height-snug: 1.375;
+	--rui-line-height-normal: 1.5;
+	--rui-line-height-relaxed: 1.625;
+	--rui-line-height-loose: 2;
+
+	/* === LETTER SPACING (for compatibility) === */
+	--rui-letter-spacing-tighter: -0.05em;
+	--rui-letter-spacing-tight: -0.025em;
+	--rui-letter-spacing-normal: 0em;
+	--rui-letter-spacing-wide: 0.025em;
+	--rui-letter-spacing-wider: 0.05em;
+	--rui-letter-spacing-widest: 0.1em;
+}
+
+/* === BOOTSTRAP TYPOGRAPHY MAPPING === */
+:root {
+	--bs-body-font-family: var(--rui-font-sans);
+	--bs-body-font-size: var(--rui-paragraph-m-size);
+	--bs-body-font-weight: var(--rui-paragraph-m-weight);
+	--bs-body-line-height: var(--rui-paragraph-m-line-height);
+
+	--bs-font-monospace: var(--rui-font-mono);
+}
+
+/* === RIDLEY TYPOGRAPHY UTILITY CLASSES === */
+
+/* Font Family Classes */
+.rui-font-sans {
+	font-family: var(--rui-font-sans);
+}
+
+.rui-font-mono {
+	font-family: var(--rui-font-mono);
+}
+
+/* Title Classes */
+.rui-title-xl {
+	font-size: var(--rui-title-xl-size);
+	font-weight: var(--rui-title-xl-weight);
+	line-height: var(--rui-title-xl-line-height);
+	letter-spacing: var(--rui-title-xl-letter-spacing);
+}
+
+.rui-title-l {
+	font-size: var(--rui-title-l-size);
+	font-weight: var(--rui-title-l-weight);
+	line-height: var(--rui-title-l-line-height);
+	letter-spacing: var(--rui-title-l-letter-spacing);
+}
+
+.rui-title-m {
+	font-size: var(--rui-title-m-size);
+	font-weight: var(--rui-title-m-weight);
+	line-height: var(--rui-title-m-line-height);
+	letter-spacing: var(--rui-title-m-letter-spacing);
+}
+
+.rui-title-s {
+	font-size: var(--rui-title-s-size);
+	font-weight: var(--rui-title-s-weight);
+	line-height: var(--rui-title-s-line-height);
+	letter-spacing: var(--rui-title-s-letter-spacing);
+}
+
+/* Paragraph Classes */
+.rui-paragraph-m {
+	font-size: var(--rui-paragraph-m-size);
+	font-weight: var(--rui-paragraph-m-weight);
+	line-height: var(--rui-paragraph-m-line-height);
+	letter-spacing: var(--rui-paragraph-m-letter-spacing);
+}
+
+/* Label Classes */
+.rui-label-m {
+	font-size: var(--rui-label-m-size);
+	font-weight: var(--rui-label-m-weight);
+	line-height: var(--rui-label-m-line-height);
+	letter-spacing: var(--rui-label-m-letter-spacing);
+}
+
+.rui-label-s {
+	font-size: var(--rui-label-s-size);
+	font-weight: var(--rui-label-s-weight);
+	line-height: var(--rui-label-s-line-height);
+	letter-spacing: var(--rui-label-s-letter-spacing);
+}
+
+/* === LEGACY COMPATIBILITY CLASSES === */
+
+/* Font Weight Classes */
+.rui-font-normal {
+	font-weight: var(--rui-font-weight-normal);
+}
+
+.rui-font-medium {
+	font-weight: var(--rui-font-weight-medium);
+}
+
+/* Font Size Classes */
+.rui-text-xs {
+	font-size: var(--rui-font-size-xs);
+}
+
+.rui-text-sm {
+	font-size: var(--rui-font-size-sm);
+}
+
+.rui-text-base {
+	font-size: var(--rui-font-size-base);
+}
+
+.rui-text-lg {
+	font-size: var(--rui-font-size-lg);
+}
+
+.rui-text-xl {
+	font-size: var(--rui-font-size-xl);
+}
+
+.rui-text-2xl {
+	font-size: var(--rui-font-size-2xl);
+}
+
+.rui-text-3xl {
+	font-size: var(--rui-font-size-3xl);
+}
+
+.rui-text-4xl {
+	font-size: var(--rui-font-size-4xl);
+}
+
+.rui-text-5xl {
+	font-size: var(--rui-font-size-5xl);
+}
+
+.rui-text-6xl {
+	font-size: var(--rui-font-size-6xl);
+}

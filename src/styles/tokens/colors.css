@@ -1,0 +1,87 @@
+/* -------------------------------
+   Ridley Color Palette
+   Updated brand colors and semantic color mappings
+----------------------------------*/
+
+:root {
+	/* === RIDLEY NEUTRAL PALETTE === */
+	--rui-white: #ffffff;
+	--rui-neutral-100: #fafafa;
+	--rui-neutral-200: #efefef;
+	--rui-neutral-300: #d8d8d8;
+	--rui-neutral-400: #b1b1b2;
+	--rui-neutral-600: #636366;
+	--rui-neutral-800: #232323;
+	--rui-neutral-border: #0000001a; /* Borders only */
+
+	/* === RIDLEY PURPLE PALETTE === */
+	--rui-purple-100: #9025b50d;
+	--rui-purple-500: #9025b5;
+	--rui-purple-800: #511468;
+
+	/* === RIDLEY GREEN PALETTE === */
+	--rui-green-100: #9acf8b1a;
+	--rui-green-300: #9acf8b;
+	--rui-green-600: #3f9228;
+
+	/* === SEMANTIC COLOR MAPPINGS === */
+	--rui-primary: var(--rui-purple-500);
+	--rui-primary-light: var(--rui-purple-100);
+	--rui-primary-dark: var(--rui-purple-800);
+
+	--rui-success: var(--rui-green-600);
+	--rui-success-light: var(--rui-green-100);
+	--rui-success-medium: var(--rui-green-300);
+
+	--rui-secondary: var(--rui-neutral-200);
+	--rui-info: var(--rui-purple-500);
+	--rui-warning: #f59e0b;
+	--rui-danger: #ef4444;
+	--rui-light: var(--rui-neutral-100);
+	--rui-dark: var(--rui-neutral-800);
+
+	/* === TEXT COLORS === */
+	--rui-text-primary: var(--rui-neutral-800);
+	--rui-text-secondary: var(--rui-neutral-600);
+	--rui-text-muted: var(--rui-neutral-400);
+	--rui-text-inverse: var(--rui-white);
+
+	/* === BACKGROUND COLORS === */
+	--rui-bg-primary: var(--rui-white);
+	--rui-bg-secondary: var(--rui-neutral-100);
+	--rui-bg-tertiary: var(--rui-neutral-200);
+
+	/* === BORDER COLORS === */
+	--rui-border-primary: var(--rui-neutral-border);
+	--rui-border-secondary: var(--rui-neutral-300);
+	--rui-border-focus: var(--rui-primary);
+
+	/* === INTERACTIVE STATES === */
+	--rui-interactive-hover: rgba(144, 37, 181, 0.08);
+	--rui-interactive-active: rgba(144, 37, 181, 0.12);
+	--rui-interactive-focus: rgba(144, 37, 181, 0.24);
+	--rui-interactive-disabled: var(--rui-neutral-400);
+
+	/* === SHADOWS === */
+	--rui-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--rui-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+	--rui-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+	--rui-shadow-focus: 0 0 0 2px var(--rui-bg-primary), 0 0 0 4px
+		var(--rui-interactive-focus);
+}
+
+/* === BOOTSTRAP CSS VARIABLE MAPPING === */
+:root {
+	--bs-primary: var(--rui-primary);
+	--bs-secondary: var(--rui-secondary);
+	--bs-success: var(--rui-success);
+	--bs-info: var(--rui-info);
+	--bs-warning: var(--rui-warning);
+	--bs-danger: var(--rui-danger);
+	--bs-light: var(--rui-light);
+	--bs-dark: var(--rui-dark);
+
+	--bs-body-color: var(--rui-text-primary);
+	--bs-body-bg: var(--rui-bg-primary);
+	--bs-border-color: var(--rui-border-primary);
+}

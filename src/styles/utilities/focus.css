@@ -1,0 +1,84 @@
+/* -------------------------------
+   Ridley Focus & Accessibility Utilities
+   Focus states, keyboard navigation, and accessibility
+----------------------------------*/
+
+/* === FOCUS STYLES === */
+
+.rui-focus {
+	outline: none;
+}
+
+.rui-focus:focus-visible {
+	box-shadow: var(--rui-shadow-focus);
+	border-radius: var(--rui-radius);
+}
+
+/* === FOCUS VARIANTS === */
+
+.rui-focus-ring {
+	transition: box-shadow var(--rui-duration-fast) var(--rui-ease-in-out);
+}
+
+.rui-focus-ring:focus {
+	outline: none;
+	box-shadow: var(--rui-shadow-focus);
+}
+
+.rui-focus-ring:focus:not(:focus-visible) {
+	box-shadow: none;
+}
+
+/* === SKIP LINKS === */
+
+.rui-skip-link {
+	position: absolute;
+	top: -40px;
+	left: 6px;
+	background: var(--rui-primary);
+	color: var(--rui-text-inverse);
+	padding: var(--rui-space-2) var(--rui-space-4);
+	border-radius: var(--rui-radius);
+	text-decoration: none;
+	font-weight: var(--rui-font-weight-medium);
+	z-index: var(--rui-z-tooltip);
+	transition: top var(--rui-duration-fast) var(--rui-ease-in-out);
+}
+
+.rui-skip-link:focus {
+	top: 6px;
+}
+
+/* === KEYBOARD NAVIGATION === */
+
+.rui-keyboard-nav *:focus {
+	outline: 2px solid var(--rui-border-focus);
+	outline-offset: 2px;
+}
+
+.rui-keyboard-nav button:focus,
+.rui-keyboard-nav input:focus,
+.rui-keyboard-nav select:focus,
+.rui-keyboard-nav textarea:focus,
+.rui-keyboard-nav [tabindex]:focus {
+	box-shadow: var(--rui-shadow-focus);
+}
+
+/* === REDUCED MOTION === */
+
+@media (prefers-reduced-motion: reduce) {
+	.rui-focus,
+	.rui-focus-ring,
+	.rui-skip-link {
+		transition: none;
+	}
+}
+
+/* === HIGH CONTRAST MODE === */
+
+@media (prefers-contrast: high) {
+	.rui-focus:focus-visible {
+		outline: 3px solid;
+		outline-offset: 2px;
+	}
+}

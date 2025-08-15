@@ -1,0 +1,130 @@
+/* -------------------------------
+   Ridley Button Components
+   All button variants and styles
+----------------------------------*/
+
+/* === RIDLEY BUTTON VARIANTS === */
+
+.btn-ridley {
+	background-color: var(--rui-primary);
+	border-color: var(--rui-primary);
+	color: var(--rui-text-inverse);
+	border-radius: var(--rui-radius-btn);
+	font-weight: var(--rui-font-weight-medium);
+	padding: var(--rui-padding-btn-lg);
+	font-size: var(--rui-font-size-base);
+	transition: all var(--rui-duration-fast) var(--rui-ease-in-out);
+}
+
+.btn-ridley:hover {
+	background-color: var(--rui-primary-dark);
+	border-color: var(--rui-primary-dark);
+	color: var(--rui-text-inverse);
+	box-shadow: var(--rui-shadow-md);
+	transform: translateY(-1px);
+}
+
+.btn-ridley:focus,
+.btn-ridley:active {
+	background-color: var(--rui-primary-dark);
+	border-color: var(--rui-primary-dark);
+	color: var(--rui-text-inverse);
+	box-shadow: var(--rui-shadow-focus);
+}
+
+.btn-ridley:disabled {
+	background-color: var(--rui-interactive-disabled);
+	border-color: var(--rui-interactive-disabled);
+	color: var(--rui-text-muted);
+	transform: none;
+	box-shadow: none;
+}
+
+.btn-ridley-white {
+	background-color: var(--rui-bg-secondary);
+	border: 1px solid var(--rui-border-primary);
+	color: var(--rui-primary);
+	border-radius: var(--rui-radius-btn);
+	font-weight: var(--rui-font-weight-medium);
+	font-size: var(--rui-font-size-xs);
+	padding: var(--rui-padding-btn-sm);
+	transition: all var(--rui-duration-fast) var(--rui-ease-in-out);
+}
+
+.btn-ridley-white:hover {
+	background-color: var(--rui-bg-tertiary);
+	border-color: var(--rui-border-secondary);
+	color: var(--rui-primary);
+	box-shadow: var(--rui-shadow-sm);
+	transform: translateY(-1px);
+}
+
+.btn-ridley-white:focus,
+.btn-ridley-white:active {
+	background-color: var(--rui-bg-tertiary);
+	border-color: var(--rui-border-focus);
+	color: var(--rui-primary);
+	box-shadow: var(--rui-shadow-focus);
+}
+
+.btn-ridley-white:disabled {
+	background-color: var(--rui-interactive-disabled);
+	border-color: var(--rui-interactive-disabled);
+	color: var(--rui-text-muted);
+	transform: none;
+	box-shadow: none;
+}
+
+/* === BUTTON SIZE VARIANTS === */
+
+.btn-ridley-sm,
+.btn-ridley-white-sm {
+	border-radius: var(--rui-radius-btn-sm);
+	font-size: var(--rui-font-size-sm);
+	padding: var(--rui-padding-btn-sm);
+}
+
+.btn-ridley-lg,
+.btn-ridley-white-lg {
+	border-radius: var(--rui-radius-btn);
+	font-size: var(--rui-font-size-lg);
+	padding: var(--rui-padding-btn-lg);
+}
+
+/* === BUTTON GROUP STYLES === */
+
+.btn-group-ridley .btn {
+	border-radius: 0;
+}
+
+.btn-group-ridley .btn:first-child {
+	border-top-left-radius: var(--rui-radius-btn);
+	border-bottom-left-radius: var(--rui-radius-btn);
+}
+
+.btn-group-ridley .btn:last-child {
+	border-top-right-radius: var(--rui-radius-btn);
+	border-bottom-right-radius: var(--rui-radius-btn);
+}
+
+/* === ICON BUTTON STYLES === */
+
+.btn-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: var(--rui-radius-full);
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn-icon-sm {
+	width: 32px;
+	height: 32px;
+}
+
+.btn-icon-lg {
+	width: 48px;
+	height: 48px;
+}

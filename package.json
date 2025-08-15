@@ -60,6 +60,7 @@
 		"micromatch": "^4.0.8"
 	},
 	"devDependencies": {
+		"@ridleydeveloper/types": "1.0.78",
 		"@biomejs/biome": "1.9.4",
 		"@ryansonshine/commitizen": "4.2.8",
 		"@ryansonshine/cz-conventional-changelog": "3.3.4",

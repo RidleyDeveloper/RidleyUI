@@ -1,117 +1,119 @@
 /* -------------------------------
-   RidleyUI tokens (host-overridable)
-   We prefix with --rui-* to avoid collisions
+   🏠 Ridley UI Design System
+   Main entry point for all Ridley styles
+   
+   Import order is important:
+   1. Font faces (must be first)
+   2. Design tokens (colors, typography, spacing, layout)
+   3. Component styles
+   4. Utilities
 ----------------------------------*/
 
-:root {
-	/* Ridley Brand palette */
-	--rui-primary: #5b3867; /* Ridley purple */
-	--rui-secondary: #f6f6f6; /* Light gray */
-	--rui-success: #60a359; /* Green */
-	--rui-info: #508fb5; /* Blue */
-	--rui-warning: #a49e82; /* Yellow/amber */
-	--rui-danger: #f25454; /* Red */
-	--rui-light: #f8f9fa;
-	--rui-dark: #232323; /* Dark gray */
+/* === FONTS === */
+@import "./fonts/font-faces.css";
 
-	/* Extended Ridley palette */
-	--rui-punchy-purple: #5b3867;
-	--rui-punchy-purple-light: #ebe7ed;
-	--rui-dark-gray: #232323;
-	--rui-off-white: #f6f6f6;
-	--rui-off-white-2: #e3e3e3;
+/* === DESIGN TOKENS === */
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/layout.css";
 
-	/* Typography & layout */
-	--rui-font-sans: "NeueHaas", system-ui, -apple-system, Segoe UI, Roboto,
-		"Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-	--rui-radius: 8px;
-	--rui-gap: 0.5rem;
+/* === COMPONENTS === */
+@import "./components/buttons.css";
+@import "./components/navigation.css";
+
+/* === UTILITIES === */
+@import "./utilities/focus.css";
+
+/* === RESET & BASE STYLES === */
+
+/* Ensure box-sizing is border-box for all elements */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
-/* Map Bootstrap CSS variables to Ridley tokens */
-:root {
-	--bs-primary: var(--rui-primary);
-	--bs-secondary: var(--rui-secondary);
-	--bs-success: var(--rui-success);
-	--bs-info: var(--rui-info);
-	--bs-warning: var(--rui-warning);
-	--bs-danger: var(--rui-danger);
-	--bs-light: var(--rui-light);
-	--bs-dark: var(--rui-dark);
-
-	--bs-body-font-family: var(--rui-font-sans);
-	--bs-border-radius: var(--rui-radius);
-
-	/* Additional Bootstrap overrides for Ridley styling */
-	--bs-body-color: var(--rui-dark-gray);
-	--bs-body-bg: #ffffff;
-	--bs-border-color: var(--rui-off-white-2);
+/* Base HTML & Body */
+html {
+	font-family: var(--rui-font-sans);
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-/* Ridley-specific utility classes */
-.rui-focus {
-	outline: none;
-}
-.rui-focus:focus-visible {
-	box-shadow: 0 0 0 2px var(--bs-body-bg, #fff), 0 0 0 4px
-		rgba(91, 56, 103, 0.6); /* Ridley purple glow */
-	border-radius: var(--rui-radius);
-}
-
-/* Ridley button variants */
-.btn-ridley {
-	background-color: var(--rui-primary);
-	border-color: var(--rui-primary);
-	color: #ffffff;
-	border-radius: 57px;
-	font-weight: 500;
-	padding: 18px;
+body {
+	font-family: var(--rui-font-sans);
+	font-size: var(--rui-font-size-base);
+	font-weight: var(--rui-font-weight-normal);
+	line-height: var(--rui-line-height-normal);
+	color: var(--rui-text-primary);
+	background-color: var(--rui-bg-primary);
 }
 
-.btn-ridley:hover,
-.btn-ridley:focus,
-.btn-ridley:active {
-	background-color: var(--rui-primary);
-	border-color: var(--rui-primary);
-	color: #ffffff;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* === RIDLEY-SPECIFIC GLOBAL STYLES === */
+
+/* Ensure consistent focus styles across all interactive elements */
+button,
+input,
+select,
+textarea,
+[tabindex] {
+	&:focus-visible {
+		outline: none;
+		box-shadow: var(--rui-shadow-focus);
+	}
 }
 
-.btn-ridley-white {
-	background-color: var(--rui-off-white);
-	border: 1px solid var(--rui-off-white-2);
-	color: var(--rui-primary);
-	border-radius: 57px;
-	font-weight: 500;
-	font-size: 12px;
-	padding: 6px 18px;
+/* Smooth scrolling for better UX */
+html {
+	scroll-behavior: smooth;
 }
 
-.btn-ridley-white:hover,
-.btn-ridley-white:focus,
-.btn-ridley-white:active {
-	background-color: var(--rui-off-white);
-	border-color: var(--rui-off-white-2);
-	color: var(--rui-primary);
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
 }
 
-/* Navigation pills for sidebar */
-.nav-pills .nav-link {
-	border-radius: 10px;
-	color: var(--rui-dark-gray);
-	font-size: 1rem;
-	display: flex;
-	gap: 6px;
-	align-items: center;
-	transition: all 0.2s ease-in-out;
+/* === BOOTSTRAP OVERRIDES === */
+
+/* Ensure Bootstrap respects our design tokens */
+.card {
+	border-radius: var(--rui-radius-card);
+	border-color: var(--rui-border-primary);
 }
 
-.nav-pills .nav-link.active {
-	color: var(--rui-punchy-purple);
-	background-color: var(--rui-punchy-purple-light);
+.modal-content {
+	border-radius: var(--rui-radius-modal);
+	border: none;
+	box-shadow: var(--rui-shadow-lg);
 }
 
-.nav-pills .nav-link:hover {
-	color: var(--rui-dark-gray);
-	background-color: var(--rui-off-white-2);
+.form-control {
+	border-radius: var(--rui-radius-input);
+	border-color: var(--rui-border-primary);
+}
+
+.form-control:focus {
+	border-color: var(--rui-border-focus);
+	box-shadow: var(--rui-shadow-focus);
+}
+
+/* === PRINT STYLES === */
+
+@media print {
+	/* Remove shadows and transitions for print */
+	*,
+	*::before,
+	*::after {
+		box-shadow: none !important;
+		transition: none !important;
+	}
+
+	/* Ensure text is readable when printed */
+	body {
+		color: #000 !important;
+		background: #fff !important;
+	}
 }

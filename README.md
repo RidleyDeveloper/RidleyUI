@@ -31,6 +31,8 @@ A TypeScript React component library for Ridley applications, built with Bootstr
 - Bootstrap CSS variable mapping to Ridley tokens
 - Custom button styles and navigation components
 - Consistent focus states and accessibility features
+- **Geist Variable Font** - Primary typography with optimized font weights
+- **Comprehensive Typography Scale** - Titles, paragraphs, and labels with precise sizing
 
 ## Usage
 
@@ -122,9 +124,9 @@ npm publish
 
 ❗Important note: in order to publish package to NPM you must add your token as a Github Action secret. Learn more on how to configure your repository and publish packages through Github Actions [here](https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages).
 
-## 🎨 CSS & Ridley Design System
+## 🎨 Ridley Design System
 
-This package includes Ridley's design system built on top of Bootstrap 5. The CSS is automatically bundled and can be imported by consumers.
+This package includes Ridley's complete design system built on top of Bootstrap 5. The design system features the Geist variable font and a carefully crafted color palette.
 
 ### Using the Ridley Styles
 
@@ -132,35 +134,65 @@ This package includes Ridley's design system built on top of Bootstrap 5. The CS
 import "@ridley/ui/styles.css";
 ```
 
-### Design Tokens
+### Typography Scale
 
-The package includes CSS custom properties for Ridley's brand:
+The design system includes a comprehensive typography scale using the Geist variable font:
+
+#### Titles
 
 ```css
-:root {
-  /* Ridley Brand palette */
-  --rui-primary: #5b3867; /* Ridley purple */
-  --rui-secondary: #f6f6f6; /* Light gray */
-  --rui-success: #60a359; /* Green */
-  --rui-info: #508fb5; /* Blue */
-  --rui-warning: #a49e82; /* Yellow/amber */
-  --rui-danger: #f25454; /* Red */
-  --rui-light: #f8f9fa;
-  --rui-dark: #232323; /* Dark gray */
+.rui-title-xl   /* 48px, weight: 500, line-height: 40px, -4% letter spacing */
+/* 48px, weight: 500, line-height: 40px, -4% letter spacing */
+.rui-title-l    /* 40px, weight: 500, line-height: 40px, -4% letter spacing */
+.rui-title-m    /* 24px, weight: 500, line-height: 32px, -2% letter spacing */
+.rui-title-s; /* 18px, weight: 500, line-height: 24px, -2% letter spacing */
+```
 
-  /* Extended Ridley palette */
-  --rui-punchy-purple: #5b3867;
-  --rui-punchy-purple-light: #ebe7ed;
-  --rui-dark-gray: #232323;
-  --rui-off-white: #f6f6f6;
-  --rui-off-white-2: #e3e3e3;
+#### Paragraphs
 
-  /* Typography & layout */
-  --rui-font-sans: "NeueHaas", system-ui, -apple-system, Segoe UI, Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  --rui-radius: 8px;
-  --rui-gap: 0.5rem;
-}
+```css
+.rui-paragraph-m/* 16px, weight: 400, line-height: 24px, -2% letter spacing */;
+```
+
+#### Labels
+
+```css
+.rui-label-m    /* 16px, weight: 500, line-height: 24px, -2% letter spacing */
+/* 16px, weight: 500, line-height: 24px, -2% letter spacing */
+.rui-label-s; /* 14px, weight: 500, line-height: 26px, -2% letter spacing */
+```
+
+### Color Palette
+
+The design system includes three primary color families:
+
+#### Neutral Colors
+
+```css
+--rui-white: #ffffff
+--rui-neutral-100: #fafafa
+--rui-neutral-200: #efefef
+--rui-neutral-300: #d8d8d8
+--rui-neutral-400: #b1b1b2
+--rui-neutral-600: #636366
+--rui-neutral-800: #232323
+--rui-neutral-border: #0000001a /* Borders only */
+```
+
+#### Purple Colors (Primary)
+
+```css
+--rui-purple-100: #9025b50d
+--rui-purple-500: #9025b5
+--rui-purple-800: #511468
+```
+
+#### Green Colors (Success)
+
+```css
+--rui-green-100: #9acf8b1a
+--rui-green-300: #9acf8b
+--rui-green-600: #3f9228
 ```
 
 ### Component Usage
@@ -171,6 +203,10 @@ import { Button, ExampleCard, RidleyBadge, RidleyAlert } from "@ridley/ui";
 function App() {
   return (
     <div>
+      <h1 className="rui-title-xl">Welcome to Ridley</h1>
+      <p className="rui-paragraph-m">
+        This is a paragraph using Ridley's typography scale.
+      </p>
       <Button variant="ridley">Primary Action</Button>
       <Button variant="ridley-white">Secondary Action</Button>
       <RidleyBadge color="primary">Status</RidleyBadge>
@@ -180,6 +216,22 @@ function App() {
   );
 }
 ```
+
+### Font Loading
+
+The Geist variable font is automatically bundled and loaded with `font-display: swap` for optimal performance. The font supports weights from 100-900 and will fallback to the system font stack if needed.
+
+### Design Token Organization
+
+The design system is organized into modular files:
+
+- `tokens/colors.css` - Color palette and semantic mappings
+- `tokens/typography.css` - Font families, sizes, and typography scale
+- `tokens/spacing.css` - Spacing scale and layout tokens
+- `tokens/layout.css` - Border radius, breakpoints, and layout utilities
+- `components/buttons.css` - Button variants and styles
+- `components/navigation.css` - Navigation and menu components
+- `utilities/focus.css` - Focus states and accessibility utilities
 
 The CSS is designed to work alongside ReactStrap components while providing Ridley-specific styling and brand consistency.
 

@@ -1,0 +1,168 @@
+/* -------------------------------
+   Ridley Layout System
+   Border radius, breakpoints, z-index, and layout tokens
+----------------------------------*/
+
+:root {
+	/* === BORDER RADIUS === */
+	--rui-radius-none: 0;
+	--rui-radius-sm: 0.125rem; /* 2px */
+	--rui-radius: 0.5rem; /* 8px - default */
+	--rui-radius-md: 0.5rem; /* 8px */
+	--rui-radius-lg: 0.75rem; /* 12px */
+	--rui-radius-xl: 1rem; /* 16px */
+	--rui-radius-2xl: 1.5rem; /* 24px */
+	--rui-radius-3xl: 2rem; /* 32px */
+	--rui-radius-full: 9999px;
+
+	/* === COMPONENT RADIUS === */
+	--rui-radius-btn: 57px; /* Ridley button radius */
+	--rui-radius-btn-sm: 28px;
+	--rui-radius-input: var(--rui-radius);
+	--rui-radius-card: var(--rui-radius-lg);
+	--rui-radius-modal: var(--rui-radius-xl);
+	--rui-radius-nav: 10px; /* Navigation pills */
+
+	/* === BREAKPOINTS === */
+	--rui-bp-xs: 0;
+	--rui-bp-sm: 576px;
+	--rui-bp-md: 768px;
+	--rui-bp-lg: 992px;
+	--rui-bp-xl: 1200px;
+	--rui-bp-xxl: 1400px;
+
+	/* === CONTAINER MAX WIDTHS === */
+	--rui-container-sm: 540px;
+	--rui-container-md: 720px;
+	--rui-container-lg: 960px;
+	--rui-container-xl: 1140px;
+	--rui-container-xxl: 1320px;
+
+	/* === Z-INDEX SCALE === */
+	--rui-z-dropdown: 1000;
+	--rui-z-sticky: 1020;
+	--rui-z-fixed: 1030;
+	--rui-z-modal-backdrop: 1040;
+	--rui-z-modal: 1050;
+	--rui-z-popover: 1060;
+	--rui-z-tooltip: 1070;
+	--rui-z-toast: 1080;
+	--rui-z-sidebar: 1400;
+
+	/* === LAYOUT DIMENSIONS === */
+	--rui-sidebar-width: 280px;
+	--rui-sidebar-width-collapsed: 64px;
+	--rui-header-height: 64px;
+	--rui-footer-height: 80px;
+
+	/* === TRANSITION DURATIONS === */
+	--rui-duration-fast: 150ms;
+	--rui-duration-normal: 250ms;
+	--rui-duration-slow: 350ms;
+
+	/* === TRANSITION EASINGS === */
+	--rui-ease-in: cubic-bezier(0.4, 0, 1, 1);
+	--rui-ease-out: cubic-bezier(0, 0, 0.2, 1);
+	--rui-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === BOOTSTRAP LAYOUT MAPPING === */
+:root {
+	--bs-border-radius: var(--rui-radius);
+	--bs-border-radius-sm: var(--rui-radius-sm);
+	--bs-border-radius-lg: var(--rui-radius-lg);
+	--bs-border-radius-xl: var(--rui-radius-xl);
+	--bs-border-radius-2xl: var(--rui-radius-2xl);
+	--bs-border-radius-pill: var(--rui-radius-full);
+}
+
+/* === LAYOUT UTILITY CLASSES === */
+
+/* Border Radius Classes */
+.rui-rounded-none {
+	border-radius: var(--rui-radius-none);
+}
+
+.rui-rounded-sm {
+	border-radius: var(--rui-radius-sm);
+}
+
+.rui-rounded {
+	border-radius: var(--rui-radius);
+}
+
+.rui-rounded-md {
+	border-radius: var(--rui-radius-md);
+}
+
+.rui-rounded-lg {
+	border-radius: var(--rui-radius-lg);
+}
+
+.rui-rounded-xl {
+	border-radius: var(--rui-radius-xl);
+}
+
+.rui-rounded-2xl {
+	border-radius: var(--rui-radius-2xl);
+}
+
+.rui-rounded-3xl {
+	border-radius: var(--rui-radius-3xl);
+}
+
+.rui-rounded-full {
+	border-radius: var(--rui-radius-full);
+}
+
+/* Container Classes */
+.rui-container {
+	width: 100%;
+	padding-right: var(--rui-container-padding-x);
+	padding-left: var(--rui-container-padding-x);
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media (min-width: 576px) {
+	.rui-container {
+		max-width: var(--rui-container-sm);
+	}
+}
+
+@media (min-width: 768px) {
+	.rui-container {
+		max-width: var(--rui-container-md);
+	}
+}
+
+@media (min-width: 992px) {
+	.rui-container {
+		max-width: var(--rui-container-lg);
+	}
+}
+
+@media (min-width: 1200px) {
+	.rui-container {
+		max-width: var(--rui-container-xl);
+	}
+}
+
+@media (min-width: 1400px) {
+	.rui-container {
+		max-width: var(--rui-container-xxl);
+	}
+}
+
+/* Transition Classes */
+.rui-transition {
+	transition: all var(--rui-duration-normal) var(--rui-ease-in-out);
+}
+
+.rui-transition-fast {
+	transition: all var(--rui-duration-fast) var(--rui-ease-in-out);
+}
+
+.rui-transition-slow {
+	transition: all var(--rui-duration-slow) var(--rui-ease-in-out);
+}
