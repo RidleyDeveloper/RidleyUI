@@ -69,6 +69,9 @@
 		"micromatch": "^4.0.8"
 	},
 	"devDependencies": {
+		"@popperjs/core": "^2.11.0",
+		"bootstrap": "^5.3.0",
+		"reactstrap": "^9.2.0",
 		"@ridleydeveloper/types": "1.0.78",
 		"@biomejs/biome": "1.9.4",
 		"@ryansonshine/commitizen": "4.2.8",
@@ -114,9 +117,9 @@
 		"reactstrap": "^9.2.0"
 	},
 	"dependencies": {
-		"@popperjs/core": "^2.11.0",
-		"bootstrap": "^5.3.0",
-		"clsx": "^2.1.1",
-		"reactstrap": "^9.2.0"
-	}
+		"clsx": "^2.1.1"
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"publishConfig": { "registry": "https://npm.pkg.github.com" }
 }
