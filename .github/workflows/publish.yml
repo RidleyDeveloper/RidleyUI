@@ -45,15 +45,17 @@ jobs:
       - name: Build Storybook
         run: npm run storybook:build
 
-      - name: Deploy Storybook to GitHub Pages
-        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.2
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          install_command: npm ci
-          build_command: npm run storybook:build
-          path: storybook-static
-        env:
-          # This action expects GH_TOKEN as "username:token"
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+          path: ./storybook-static
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: Build package
         run: npm run build
