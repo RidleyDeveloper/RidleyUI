@@ -13,7 +13,7 @@ const common: Options = {
 	dts: true,
 	splitting: false,
 	format: ["cjs", "esm"],
-	external: ["react"],
+	external: ["react", "react-dom"],
 	injectStyle: false,
 };
 
@@ -22,8 +22,8 @@ const getPackageName = async () => {
 		const packageJson = JSON.parse(
 			await readFile(path.join(__dirname, "package.json"), "utf-8"),
 		);
-		return packageJson.name;
-	} catch (_error) {
+		return packageJson.name || "package-name";
+	} catch {
 		return "package-name";
 	}
 };
@@ -33,8 +33,7 @@ const _addUseStatement = async (
 	type: "server" | "client",
 ) => {
 	const fullPath = path.join(__dirname, basePath);
-	const files = fs.readdirSync(fullPath);
-
+	const files = fs.existsSync(fullPath) ? fs.readdirSync(fullPath) : [];
 	for (const file of files) {
 		if (file.endsWith(".js") || file.endsWith(".mjs")) {
 			const filePath = path.join(fullPath, file);
@@ -46,28 +45,30 @@ const _addUseStatement = async (
 };
 
 const linkSelf = async () => {
-	await new Promise((resolve) => {
-		childProcess.exec("npm link:self", (error, _stdout, _stderr) => {
-			if (error) {
-				// biome-ignore lint/suspicious/noConsole: <explanation>
-				console.error(`exec error: ${error}`);
-				return;
-			}
+	// Don’t auto-link in CI or when explicitly disabled
+	if (process.env.CI || process.env.SKIP_LINK) {
+		return;
+	}
 
-			resolve(undefined);
+	await new Promise<void>((resolve, reject) => {
+		// IMPORTANT: use "npm run <script>" not "npm <script>"
+		childProcess.exec("npm run link:self", (error) => {
+			if (error) {
+				console.error("npm run link:self failed:", error);
+				return reject(error);
+			}
+			resolve();
 		});
 	});
 
-	// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-	// biome-ignore lint/suspicious/noConsole: <explanation>
 	console.log(
-		`Run 'npm link ${await getPackageName()} --global' inside another project to consume this package.`,
+		`\n🔗 Local link ready.\nIn another project, run:\n\n  npm link ${await getPackageName()}\n`,
 	);
 };
 
 export default defineConfig({
 	async onSuccess() {
-		// If you want need to add a use statement to files, you can use the following code:
+		// If you need to add "use client"/"use server", uncomment:
 		// await _addUseStatement('dist/react', 'client');
 
 		await linkSelf();
