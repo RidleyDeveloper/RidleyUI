@@ -24,6 +24,10 @@
 	--rui-green-300: #9acf8b;
 	--rui-green-600: #3f9228;
 
+	/* === RIDLEY RED PALETTE === */
+	--rui-red-500: #ef4444;
+	--rui-red-600: #dc2626;
+
 	/* === SEMANTIC COLOR MAPPINGS === */
 	--rui-primary: var(--rui-purple-500);
 	--rui-primary-light: var(--rui-purple-100);
@@ -32,6 +36,9 @@
 	--rui-success: var(--rui-green-600);
 	--rui-success-light: var(--rui-green-100);
 	--rui-success-medium: var(--rui-green-300);
+
+	--rui-destructive: var(--rui-red-600);
+	--rui-destructive-hover: var(--rui-red-500);
 
 	--rui-secondary: var(--rui-neutral-200);
 	--rui-info: var(--rui-purple-500);
