@@ -20,7 +20,7 @@
 	"scripts": {
 		"dev": "concurrently \"npm run build -- --watch\" \"npm run storybook\" \"npm run test\"",
 		"build": "tsup",
-		"build:css": "cp src/styles/ridley.css dist/styles.css",
+		"build:css": "mkdir -p dist/styles && cp src/styles/ridley.css dist/styles/ridley.css",
 		"build:all": "npm run build && npm run build:css",
 		"lint": "biome check --write --unsafe .",
 		"lint:ci": "biome check --unsafe .",
@@ -33,18 +33,16 @@
 		"release": "npm run build:all && npm run release-it",
 		"release-it": "release-it",
 		"link:self": "npm link",
-		"prepare": "lefthook install"
+		"prepare": "lefthook install",
+		"prepublishOnly": "npm run build:all"
 	},
 	"types": "./dist/index.d.ts",
 	"exports": {
-		".": {
-			"require": "./dist/index.js",
-			"import": "./dist/index.mjs"
-		},
-		"./styles.css": "./dist/styles.css"
+		".": { "require": "./dist/index.js", "import": "./dist/index.mjs" },
+		"./styles.css": "./dist/styles/ridley.css"
 	},
 	"files": ["dist"],
-	"sideEffects": ["dist/styles.css"],
+	"sideEffects": ["dist/styles/ridley.css"],
 	"config": {
 		"commitizen": {
 			"path": "./node_modules/@ryansonshine/cz-conventional-changelog"
