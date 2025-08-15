@@ -1,7 +1,7 @@
 {
 	"name": "@ridleydeveloper/ui",
 	"description": "Ridley UI Component Library with Bootstrap and ReactStrap integration",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"author": "RidleyDeveloper",
 	"license": "MIT",
 	"keywords": [
@@ -121,5 +121,7 @@
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
-	"publishConfig": { "registry": "https://npm.pkg.github.com" }
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	}
 }
