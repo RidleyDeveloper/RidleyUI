@@ -61,7 +61,8 @@ const linkSelf = async () => {
 			resolve();
 		});
 	});
-	// biome-ignore lint/suspicious/noConsoleLog: <explanation> // biome-ignore lint/suspicious/noConsole: <explanation>
+	// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+	// biome-ignore lint/suspicious/noConsole: <explanation>
 	console.log(
 		`\n🔗 Local link ready.\nIn another project, run:\n\n  npm link ${await getPackageName()}\n`,
 	);
