@@ -64,7 +64,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          scope: "@ridleydeveloper"
+          scope: "@ridley"
           registry-url: "https://npm.pkg.github.com"
 
       - name: Publish to GitHub Packages

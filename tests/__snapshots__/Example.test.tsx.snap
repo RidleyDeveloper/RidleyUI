@@ -1,11 +1,82 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`renders correctly 1`] = `
+exports[`Button > renders default button correctly 1`] = `
 <button
-  id="example-button"
+  className="rui-focus btn btn-secondary"
   onClick={[Function]}
-  type="button"
 >
-  Clicked this many times 0
+  Default Button
 </button>
+`;
+
+exports[`Button > renders ridley variant correctly 1`] = `
+<button
+  className="rui-focus btn-ridley btn btn-secondary"
+  onClick={[Function]}
+>
+  Ridley Button
+</button>
+`;
+
+exports[`Button > renders ridley-white variant correctly 1`] = `
+<button
+  className="rui-focus btn-ridley-white btn btn-secondary"
+  onClick={[Function]}
+>
+  Ridley White Button
+</button>
+`;
+
+exports[`ExampleCard > renders card correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-body"
+  >
+    <h5
+      className="card-title"
+    >
+      Ridley UI Card
+    </h5>
+    <p
+      className="card-text"
+    >
+      This is an example card using ReactStrap with Ridley styling.
+    </p>
+    <div
+      className="d-flex gap-2"
+    >
+      <button
+        className="rui-focus btn-ridley btn btn-secondary"
+        onClick={[Function]}
+      >
+        Primary Action
+      </button>
+      <button
+        className="rui-focus btn-ridley-white btn btn-secondary"
+        onClick={[Function]}
+      >
+        Secondary Action
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RidleyAlert > renders alert correctly 1`] = `
+<div
+  className="alert alert-primary fade"
+  role="alert"
+>
+  Test Alert
+</div>
+`;
+
+exports[`RidleyBadge > renders badge correctly 1`] = `
+<span
+  className="badge bg-primary"
+>
+  Test Badge
+</span>
 `;

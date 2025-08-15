@@ -1,6 +1,6 @@
-# 📦 Typescript • React • Package Starter
+# 🏠 Ridley UI Component Library
 
-A slightly opinionated starter kit for developing TypeScript and/or React NPM packages. It comes with a several pre-configured tools, so you could focus on coding instead of configuring a project for the nth time. From building to releasing a package, this starter kit has you covered.
+A TypeScript React component library for Ridley applications, built with Bootstrap and ReactStrap integration. This library provides consistent UI components that follow Ridley's design system and brand guidelines.
 
 ## What's included?
 
@@ -13,6 +13,24 @@ A slightly opinionated starter kit for developing TypeScript and/or React NPM pa
 - 🐙 [Test & Publish via Github Actions](https://docs.github.com/en/actions) - CI/CD workflows for your package. Run tests on every commit plus integrate with Github Releases to automate publishing package to NPM and Storybook to Github Pages.
 - 🤖 [Dependabot](https://docs.github.com/en/code-security/dependabot) - Github powered dependency update tool that fits into your workflows. Configured to periodically check your dependencies for updates and send automated pull requests.
 - 🏃‍♀️‍➡️ [TSX](https://github.com/privatenumber/tsx) - Execute TypeScript files with zero-config in a Node.js environment.
+- 🎨 **Bootstrap & ReactStrap** - Pre-configured with Bootstrap 5 and ReactStrap for consistent, accessible UI components.
+- 🎯 **Ridley Design System** - Custom CSS variables and component variants that implement Ridley's brand colors and styling.
+
+## Features
+
+### Components
+
+- **Button** - Custom Ridley button variants (`ridley`, `ridley-white`, `default`)
+- **ExampleCard** - Demonstrates ReactStrap Card with Ridley styling
+- **RidleyBadge** - Badge component with Ridley color schemes
+- **RidleyAlert** - Alert component with Ridley styling
+
+### Design Tokens
+
+- Ridley brand color palette with CSS custom properties
+- Bootstrap CSS variable mapping to Ridley tokens
+- Custom button styles and navigation components
+- Consistent focus states and accessibility features
 
 ## Usage
 
@@ -35,7 +53,13 @@ npm test
 Build package with `tsup` for production.
 
 ```console
-npm build
+npm run build
+```
+
+Build both JavaScript and CSS assets:
+
+```console
+npm run build:all
 ```
 
 ### ▶️ Running files written in TypeScript
@@ -43,7 +67,7 @@ npm build
 To execute a file written in TypeScript inside a Node.js environment, use the `tsx` command. This will detect your `tsconfig.json` and run the file with the correct configuration. This is perfect for running custom scripts while remaining type-safe.
 
 ```console
-npm tsx ./path/to/file.ts
+npm run tsx ./path/to/file.ts
 ```
 
 This is useful for running scripts, starting a server, or any other code you want to run while remaining type-safe.
@@ -55,7 +79,7 @@ Often times you want to `link` this package to another project when developing l
 In a project where you want to consume your package run:
 
 ```console
-npm link my-package --global
+npm link @ridley/ui
 ```
 
 Learn more about package linking [here](https://npm.io/cli/link).
@@ -65,7 +89,7 @@ Learn more about package linking [here](https://npm.io/cli/link).
 When you are ready to commit simply run the following command to get a well formatted commit message. All staged files will automatically be linted and fixed as well.
 
 ```console
-npm commit
+npm run commit
 ```
 
 ### ✅ Linting
@@ -73,7 +97,7 @@ npm commit
 To lint and reformat your code at any time, simply run the following command. Under the hood, this uses [Biome](https://biomejs.dev/). If you use VSCode, I suggest installing the official [biome extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome).
 
 ```console
-npm lint
+npm run lint
 ```
 
 ### 🔖 Releasing, tagging & publishing to NPM
@@ -83,7 +107,7 @@ Create a semantic version tag and publish to Github Releases. When a new release
 Learn more about how to use the `release-it` command [here](https://github.com/release-it/release-it).
 
 ```console
-npm release
+npm run release
 ```
 
 When you are ready to publish to NPM simply run the following command:
@@ -98,37 +122,66 @@ npm publish
 
 ❗Important note: in order to publish package to NPM you must add your token as a Github Action secret. Learn more on how to configure your repository and publish packages through Github Actions [here](https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages).
 
-## 🎨 CSS & PostCSS
+## 🎨 CSS & Ridley Design System
 
-To bundle CSS files with your package that you intend on users to import within their own project, a few extra steps are required.
+This package includes Ridley's design system built on top of Bootstrap 5. The CSS is automatically bundled and can be imported by consumers.
 
-1. Add your CSS files to the `src` directory. For example, `src/styles.css`.
-2. Modify `tsup.config.ts` file to include your CSS file as an entry point. For example:
+### Using the Ridley Styles
 
 ```ts
-import { defineConfig } from "tsup";
-
-export default defineConfig({
-  entry: ["src/index.ts", "src/styles.css"],
-  // ...
-});
+import "@ridley/ui/styles.css";
 ```
 
-3. Modify `package.json` to include the CSS file as an `exports` entry. For example:
+### Design Tokens
 
-```json
-{
-  "exports": {
-    "./styles.css": "./dist/styles.css"
-  }
+The package includes CSS custom properties for Ridley's brand:
+
+```css
+:root {
+  /* Ridley Brand palette */
+  --rui-primary: #5b3867; /* Ridley purple */
+  --rui-secondary: #f6f6f6; /* Light gray */
+  --rui-success: #60a359; /* Green */
+  --rui-info: #508fb5; /* Blue */
+  --rui-warning: #a49e82; /* Yellow/amber */
+  --rui-danger: #f25454; /* Red */
+  --rui-light: #f8f9fa;
+  --rui-dark: #232323; /* Dark gray */
+
+  /* Extended Ridley palette */
+  --rui-punchy-purple: #5b3867;
+  --rui-punchy-purple-light: #ebe7ed;
+  --rui-dark-gray: #232323;
+  --rui-off-white: #f6f6f6;
+  --rui-off-white-2: #e3e3e3;
+
+  /* Typography & layout */
+  --rui-font-sans: "NeueHaas", system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --rui-radius: 8px;
+  --rui-gap: 0.5rem;
 }
 ```
 
-4. Now consumers of your package can import your CSS file anywhere in their project. For example:
+### Component Usage
 
-```ts
-import "your-package/styles.css";
+```tsx
+import { Button, ExampleCard, RidleyBadge, RidleyAlert } from "@ridley/ui";
+
+function App() {
+  return (
+    <div>
+      <Button variant="ridley">Primary Action</Button>
+      <Button variant="ridley-white">Secondary Action</Button>
+      <RidleyBadge color="primary">Status</RidleyBadge>
+      <RidleyAlert color="success">Success message</RidleyAlert>
+      <ExampleCard />
+    </div>
+  );
+}
 ```
+
+The CSS is designed to work alongside ReactStrap components while providing Ridley-specific styling and brand consistency.
 
 Alternatively, if your package has a hard dependency on a CSS file and you want it to always be loaded when your package is imported, you can import it anywhere within your package's code and it will be bundled with-in your package.
 

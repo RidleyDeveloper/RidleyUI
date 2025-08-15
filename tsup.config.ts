@@ -5,7 +5,7 @@ import path from "node:path";
 import { type Options, defineConfig } from "tsup";
 
 const common: Options = {
-	entry: ["src/index.ts"],
+	entry: ["src/index.ts", "src/styles/ridley.css"],
 	treeshake: false,
 	sourcemap: "inline",
 	minify: true,
@@ -13,7 +13,7 @@ const common: Options = {
 	dts: true,
 	splitting: false,
 	format: ["cjs", "esm"],
-	external: ["react", "react-dom"],
+	external: ["react", "react-dom", "bootstrap", "reactstrap", "@popperjs/core"],
 	injectStyle: false,
 };
 
