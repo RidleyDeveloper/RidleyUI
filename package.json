@@ -1,7 +1,7 @@
 {
 	"name": "@ridleydeveloper/ui",
 	"description": "Ridley UI Component Library with Bootstrap and ReactStrap integration",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"author": "RidleyDeveloper",
 	"license": "MIT",
 	"keywords": [
@@ -38,7 +38,10 @@
 	},
 	"types": "./dist/index.d.ts",
 	"exports": {
-		".": { "require": "./dist/index.js", "import": "./dist/index.mjs" },
+		".": {
+			"require": "./dist/index.js",
+			"import": "./dist/index.mjs"
+		},
 		"./styles.css": "./dist/styles/ridley.css"
 	},
 	"files": ["dist"],
