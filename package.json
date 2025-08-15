@@ -1,13 +1,20 @@
 {
-	"name": "@ridley/ui",
-	"description": "",
+	"name": "@ridleydeveloper/ui",
+	"description": "Ridley UI Component Library with Bootstrap and ReactStrap integration",
 	"version": "1.0.2",
-	"author": "",
-	"license": "",
-	"keywords": [],
+	"author": "RidleyDeveloper",
+	"license": "MIT",
+	"keywords": [
+		"react",
+		"ui",
+		"components",
+		"bootstrap",
+		"reactstrap",
+		"typescript"
+	],
 	"repository": {
 		"type": "git",
-		"url": ""
+		"url": "https://github.com/ridleydeveloper/RidleyUI.git"
 	},
 	"packageManager": "npm@10",
 	"scripts": {
