@@ -2,10 +2,10 @@ pre-commit:
   parallel: true
   commands:
     lint:
-      run: pnpm biome check --write --unsafe --staged --no-errors-on-unmatched && git add -u
+      run: npx biome check --write --unsafe --staged --no-errors-on-unmatched && git add -u
     typecheck:
-      run: pnpm tsc
+      run: npm run typecheck
     build:
-      run: pnpm build
+      run: npm run build
     test:
-      run: pnpm test:ci
+      run: npm run test:ci

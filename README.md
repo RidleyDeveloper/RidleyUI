@@ -2,10 +2,6 @@
 
 A slightly opinionated starter kit for developing TypeScript and/or React NPM packages. It comes with a several pre-configured tools, so you could focus on coding instead of configuring a project for the nth time. From building to releasing a package, this starter kit has you covered.
 
-## 🏃 Getting started
-
-❗Important note: This project uses [pnpm](https://pnpm.io/) for managing dependencies. If you want to use another package manager, remove the `pnpm-lock.yaml` and control-f for usages of `pnpm` in the project and replace them with your package manager of choice. If you don't have `pnpm` installed and want to use it, you can install it by running `npm install -g pnpm`.
-
 ## What's included?
 
 - ⚡️ [tsup](https://github.com/egoist/tsup) - The simplest and fastest way to bundle your TypeScript libraries. Used to bundle package as ESM and CJS modules. Supports TypeScript, Code Splitting, PostCSS, and more out of the box.
@@ -25,13 +21,13 @@ A slightly opinionated starter kit for developing TypeScript and/or React NPM pa
 Watch and rebuild code with `tsup` and runs Storybook to preview your UI during development.
 
 ```console
-pnpm dev
+npm run dev
 ```
 
 Run all tests and watch for changes
 
 ```console
-pnpm test
+npm test
 ```
 
 ### 🏗️ Building
@@ -39,7 +35,7 @@ pnpm test
 Build package with `tsup` for production.
 
 ```console
-pnpm build
+npm build
 ```
 
 ### ▶️ Running files written in TypeScript
@@ -47,7 +43,7 @@ pnpm build
 To execute a file written in TypeScript inside a Node.js environment, use the `tsx` command. This will detect your `tsconfig.json` and run the file with the correct configuration. This is perfect for running custom scripts while remaining type-safe.
 
 ```console
-pnpm tsx ./path/to/file.ts
+npm tsx ./path/to/file.ts
 ```
 
 This is useful for running scripts, starting a server, or any other code you want to run while remaining type-safe.
@@ -59,17 +55,17 @@ Often times you want to `link` this package to another project when developing l
 In a project where you want to consume your package run:
 
 ```console
-pnpm link my-package --global
+npm link my-package --global
 ```
 
-Learn more about package linking [here](https://pnpm.io/cli/link).
+Learn more about package linking [here](https://npm.io/cli/link).
 
 ### 📩 Committing
 
 When you are ready to commit simply run the following command to get a well formatted commit message. All staged files will automatically be linted and fixed as well.
 
 ```console
-pnpm commit
+npm commit
 ```
 
 ### ✅ Linting
@@ -77,7 +73,7 @@ pnpm commit
 To lint and reformat your code at any time, simply run the following command. Under the hood, this uses [Biome](https://biomejs.dev/). If you use VSCode, I suggest installing the official [biome extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome).
 
 ```console
-pnpm lint
+npm lint
 ```
 
 ### 🔖 Releasing, tagging & publishing to NPM
@@ -87,13 +83,13 @@ Create a semantic version tag and publish to Github Releases. When a new release
 Learn more about how to use the `release-it` command [here](https://github.com/release-it/release-it).
 
 ```console
-pnpm release
+npm release
 ```
 
 When you are ready to publish to NPM simply run the following command:
 
 ```console
-pnpm publish
+npm publish
 ```
 
 #### 🤖 Auto publish after Github Release (or manually by dispatching the Publish workflow)
@@ -136,6 +132,6 @@ import "your-package/styles.css";
 
 Alternatively, if your package has a hard dependency on a CSS file and you want it to always be loaded when your package is imported, you can import it anywhere within your package's code and it will be bundled with-in your package.
 
-[tsup](https://github.com/egoist/tsup) supports PostCSS out of the box. Simply run `pnpm add postcss -D` add a `postcss.config.js` file to the root of your project, then add any plugins you need. Learn more how to configure PostCSS [here](https://tsup.egoist.dev/#css-support).
+[tsup](https://github.com/egoist/tsup) supports PostCSS out of the box. Simply run `npm add postcss -D` add a `postcss.config.js` file to the root of your project, then add any plugins you need. Learn more how to configure PostCSS [here](https://tsup.egoist.dev/#css-support).
 
 Additionally consider using the [tsup](https://github.com/egoist/tsup) configuration option `injectStyle` to inject the CSS directly into your Javascript bundle instead of outputting a separate CSS file.

@@ -47,7 +47,7 @@ const _addUseStatement = async (
 
 const linkSelf = async () => {
 	await new Promise((resolve) => {
-		childProcess.exec("pnpm link:self", (error, _stdout, _stderr) => {
+		childProcess.exec("npm link:self", (error, _stdout, _stderr) => {
 			if (error) {
 				// biome-ignore lint/suspicious/noConsole: <explanation>
 				console.error(`exec error: ${error}`);
@@ -61,7 +61,7 @@ const linkSelf = async () => {
 	// biome-ignore lint/suspicious/noConsoleLog: <explanation>
 	// biome-ignore lint/suspicious/noConsole: <explanation>
 	console.log(
-		`Run 'pnpm link ${await getPackageName()} --global' inside another project to consume this package.`,
+		`Run 'npm link ${await getPackageName()} --global' inside another project to consume this package.`,
 	);
 };
 
