@@ -2,17 +2,7 @@
 
 A slightly opinionated starter kit for developing TypeScript and/or React NPM packages. It comes with a several pre-configured tools, so you could focus on coding instead of configuring a project for the nth time. From building to releasing a package, this starter kit has you covered.
 
-> 👋 Hello there! Follow me [@linesofcode](https://twitter.com/linesofcode) or visit [linesofcode.dev](https://linesofcode.dev) for more cool projects like this one.
-
 ## 🏃 Getting started
-
-```console
-npx degit TimMikeladze/typescript-react-package-starter my-package
-
-cd my-package && git init
-
-pnpm install && pnpm dev
-```
 
 ❗Important note: This project uses [pnpm](https://pnpm.io/) for managing dependencies. If you want to use another package manager, remove the `pnpm-lock.yaml` and control-f for usages of `pnpm` in the project and replace them with your package manager of choice. If you don't have `pnpm` installed and want to use it, you can install it by running `npm install -g pnpm`.
 
@@ -123,8 +113,8 @@ To bundle CSS files with your package that you intend on users to import within 
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-	entry: ["src/index.ts", "src/styles.css"],
-	// ...
+  entry: ["src/index.ts", "src/styles.css"],
+  // ...
 });
 ```
 
@@ -132,9 +122,9 @@ export default defineConfig({
 
 ```json
 {
-	"exports": {
-		"./styles.css": "./dist/styles.css"
-	}
+  "exports": {
+    "./styles.css": "./dist/styles.css"
+  }
 }
 ```
 
