@@ -58,7 +58,7 @@ jobs:
       - name: Build package
         run: npm run build
 
-      # Re-configure Node auth just for publish to GH Packages
+      # Re-configure Node auth for GitHub Packages (internal use)
       - name: Setup Node for GitHub Packages publish
         if: github.event_name == 'release'
         uses: actions/setup-node@v4
@@ -71,4 +71,4 @@ jobs:
         if: github.event_name == 'release'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm publish --access=restricted
+        run: npm publish
