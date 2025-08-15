@@ -54,13 +54,14 @@ const linkSelf = async () => {
 		// IMPORTANT: use "npm run <script>" not "npm <script>"
 		childProcess.exec("npm run link:self", (error) => {
 			if (error) {
+				// biome-ignore lint/suspicious/noConsole: <explanation>
 				console.error("npm run link:self failed:", error);
 				return reject(error);
 			}
 			resolve();
 		});
 	});
-
+	// biome-ignore lint/suspicious/noConsoleLog: <explanation> // biome-ignore lint/suspicious/noConsole: <explanation>
 	console.log(
 		`\n🔗 Local link ready.\nIn another project, run:\n\n  npm link ${await getPackageName()}\n`,
 	);
