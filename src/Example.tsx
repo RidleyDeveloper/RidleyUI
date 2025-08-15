@@ -6,6 +6,7 @@ export type ExampleProps = {
 	text?: string;
 };
 
+// Comment
 export function Example(props: ExampleProps) {
 	const [count, setCount] = React.useState(0);
 	return (
