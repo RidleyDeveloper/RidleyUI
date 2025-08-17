@@ -151,6 +151,92 @@ export const WithCustomText: Story = {
 	),
 };
 
+// === WITH ICONS === //
+
+export const WithIconBefore: Story = {
+	render: () => (
+		<div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+			<RuiButton variant="primary">
+				<span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+					<span>⭐</span>
+					<span>Star Button</span>
+				</span>
+			</RuiButton>
+			<RuiButton variant="secondary">
+				<span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+					<span>📧</span>
+					<span>Email</span>
+				</span>
+			</RuiButton>
+			<RuiButton variant="tertiary">
+				<span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+					<span>🔍</span>
+					<span>Search</span>
+				</span>
+			</RuiButton>
+			<RuiButton variant="destructive">
+				<span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+					<span>🗑️</span>
+					<span>Delete</span>
+				</span>
+			</RuiButton>
+		</div>
+	),
+};
+
+export const WithIconAfter: Story = {
+	render: () => (
+		<div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+			<RuiButton variant="primary">
+				<span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+					<span>Continue</span>
+					<span>→</span>
+				</span>
+			</RuiButton>
+			<RuiButton variant="secondary">
+				<span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+					<span>Download</span>
+					<span>⬇️</span>
+				</span>
+			</RuiButton>
+			<RuiButton variant="tertiary">
+				<span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+					<span>External Link</span>
+					<span>🔗</span>
+				</span>
+			</RuiButton>
+			<RuiButton variant="transparent">
+				<span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+					<span>Submit</span>
+					<span>✓</span>
+				</span>
+			</RuiButton>
+		</div>
+	),
+};
+
+export const IconOnlyButtons: Story = {
+	render: () => (
+		<div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+			<RuiButton variant="primary">
+				<span style={{ fontSize: "16px" }}>❤️</span>
+			</RuiButton>
+			<RuiButton variant="secondary">
+				<span style={{ fontSize: "16px" }}>⚙️</span>
+			</RuiButton>
+			<RuiButton variant="tertiary">
+				<span style={{ fontSize: "16px" }}>📋</span>
+			</RuiButton>
+			<RuiButton variant="destructive">
+				<span style={{ fontSize: "16px" }}>❌</span>
+			</RuiButton>
+			<RuiButton variant="transparent">
+				<span style={{ fontSize: "16px" }}>ℹ️</span>
+			</RuiButton>
+		</div>
+	),
+};
+
 // === INTERACTIVE EXAMPLE === //
 
 export const Interactive: Story = {
