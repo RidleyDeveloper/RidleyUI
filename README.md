@@ -11,7 +11,6 @@ A TypeScript React component library for Ridley applications, built with Bootstr
 - 🪝 [Lefthook](https://github.com/evilmartians/lefthook) — Run pre-commit hooks, lints staged files, executes tests, and more.
 - 🔼 [Release-it](https://github.com/release-it/release-it/) - release-it is a command line tool to automatically generate a new GitHub Release and populates it with the changes (commits) made since the last release.
 - 🐙 [Test & Publish via Github Actions](https://docs.github.com/en/actions) - CI/CD workflows for your package. Run tests on every commit plus integrate with Github Releases to automate publishing package to NPM and Storybook to Github Pages.
-- 🤖 [Dependabot](https://docs.github.com/en/code-security/dependabot) - Github powered dependency update tool that fits into your workflows. Configured to periodically check your dependencies for updates and send automated pull requests.
 - 🏃‍♀️‍➡️ [TSX](https://github.com/privatenumber/tsx) - Execute TypeScript files with zero-config in a Node.js environment.
 - 🎨 **Bootstrap & ReactStrap** - Pre-configured with Bootstrap 5 and ReactStrap for consistent, accessible UI components.
 - 🎯 **Ridley Design System** - Custom CSS variables and component variants that implement Ridley's brand colors and styling.
