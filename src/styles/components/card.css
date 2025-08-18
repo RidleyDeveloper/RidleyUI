@@ -1,0 +1,49 @@
+/* -------------------------------
+   RuiCard Component Styles
+   Accordion transitions and card-specific styling
+----------------------------------*/
+
+/* === CARD BASE STYLES === */
+.rui-no-shadow {
+	box-shadow: none;
+}
+
+/* === ACCORDION TRANSITIONS === */
+.rui-accordion-expanded {
+	transform: rotate(180deg);
+	transition: transform var(--rui-duration-normal) var(--rui-ease-in-out);
+}
+
+.rui-accordion-collapsed {
+	transform: rotate(0deg);
+	transition: transform var(--rui-duration-normal) var(--rui-ease-in-out);
+}
+
+/* === COLLAPSE SMOOTH TRANSITIONS === */
+.rui-collapse {
+	transition: all var(--rui-duration-normal) var(--rui-ease-in-out);
+}
+
+.rui-collapse .collapsing {
+	transition: height var(--rui-duration-normal) var(--rui-ease-in-out);
+	/* Fix for layout shift - ensure no margin on collapsing element */
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+/* Fix for ReactStrap Collapse layout shift issue */
+.rui-collapse .collapse {
+	/* Remove any margins that cause jumping */
+	margin: 0 !important;
+}
+
+.rui-collapse .collapse .show,
+.rui-collapse .collapse.show {
+	/* Ensure smooth transitions when showing */
+	margin: 0 !important;
+}
+
+/* === TEXT COLOR UTILITIES FOR CARD === */
+.text-neutral-600 {
+	color: var(--rui-neutral-600);
+}

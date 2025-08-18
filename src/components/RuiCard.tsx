@@ -1,0 +1,230 @@
+import { clsx } from "clsx";
+import type React from "react";
+import { useState } from "react";
+import { Card, CardBody, CardFooter, Collapse } from "reactstrap";
+import { RuiText } from "./RuiText";
+
+// SVG Icon Component
+const ChevronIcon: React.FC<{ className?: string }> = ({ className }) => (
+	<svg
+		width="20"
+		height="20"
+		viewBox="0 0 20 20"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		className={className}
+		aria-hidden="true"
+		role="presentation"
+	>
+		<path
+			d="M15 12.5L10 7.5L5 12.5"
+			stroke="currentColor"
+			strokeWidth="1.66667"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+		/>
+	</svg>
+);
+
+// === TYPE DEFINITIONS === //
+
+export interface RuiCardProps {
+	/** Main content of the card */
+	children: React.ReactNode;
+	/** Optional card title */
+	cardTitle?: string;
+	/** Optional card subtitle */
+	cardSubtitle?: string;
+	/** Optional footer content */
+	footerContent?: React.ReactNode;
+	/** Optional right header section content */
+	rightHeaderSection?: React.ReactNode;
+	/** Enable accordion behavior */
+	accordion?: boolean;
+	/** Default accordion state (only applies when accordion=true) */
+	defaultExpanded?: boolean;
+	/** Additional CSS classes for the card */
+	className?: string;
+	/** Override default card styles */
+	style?: React.CSSProperties;
+	/** Additional CSS classes for the card body */
+	bodyClassName?: string;
+	/** Override default card body styles */
+	bodyStyle?: React.CSSProperties;
+	/** Additional CSS classes for the footer */
+	footerClassName?: string;
+	/** Override default footer styles */
+	footerStyle?: React.CSSProperties;
+	/** Callback when accordion state changes */
+	onToggle?: (isExpanded: boolean) => void;
+}
+
+// === COMPONENT === //
+
+export const RuiCard: React.FC<RuiCardProps> = ({
+	children,
+	cardTitle,
+	cardSubtitle,
+	footerContent,
+	rightHeaderSection,
+	accordion = false,
+	defaultExpanded = false,
+	className,
+	style,
+	bodyClassName,
+	bodyStyle,
+	footerClassName,
+	footerStyle,
+	onToggle,
+	...props
+}) => {
+	const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+
+	const handleToggle = () => {
+		const newExpanded = !isExpanded;
+		setIsExpanded(newExpanded);
+		onToggle?.(newExpanded);
+	};
+
+	// Default card styles using CSS custom properties
+	const defaultCardStyle: React.CSSProperties = {
+		borderRadius: "var(--rui-radius-2xl)", // 24px
+		border: "1px solid var(--rui-neutral-border)", // #0000001a
+		backgroundColor: "var(--rui-white)",
+		width: "100%",
+		height: "100%",
+		...style,
+	};
+
+	// Default body styles
+	const defaultBodyStyle: React.CSSProperties = {
+		padding: "var(--rui-space-6)", // 24px all around
+		...bodyStyle,
+	};
+
+	// Default footer styles
+	const defaultFooterStyle: React.CSSProperties = {
+		"--bs-card-cap-bg": "var(--rui-white)",
+		borderTop: "1px solid var(--rui-neutral-border)",
+		borderRadius: "0px 0px var(--rui-radius-2xl) var(--rui-radius-2xl)", // 24px bottom corners
+		padding: "var(--rui-space-4)",
+		...footerStyle,
+	} as React.CSSProperties;
+
+	const handleKeyDown = (event: React.KeyboardEvent) => {
+		if (accordion && (event.key === "Enter" || event.key === " ")) {
+			event.preventDefault();
+			handleToggle();
+		}
+	};
+
+	const renderTitleSection = () => (
+		<div className="flex-grow-1">
+			{cardTitle && (
+				<RuiText type="title" size="s" color="neutral.800" className="mb-0">
+					{cardTitle}
+				</RuiText>
+			)}
+			{cardSubtitle && (
+				<RuiText
+					type="paragraph"
+					size="m"
+					color="neutral.600"
+					className={clsx({
+						"mt-1": cardTitle,
+						"mb-0": accordion && !isExpanded,
+						"mb-3": !accordion || isExpanded,
+					})}
+				>
+					{cardSubtitle}
+				</RuiText>
+			)}
+		</div>
+	);
+
+	const renderRightSection = () => (
+		<div className="d-flex align-items-center">
+			{rightHeaderSection && (
+				<div
+					className={clsx("d-flex align-items-center", { "me-3": accordion })}
+				>
+					{rightHeaderSection}
+				</div>
+			)}
+			{accordion && (
+				<div
+					className={clsx("d-flex rui-transition align-items-center", {
+						"rui-accordion-expanded": isExpanded,
+						"rui-accordion-collapsed": !isExpanded,
+					})}
+				>
+					<ChevronIcon className="text-neutral-600" />
+				</div>
+			)}
+		</div>
+	);
+
+	const renderHeader = () => {
+		if (!(cardTitle || accordion || rightHeaderSection)) {
+			return null;
+		}
+
+		const hasMarginBottom = cardSubtitle || (!accordion && children);
+		const shouldHideMargin = accordion && !cardSubtitle && !isExpanded;
+
+		return (
+			<div
+				className={clsx("d-flex justify-content-between align-items-start", {
+					"mb-3": hasMarginBottom,
+					"mb-0": shouldHideMargin,
+				})}
+				style={{ cursor: accordion ? "pointer" : "default" }}
+				onClick={accordion ? handleToggle : undefined}
+				onKeyDown={accordion ? handleKeyDown : undefined}
+				role={accordion ? "button" : undefined}
+				tabIndex={accordion ? 0 : undefined}
+				aria-expanded={accordion ? isExpanded : undefined}
+			>
+				{renderTitleSection()}
+				{renderRightSection()}
+			</div>
+		);
+	};
+
+	// Main content (always rendered when not accordion, or when accordion is expanded)
+	const renderContent = () => {
+		if (accordion) {
+			return (
+				<Collapse isOpen={isExpanded} className="rui-collapse">
+					<div>{children}</div>
+				</Collapse>
+			);
+		}
+		return children;
+	};
+
+	return (
+		<Card
+			className={clsx("rui-no-shadow", className)}
+			style={defaultCardStyle}
+			{...props}
+		>
+			<CardBody className={clsx(bodyClassName)} style={defaultBodyStyle}>
+				{renderHeader()}
+				{renderContent()}
+			</CardBody>
+			{footerContent && (
+				<CardFooter
+					className={clsx("rui-no-shadow", footerClassName)}
+					style={defaultFooterStyle}
+				>
+					{footerContent}
+				</CardFooter>
+			)}
+		</Card>
+	);
+};
+
+// === DEFAULT EXPORT === //
+
+export default RuiCard;

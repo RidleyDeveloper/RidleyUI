@@ -65,6 +65,9 @@
 				"noUndeclaredDependencies": "off",
 				"noUnusedVariables": "off",
 				"noNodejsModules": "off"
+			},
+			"complexity": {
+				"noExcessiveCognitiveComplexity": "off"
 			}
 		}
 	},

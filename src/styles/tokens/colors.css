@@ -70,6 +70,7 @@
 	--rui-interactive-disabled: var(--rui-neutral-400);
 
 	/* === SHADOWS === */
+	--rui-no-shadow: none;
 	--rui-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
 	--rui-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
 	--rui-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
