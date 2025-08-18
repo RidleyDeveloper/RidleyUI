@@ -23,6 +23,7 @@
 @import "./components/navigation.css";
 @import "./components/card.css";
 @import "./components/badge.css";
+@import "./components/input.css";
 
 /* === UTILITIES === */
 @import "./utilities/focus.css";

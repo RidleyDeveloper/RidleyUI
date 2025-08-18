@@ -28,6 +28,12 @@
 	--rui-red-500: #ef4444;
 	--rui-red-600: #dc2626;
 
+	/* === SLATE PALETTE === */
+	--rui-slate-400: #94a3b8; /* Placeholder text, focus border */
+	--rui-slate-500: #64748b; /* Label text */
+	--rui-slate-900: #0f172a; /* Input text */
+	--rui-slate-300: #cbd5e1; /* Default border */
+
 	/* === SEMANTIC COLOR MAPPINGS === */
 	--rui-primary: var(--rui-purple-500);
 	--rui-primary-light: var(--rui-purple-100);

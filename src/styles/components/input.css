@@ -1,0 +1,170 @@
+/* -------------------------------
+   RuiInput Component Styles
+   Input field variants and styling using design tokens
+----------------------------------*/
+
+/* === INPUT BASE STYLES === */
+.rui-input {
+	/* Typography */
+	font-size: var(--rui-paragraph-m-size) !important; /* 16px */
+	font-weight: var(--rui-paragraph-m-weight) !important; /* 400 */
+	line-height: var(--rui-paragraph-m-line-height) !important; /* 24px */
+	letter-spacing: var(--rui-paragraph-m-letter-spacing) !important; /* -2% */
+	font-family: var(--rui-font-sans) !important;
+	color: var(--rui-slate-900) !important; /* #0F172A */
+
+	/* Layout */
+	width: 100% !important;
+	padding: var(--rui-space-3) var(--rui-space-4) !important; /* 12px 16px */
+	border-radius: var(--rui-radius-md) !important; /* 6px */
+
+	/* Default Border */
+	border: 1px solid var(--rui-slate-300) !important; /* #CBD5E1 */
+	background-color: var(--rui-white);
+
+	/* Transitions */
+	transition: all var(--rui-duration-fast) var(--rui-ease-in-out) !important;
+
+	/* Remove default styles */
+	box-shadow: none !important;
+	outline: none !important;
+}
+
+/* === PLACEHOLDER STYLES === */
+.rui-input::placeholder {
+	/* Placeholder Typography - Paragraph Medium */
+	font-size: var(--rui-paragraph-m-size) !important; /* 16px */
+	font-weight: var(--rui-paragraph-m-weight) !important; /* 400 */
+	line-height: var(--rui-paragraph-m-line-height) !important; /* 24px */
+	letter-spacing: var(--rui-paragraph-m-letter-spacing) !important; /* -2% */
+	color: var(--rui-slate-400) !important; /* #94A3B8 */
+	opacity: 1 !important; /* Ensure consistent opacity across browsers */
+}
+
+/* === FOCUS STATES === */
+.rui-input:focus {
+	border: 2px solid var(--rui-slate-400) !important; /* #94A3B8 */
+	box-shadow: none !important;
+	outline: none !important;
+	/* Adjust padding to account for thicker border */
+	padding: calc(var(--rui-space-3) - 1px) calc(var(--rui-space-4) - 1px) !important;
+}
+
+/* === DISABLED STATES === */
+.rui-input:disabled {
+	background-color: var(--rui-neutral-100) !important;
+	color: var(--rui-neutral-400) !important;
+	border-color: var(--rui-neutral-300) !important;
+	cursor: not-allowed !important;
+}
+
+.rui-input:disabled::placeholder {
+	color: var(--rui-neutral-400) !important;
+}
+
+/* === ROUNDED VARIANT === */
+.rui-input-rounded {
+	border-radius: 30px !important;
+}
+
+.rui-input-rounded:focus {
+	border-radius: 30px !important;
+}
+
+/* === INPUT WITH RIGHT SECTION === */
+.rui-input-wrapper {
+	position: relative !important;
+	width: 100% !important;
+}
+
+.rui-input-with-right {
+	padding-right: var(--rui-space-12) !important; /* 48px - space for button */
+}
+
+.rui-input-with-right:focus {
+	padding-right: calc(var(--rui-space-12) - 1px) !important; /* Adjust for border */
+}
+
+.rui-input-right-section {
+	position: absolute !important;
+	right: var(--rui-space-2) !important; /* 8px from right */
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	pointer-events: auto !important;
+	z-index: 1 !important;
+}
+
+/* === LABEL STYLES === */
+.rui-input-label {
+	/* Label Small Typography */
+	font-size: var(--rui-label-s-size) !important; /* 14px */
+	font-weight: var(--rui-label-s-weight) !important; /* 500 */
+	line-height: var(--rui-label-s-line-height) !important; /* 26px */
+	letter-spacing: var(--rui-label-s-letter-spacing) !important; /* -2% */
+	font-family: var(--rui-font-sans) !important;
+	color: var(--rui-slate-500) !important; /* #64748B */
+
+	/* Positioning */
+	margin-top: var(--rui-space-1) !important; /* 4px below input */
+	margin-bottom: 0 !important;
+	display: block !important;
+}
+
+/* === ERROR STATES === */
+.rui-input-error {
+	border-color: var(--rui-red-600) !important;
+}
+
+.rui-input-error:focus {
+	border-color: var(--rui-red-600) !important;
+	border-width: 2px !important;
+}
+
+.rui-input-error-label {
+	color: var(--rui-red-600) !important;
+}
+
+/* === SUCCESS STATES === */
+.rui-input-success {
+	border-color: var(--rui-green-600) !important;
+}
+
+.rui-input-success:focus {
+	border-color: var(--rui-green-600) !important;
+	border-width: 2px !important;
+}
+
+.rui-input-success-label {
+	color: var(--rui-green-600) !important;
+}
+
+/* === SIZE VARIANTS === */
+.rui-input-sm {
+	padding: var(--rui-space-1-5) var(--rui-space-3) !important; /* 6px 12px */
+	font-size: var(--rui-font-size-sm) !important; /* 14px */
+}
+
+.rui-input-sm:focus {
+	padding: calc(var(--rui-space-1-5) - 1px) calc(var(--rui-space-3) - 1px) !important;
+}
+
+.rui-input-lg {
+	padding: var(--rui-space-3-5) var(--rui-space-5) !important; /* 14px 20px */
+	font-size: var(--rui-font-size-lg) !important; /* 18px */
+}
+
+.rui-input-lg:focus {
+	padding: calc(var(--rui-space-3-5) - 1px) calc(var(--rui-space-5) - 1px) !important;
+}
+
+/* === CUSTOM COLOR VARIANTS === */
+.rui-input-custom-colors {
+	color: var(--custom-text-color, inherit) !important;
+}
+
+.rui-input-custom-colors::placeholder {
+	color: var(--custom-placeholder-color, var(--rui-slate-400)) !important;
+}
