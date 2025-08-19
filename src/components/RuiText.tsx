@@ -35,7 +35,8 @@ export type ColorVariant =
 	| "text.primary"
 	| "text.secondary"
 	| "text.muted"
-	| "text.inverse";
+	| "text.inverse"
+	| "inherit";
 
 export interface RuiTextProps {
 	/** The semantic type of text (title, paragraph, label) */
@@ -117,6 +118,7 @@ const getColorStyle = (color: ColorVariant): React.CSSProperties => {
 		"text.secondary": "var(--rui-text-secondary)",
 		"text.muted": "var(--rui-text-muted)",
 		"text.inverse": "var(--rui-text-inverse)",
+		inherit: "inherit",
 	};
 
 	return {
