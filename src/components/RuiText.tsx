@@ -5,6 +5,11 @@ import React from "react";
 
 export type TextType = "title" | "paragraph" | "label";
 export type TextSize = "s" | "m" | "l" | "xl";
+export type TextDecoration =
+	| "none"
+	| "underline"
+	| "line-through"
+	| "underline line-through";
 
 export type ColorVariant =
 	| "white"
@@ -45,6 +50,8 @@ export interface RuiTextProps {
 	size: TextSize;
 	/** Color variant from the design system */
 	color?: ColorVariant;
+	/** Text decoration style (underline, line-through, etc.) */
+	decoration?: TextDecoration;
 	/** HTML element to render (defaults based on type) */
 	as?: keyof React.JSX.IntrinsicElements;
 	/** Content to display */
@@ -127,6 +134,17 @@ const getColorStyle = (color: ColorVariant): React.CSSProperties => {
 };
 
 /**
+ * Gets the CSS style for text decoration
+ */
+const getDecorationStyle = (
+	decoration: TextDecoration,
+): React.CSSProperties => {
+	return {
+		textDecoration: decoration,
+	};
+};
+
+/**
  * Gets the default HTML element based on text type and size
  */
 const getDefaultElement = (
@@ -165,6 +183,7 @@ export const RuiText: React.FC<RuiTextProps> = ({
 	type,
 	size,
 	color,
+	decoration,
 	as,
 	children,
 	className,
@@ -179,7 +198,8 @@ export const RuiText: React.FC<RuiTextProps> = ({
 
 	// Build the style object
 	const colorStyle = color ? getColorStyle(color) : {};
-	const combinedStyle = { ...colorStyle, ...style };
+	const decorationStyle = decoration ? getDecorationStyle(decoration) : {};
+	const combinedStyle = { ...colorStyle, ...decorationStyle, ...style };
 
 	return React.createElement(
 		Element,
