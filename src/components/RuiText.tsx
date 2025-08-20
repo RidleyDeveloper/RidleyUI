@@ -75,7 +75,7 @@ const getTextClass = (type: TextType, size: TextSize): string => {
 
 	// Handle label type (supports 's' and 'm')
 	if (type === "label") {
-		if (size === "s" || size === "m") {
+		if (size === "s" || size === "m" || size === "xxs") {
 			return `rui-label-${size}`;
 		}
 		// Fallback to 'm' for unsupported label sizes
