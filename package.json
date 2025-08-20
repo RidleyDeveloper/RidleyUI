@@ -1,7 +1,7 @@
 {
 	"name": "@ridleydeveloper/ui",
 	"description": "Ridley UI Component Library with Bootstrap and ReactStrap integration",
-	"version": "1.0.21",
+	"version": "1.0.22",
 	"author": "RidleyDeveloper",
 	"license": "MIT",
 	"keywords": [
