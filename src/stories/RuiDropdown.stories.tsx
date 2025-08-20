@@ -1,5 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Check, Circle, LogOut, Play, Settings, User } from "lucide-react";
+import {
+	Calendar,
+	Check,
+	Circle,
+	Download,
+	Filter,
+	LogOut,
+	MoreHorizontal,
+	MoreVertical,
+	Play,
+	Settings,
+	SortDesc,
+	User,
+} from "lucide-react";
 import { type DropdownOption, RuiDropdown } from "../components/RuiDropdown";
 
 const meta: Meta<typeof RuiDropdown> = {
@@ -36,8 +49,12 @@ const meta: Meta<typeof RuiDropdown> = {
 		},
 		size: {
 			control: { type: "select" },
-			options: ["sm", "md", "lg"],
+			options: ["xs", "sm", "md", "lg"],
 			description: "Size variant for the dropdown",
+		},
+		compact: {
+			control: { type: "boolean" },
+			description: "Compact mode for icon-only buttons with no minimum width",
 		},
 	},
 };
@@ -392,6 +409,335 @@ export const AllFeatures: Story = {
 					options={basicOptions}
 					size="lg"
 					onSelect={(option) => console.log("Large selected:", option)}
+				/>
+			</div>
+		</div>
+	),
+};
+
+// === ICON/COMPACT MODE EXAMPLES === //
+
+export const IconDropdown: Story = {
+	args: {
+		buttonText: "Actions", // Not displayed when using customButton
+		options: userMenuOptions,
+		customButton: <MoreVertical size={20} />,
+		compact: true,
+		showCaret: false,
+		backgroundColor: "transparent",
+		borderColor: "transparent",
+		onSelect: (option: DropdownOption) =>
+			console.log("Icon dropdown selected:", option),
+	},
+};
+
+export const FilterIconDropdown: Story = {
+	args: {
+		buttonText: "Filter",
+		options: [
+			{ value: "all", label: "All Items" },
+			{ value: "active", label: "Active Only" },
+			{ value: "completed", label: "Completed Only" },
+			{ value: "draft", label: "Draft Only" },
+		],
+		customButton: <Filter size={18} />,
+		compact: true,
+		showCaret: false,
+		backgroundColor: "var(--rui-neutral-100)",
+		borderColor: "var(--rui-neutral-300)",
+		onSelect: (option: DropdownOption) =>
+			console.log("Filter selected:", option),
+	},
+};
+
+export const SortIconDropdown: Story = {
+	args: {
+		buttonText: "Sort",
+		options: [
+			{ value: "name-asc", label: "Name (A-Z)", icon: <SortDesc size={14} /> },
+			{
+				value: "name-desc",
+				label: "Name (Z-A)",
+				icon: <SortDesc size={14} style={{ transform: "rotate(180deg)" }} />,
+			},
+			{
+				value: "date-newest",
+				label: "Date (Newest)",
+				icon: <Calendar size={14} />,
+			},
+			{
+				value: "date-oldest",
+				label: "Date (Oldest)",
+				icon: <Calendar size={14} />,
+			},
+		],
+		customButton: <SortDesc size={18} />,
+		compact: true,
+		showCaret: false,
+		backgroundColor: "transparent",
+		borderColor: "var(--rui-neutral-300)",
+		onSelect: (option: DropdownOption) => console.log("Sort selected:", option),
+	},
+};
+
+export const IconDropdownSizes: Story = {
+	render: () => (
+		<div
+			style={{
+				display: "flex",
+				gap: "16px",
+				alignItems: "center",
+				flexWrap: "wrap",
+				padding: "20px",
+			}}
+		>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					gap: "8px",
+				}}
+			>
+				<span style={{ fontSize: "12px", color: "#666" }}>XS</span>
+				<RuiDropdown
+					buttonText="Actions"
+					options={userMenuOptions}
+					customButton={<MoreVertical size={16} />}
+					compact={true}
+					size="xs"
+					showCaret={false}
+					backgroundColor="transparent"
+					borderColor="var(--rui-neutral-300)"
+					onSelect={(option) => console.log("XS selected:", option)}
+				/>
+			</div>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					gap: "8px",
+				}}
+			>
+				<span style={{ fontSize: "12px", color: "#666" }}>SM</span>
+				<RuiDropdown
+					buttonText="Actions"
+					options={userMenuOptions}
+					customButton={<MoreVertical size={18} />}
+					compact={true}
+					size="sm"
+					showCaret={false}
+					backgroundColor="transparent"
+					borderColor="var(--rui-neutral-300)"
+					onSelect={(option) => console.log("SM selected:", option)}
+				/>
+			</div>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					gap: "8px",
+				}}
+			>
+				<span style={{ fontSize: "12px", color: "#666" }}>MD</span>
+				<RuiDropdown
+					buttonText="Actions"
+					options={userMenuOptions}
+					customButton={<MoreVertical size={20} />}
+					compact={true}
+					size="md"
+					showCaret={false}
+					backgroundColor="transparent"
+					borderColor="var(--rui-neutral-300)"
+					onSelect={(option) => console.log("MD selected:", option)}
+				/>
+			</div>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					gap: "8px",
+				}}
+			>
+				<span style={{ fontSize: "12px", color: "#666" }}>LG</span>
+				<RuiDropdown
+					buttonText="Actions"
+					options={userMenuOptions}
+					customButton={<MoreVertical size={22} />}
+					compact={true}
+					size="lg"
+					showCaret={false}
+					backgroundColor="transparent"
+					borderColor="var(--rui-neutral-300)"
+					onSelect={(option) => console.log("LG selected:", option)}
+				/>
+			</div>
+		</div>
+	),
+};
+
+export const CompactVsRegular: Story = {
+	render: () => (
+		<div
+			style={{
+				display: "flex",
+				gap: "32px",
+				alignItems: "center",
+				flexWrap: "wrap",
+				padding: "20px",
+			}}
+		>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					gap: "12px",
+				}}
+			>
+				<h4 style={{ margin: "0", fontSize: "14px", fontWeight: "500" }}>
+					Regular Dropdown
+				</h4>
+				<RuiDropdown
+					buttonText="Actions"
+					options={userMenuOptions}
+					showCaret={true}
+					onSelect={(option) => console.log("Regular selected:", option)}
+				/>
+			</div>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					gap: "12px",
+				}}
+			>
+				<h4 style={{ margin: "0", fontSize: "14px", fontWeight: "500" }}>
+					Compact Icon Dropdown
+				</h4>
+				<RuiDropdown
+					buttonText="Actions"
+					options={userMenuOptions}
+					customButton={<MoreVertical size={20} />}
+					compact={true}
+					showCaret={false}
+					backgroundColor="transparent"
+					borderColor="var(--rui-neutral-300)"
+					onSelect={(option) => console.log("Compact selected:", option)}
+				/>
+			</div>
+		</div>
+	),
+};
+
+export const IconDropdownVariations: Story = {
+	render: () => (
+		<div
+			style={{
+				display: "grid",
+				gap: "24px",
+				gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+				padding: "20px",
+			}}
+		>
+			<div>
+				<h4
+					style={{ marginBottom: "12px", fontSize: "14px", fontWeight: "500" }}
+				>
+					Menu Icon (Transparent)
+				</h4>
+				<RuiDropdown
+					buttonText="Menu"
+					options={userMenuOptions}
+					customButton={<MoreVertical size={20} />}
+					compact={true}
+					showCaret={false}
+					backgroundColor="transparent"
+					borderColor="transparent"
+					onSelect={(option) => console.log("Menu selected:", option)}
+				/>
+			</div>
+
+			<div>
+				<h4
+					style={{ marginBottom: "12px", fontSize: "14px", fontWeight: "500" }}
+				>
+					Filter Icon (Bordered)
+				</h4>
+				<RuiDropdown
+					buttonText="Filter"
+					options={[
+						{ value: "all", label: "Show All" },
+						{ value: "active", label: "Active Only" },
+						{ value: "completed", label: "Completed Only" },
+					]}
+					customButton={<Filter size={18} />}
+					compact={true}
+					showCaret={false}
+					backgroundColor="var(--rui-white)"
+					borderColor="var(--rui-neutral-300)"
+					onSelect={(option) => console.log("Filter selected:", option)}
+				/>
+			</div>
+
+			<div>
+				<h4
+					style={{ marginBottom: "12px", fontSize: "14px", fontWeight: "500" }}
+				>
+					Download Icon (Styled)
+				</h4>
+				<RuiDropdown
+					buttonText="Download"
+					options={[
+						{
+							value: "pdf",
+							label: "Download as PDF",
+							icon: <Download size={14} />,
+						},
+						{
+							value: "csv",
+							label: "Download as CSV",
+							icon: <Download size={14} />,
+						},
+						{
+							value: "xlsx",
+							label: "Download as Excel",
+							icon: <Download size={14} />,
+						},
+					]}
+					customButton={<Download size={18} />}
+					compact={true}
+					showCaret={false}
+					backgroundColor="var(--rui-primary)"
+					textColor="white"
+					borderColor="var(--rui-primary)"
+					onSelect={(option) => console.log("Download selected:", option)}
+				/>
+			</div>
+
+			<div>
+				<h4
+					style={{ marginBottom: "12px", fontSize: "14px", fontWeight: "500" }}
+				>
+					Horizontal Menu
+				</h4>
+				<RuiDropdown
+					buttonText="Options"
+					options={[
+						{ value: "edit", label: "Edit Item" },
+						{ value: "duplicate", label: "Duplicate Item" },
+						{ value: "delete", label: "Delete Item" },
+					]}
+					customButton={<MoreHorizontal size={20} />}
+					compact={true}
+					showCaret={false}
+					backgroundColor="transparent"
+					borderColor="transparent"
+					onSelect={(option) => console.log("Options selected:", option)}
 				/>
 			</div>
 		</div>

@@ -111,7 +111,6 @@
 
 /* Title Classes */
 .rui-title-xl {
-	font-family: var(--rui-font-sans);
 	font-size: var(--rui-title-xl-size);
 	font-weight: var(--rui-title-xl-weight);
 	line-height: var(--rui-title-xl-line-height);
@@ -119,7 +118,6 @@
 }
 
 .rui-title-l {
-	font-family: var(--rui-font-sans);
 	font-size: var(--rui-title-l-size);
 	font-weight: var(--rui-title-l-weight);
 	line-height: var(--rui-title-l-line-height);
@@ -127,7 +125,6 @@
 }
 
 .rui-title-m {
-	font-family: var(--rui-font-sans);
 	font-size: var(--rui-title-m-size);
 	font-weight: var(--rui-title-m-weight);
 	line-height: var(--rui-title-m-line-height);
@@ -135,7 +132,6 @@
 }
 
 .rui-title-s {
-	font-family: var(--rui-font-sans);
 	font-size: var(--rui-title-s-size);
 	font-weight: var(--rui-title-s-weight);
 	line-height: var(--rui-title-s-line-height);
@@ -144,7 +140,6 @@
 
 /* Paragraph Classes */
 .rui-paragraph-m {
-	font-family: var(--rui-font-sans);
 	font-size: var(--rui-paragraph-m-size);
 	font-weight: var(--rui-paragraph-m-weight);
 	line-height: var(--rui-paragraph-m-line-height);
@@ -153,7 +148,6 @@
 
 /* Label Classes */
 .rui-label-m {
-	font-family: var(--rui-font-sans);
 	font-size: var(--rui-label-m-size);
 	font-weight: var(--rui-label-m-weight);
 	line-height: var(--rui-label-m-line-height);
@@ -161,7 +155,6 @@
 }
 
 .rui-label-s {
-	font-family: var(--rui-font-sans);
 	font-size: var(--rui-label-s-size);
 	font-weight: var(--rui-label-s-weight);
 	line-height: var(--rui-label-s-line-height);

@@ -45,6 +45,8 @@ export interface RuiDropdownProps {
 	selectedValue?: string | number;
 	/** Whether to persist the selected option in the button text */
 	persistSelection?: boolean;
+	/** Compact mode for icon-only buttons with no minimum width */
+	compact?: boolean;
 }
 
 export const RuiDropdown: React.FC<RuiDropdownProps> = ({
@@ -62,6 +64,7 @@ export const RuiDropdown: React.FC<RuiDropdownProps> = ({
 	customButton,
 	selectedValue,
 	persistSelection = true,
+	compact = false,
 }) => {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [selectedOption, setSelectedOption] = useState<DropdownOption | null>(
@@ -105,11 +108,11 @@ export const RuiDropdown: React.FC<RuiDropdownProps> = ({
 			isOpen={dropdownOpen}
 			toggle={toggle}
 			disabled={disabled}
-			className={`rui-dropdown ${className}`}
+			className={`rui-dropdown ${compact ? "rui-dropdown-compact" : ""} ${className}`}
 		>
 			<DropdownToggle
 				tag="button"
-				className={`rui-dropdown-toggle rui-dropdown-toggle-${size}`}
+				className={`rui-dropdown-toggle rui-dropdown-toggle-${size} ${compact ? "rui-dropdown-toggle-compact" : ""}`}
 				style={buttonStyle}
 				disabled={disabled}
 			>

@@ -25,6 +25,13 @@
 	min-width: 120px;
 }
 
+/* === COMPACT MODE OVERRIDE === */
+.rui-dropdown-toggle-compact {
+	min-width: unset !important;
+	width: auto;
+	justify-content: center;
+}
+
 .rui-dropdown-toggle:hover {
 	border-color: var(--rui-neutral-400);
 	background-color: var(--rui-neutral-100);
@@ -107,6 +114,14 @@
 	margin-top: var(--rui-space-1);
 	min-width: 100%;
 	z-index: var(--rui-z-popover); /* Use popover z-index (1060) to ensure it appears above cards */
+}
+
+/* === COMPACT MODE MENU === */
+.rui-dropdown-compact .rui-dropdown-menu {
+	min-width: max-content;
+	width: auto;
+	left: 0 !important;
+	transform: none !important;
 }
 
 /* Remove default bootstrap dropdown menu styles */
