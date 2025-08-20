@@ -20,7 +20,6 @@
 
 /* === COMPONENTS === */
 @import "./components/buttons.css";
-@import "./components/navigation.css";
 @import "./components/card.css";
 @import "./components/badge.css";
 @import "./components/input.css";
@@ -29,95 +28,21 @@
 /* === UTILITIES === */
 @import "./utilities/focus.css";
 
-/* === RESET & BASE STYLES === */
-
-/* Ensure box-sizing is border-box for all elements */
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
-/* Base HTML & Body */
-html {
-	font-family: var(--rui-font-sans);
-	-webkit-text-size-adjust: 100%;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-body {
-	font-family: var(--rui-font-sans);
-	font-size: var(--rui-font-size-base);
-	font-weight: var(--rui-font-weight-normal);
-	line-height: var(--rui-line-height-normal);
-	color: var(--rui-text-primary);
-	background-color: var(--rui-bg-primary);
-}
+/* === RUI COMPONENT BASE STYLES === */
+/* Note: Global resets have been removed to avoid conflicts with consuming applications.
+   RUI components handle their own styling internally. */
 
 /* === RIDLEY-SPECIFIC GLOBAL STYLES === */
 
-/* Ensure consistent focus styles across all interactive elements */
-button,
-input,
-select,
-textarea,
-[tabindex] {
-	&:focus-visible {
-		outline: none;
-		box-shadow: var(--rui-shadow-focus);
-	}
-}
+/* RUI component focus styles are handled individually within component CSS files */
 
-/* Smooth scrolling for better UX */
-html {
-	scroll-behavior: smooth;
-}
+/* Note: Global scroll behavior removed to avoid conflicts with consuming applications. */
 
-@media (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
-}
-
-/* === BOOTSTRAP OVERRIDES === */
-
-/* Ensure Bootstrap respects our design tokens */
-.card {
-	border-radius: var(--rui-radius-card);
-	border-color: var(--rui-border-primary);
-}
-
-.modal-content {
-	border-radius: var(--rui-radius-modal);
-	border: none;
-	box-shadow: var(--rui-shadow-lg);
-}
-
-.form-control {
-	border-radius: var(--rui-radius-input);
-	border-color: var(--rui-border-primary);
-}
-
-.form-control:focus {
-	border-color: var(--rui-border-focus);
-	box-shadow: var(--rui-shadow-focus);
-}
+/* === RUI COMPONENT OVERRIDES === */
+/* Note: Global Bootstrap overrides have been removed to avoid conflicts.
+   RUI components have their own namespaced styles. */
 
 /* === PRINT STYLES === */
 
-@media print {
-	/* Remove shadows and transitions for print */
-	*,
-	*::before,
-	*::after {
-		box-shadow: none !important;
-		transition: none !important;
-	}
-
-	/* Ensure text is readable when printed */
-	body {
-		color: #000 !important;
-		background: #fff !important;
-	}
-}
+/* Note: Global print styles removed to avoid conflicts with consuming applications.
+   RUI components will handle their own print optimizations if needed. */

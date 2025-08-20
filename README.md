@@ -229,7 +229,6 @@ The design system is organized into modular files:
 - `tokens/spacing.css` - Spacing scale and layout tokens
 - `tokens/layout.css` - Border radius, breakpoints, and layout utilities
 - `components/buttons.css` - Button variants and styles
-- `components/navigation.css` - Navigation and menu components
 - `utilities/focus.css` - Focus states and accessibility utilities
 
 The CSS is designed to work alongside ReactStrap components while providing Ridley-specific styling and brand consistency.

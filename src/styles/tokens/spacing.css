@@ -68,12 +68,9 @@
 	--rui-header-height: 64px;
 }
 
-/* === BOOTSTRAP SPACING MAPPING === */
-:root {
-	--bs-spacer: var(--rui-space-4);
-	--bs-gutter-x: var(--rui-space-6);
-	--bs-gutter-y: var(--rui-space-0);
-}
+/* === BOOTSTRAP MAPPING REMOVED === */
+/* Note: Bootstrap variable mappings have been removed to avoid conflicts
+   with consuming applications. RUI components use their own --rui-* variables. */
 
 /* === SPACING UTILITY CLASSES === */
 

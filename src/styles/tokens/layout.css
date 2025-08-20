@@ -66,15 +66,9 @@
 	--rui-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* === BOOTSTRAP LAYOUT MAPPING === */
-:root {
-	--bs-border-radius: var(--rui-radius);
-	--bs-border-radius-sm: var(--rui-radius-sm);
-	--bs-border-radius-lg: var(--rui-radius-lg);
-	--bs-border-radius-xl: var(--rui-radius-xl);
-	--bs-border-radius-2xl: var(--rui-radius-2xl);
-	--bs-border-radius-pill: var(--rui-radius-full);
-}
+/* === BOOTSTRAP MAPPING REMOVED === */
+/* Note: Bootstrap variable mappings have been removed to avoid conflicts
+   with consuming applications. RUI components use their own --rui-* variables. */
 
 /* === LAYOUT UTILITY CLASSES === */
 
