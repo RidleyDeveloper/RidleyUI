@@ -93,6 +93,8 @@ export const Default: Story = {
 	args: {
 		buttonText: "To do",
 		options: basicOptions,
+		// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+		// biome-ignore lint/suspicious/noConsole: <explanation>
 		onSelect: (option: DropdownOption) => console.log("Selected:", option),
 	},
 };
@@ -101,6 +103,8 @@ export const WithIcons: Story = {
 	args: {
 		buttonText: "To do",
 		options: optionsWithIcons,
+		// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+		// biome-ignore lint/suspicious/noConsole: <explanation>
 		onSelect: (option: DropdownOption) => console.log("Selected:", option),
 	},
 };
@@ -110,6 +114,8 @@ export const WithoutCaret: Story = {
 		buttonText: "Status",
 		options: basicOptions,
 		showCaret: false,
+		// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+		// biome-ignore lint/suspicious/noConsole: <explanation>
 		onSelect: (option: DropdownOption) => console.log("Selected:", option),
 	},
 };
@@ -130,18 +136,24 @@ export const SizeVariants: Story = {
 				buttonText="Small"
 				options={basicOptions}
 				size="sm"
+				// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+				// biome-ignore lint/suspicious/noConsole: <explanation>
 				onSelect={(option) => console.log("Small selected:", option)}
 			/>
 			<RuiDropdown
 				buttonText="Medium (Default)"
 				options={basicOptions}
 				size="md"
+				// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+				// biome-ignore lint/suspicious/noConsole: <explanation>
 				onSelect={(option) => console.log("Medium selected:", option)}
 			/>
 			<RuiDropdown
 				buttonText="Large"
 				options={basicOptions}
 				size="lg"
+				// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+				// biome-ignore lint/suspicious/noConsole: <explanation>
 				onSelect={(option) => console.log("Large selected:", option)}
 			/>
 		</div>
@@ -159,6 +171,8 @@ export const CustomColors: Story = {
 				backgroundColor="var(--rui-purple-500)"
 				textColor="white"
 				borderColor="var(--rui-purple-500)"
+				// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+				// biome-ignore lint/suspicious/noConsole: <explanation>
 				onSelect={(option) => console.log("Purple selected:", option)}
 			/>
 			<RuiDropdown
@@ -167,6 +181,8 @@ export const CustomColors: Story = {
 				backgroundColor="var(--rui-green-600)"
 				textColor="white"
 				borderColor="var(--rui-green-600)"
+				// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+				// biome-ignore lint/suspicious/noConsole: <explanation>
 				onSelect={(option) => console.log("Success selected:", option)}
 			/>
 			<RuiDropdown
@@ -175,6 +191,8 @@ export const CustomColors: Story = {
 				backgroundColor="var(--rui-red-600)"
 				textColor="white"
 				borderColor="var(--rui-red-600)"
+				// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+				// biome-ignore lint/suspicious/noConsole: <explanation>
 				onSelect={(option) => console.log("Destructive selected:", option)}
 			/>
 		</div>
@@ -197,11 +215,15 @@ export const DisabledStates: Story = {
 				buttonText="Disabled Dropdown"
 				options={basicOptions}
 				disabled={true}
+				// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+				// biome-ignore lint/suspicious/noConsole: <explanation>
 				onSelect={(option) => console.log("Disabled selected:", option)}
 			/>
 			<RuiDropdown
 				buttonText="With Disabled Options"
 				options={optionsWithDisabled}
+				// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+				// biome-ignore lint/suspicious/noConsole: <explanation>
 				onSelect={(option) => console.log("Selected:", option)}
 			/>
 		</div>
@@ -216,6 +238,8 @@ export const SelectionPersistence: Story = {
 		options: optionsWithIcons,
 		persistSelection: true,
 		onSelect: (option: DropdownOption) => {
+			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.log("Selected:", option.label);
 		},
 	},
@@ -228,6 +252,8 @@ export const WithPreselectedValue: Story = {
 		selectedValue: "in-progress",
 		persistSelection: true,
 		onSelect: (option: DropdownOption) => {
+			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.log("Changed to:", option.label);
 		},
 	},
@@ -239,6 +265,8 @@ export const WithoutPersistence: Story = {
 		options: optionsWithIcons,
 		persistSelection: false,
 		onSelect: (option: DropdownOption) => {
+			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.log("Selected but not persisted:", option.label);
 		},
 	},
@@ -251,6 +279,8 @@ export const TaskStatusDropdown: Story = {
 		buttonText: "To do",
 		options: optionsWithIcons,
 		onSelect: (option: DropdownOption) => {
+			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.log("Task status changed to:", option.label);
 			// In a real app, you'd update the task status here
 		},
@@ -263,6 +293,8 @@ export const UserMenuDropdown: Story = {
 		options: userMenuOptions,
 		backgroundColor: "var(--rui-neutral-100)",
 		onSelect: (option: DropdownOption) => {
+			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.log("User menu action:", option.value);
 			// In a real app, you'd handle navigation or actions here
 		},
@@ -278,6 +310,8 @@ export const InteractiveExample: Story = {
 		};
 
 		const handleToggle = (isOpen: boolean) => {
+			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.log("Dropdown is now:", isOpen ? "open" : "closed");
 		};
 
@@ -312,6 +346,8 @@ export const LongContent: Story = {
 					"This is an extremely long option that really pushes the boundaries of what should fit in a dropdown menu item",
 			},
 		],
+		// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+		// biome-ignore lint/suspicious/noConsole: <explanation>
 		onSelect: (option: DropdownOption) => console.log("Selected:", option),
 	},
 };
@@ -337,6 +373,8 @@ export const AllFeatures: Story = {
 				<RuiDropdown
 					buttonText="Select status"
 					options={basicOptions}
+					// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+					// biome-ignore lint/suspicious/noConsole: <explanation>
 					onSelect={(option) => console.log("Basic selected:", option)}
 				/>
 			</div>
@@ -350,6 +388,8 @@ export const AllFeatures: Story = {
 				<RuiDropdown
 					buttonText="With icons"
 					options={optionsWithIcons}
+					// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+					// biome-ignore lint/suspicious/noConsole: <explanation>
 					onSelect={(option) => console.log("Icons selected:", option)}
 				/>
 			</div>
@@ -364,6 +404,8 @@ export const AllFeatures: Story = {
 					buttonText="No caret"
 					options={basicOptions}
 					showCaret={false}
+					// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+					// biome-ignore lint/suspicious/noConsole: <explanation>
 					onSelect={(option) => console.log("No caret selected:", option)}
 				/>
 			</div>
@@ -380,6 +422,8 @@ export const AllFeatures: Story = {
 					backgroundColor="var(--rui-purple-100)"
 					textColor="var(--rui-purple-800)"
 					borderColor="var(--rui-purple-500)"
+					// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+					// biome-ignore lint/suspicious/noConsole: <explanation>
 					onSelect={(option) => console.log("Custom selected:", option)}
 				/>
 			</div>
@@ -394,6 +438,8 @@ export const AllFeatures: Story = {
 					buttonText="Disabled"
 					options={basicOptions}
 					disabled={true}
+					// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+					// biome-ignore lint/suspicious/noConsole: <explanation>
 					onSelect={(option) => console.log("Disabled selected:", option)}
 				/>
 			</div>
@@ -408,6 +454,8 @@ export const AllFeatures: Story = {
 					buttonText="Large"
 					options={basicOptions}
 					size="lg"
+					// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+					// biome-ignore lint/suspicious/noConsole: <explanation>
 					onSelect={(option) => console.log("Large selected:", option)}
 				/>
 			</div>
