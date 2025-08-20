@@ -47,6 +47,12 @@
 }
 
 /* === DROPDOWN TOGGLE SIZES === */
+.rui-dropdown-toggle-xs {
+	padding: var(--rui-space-0-5) var(--rui-space-4);
+	font-size: var(--rui-label-s-size);
+	line-height: var(--rui-label-s-line-height);
+}
+
 .rui-dropdown-toggle-sm {
 	padding: var(--rui-space-1-5) var(--rui-space-3);
 	font-size: var(--rui-label-s-size);
@@ -100,7 +106,7 @@
 	padding: var(--rui-space-1);
 	margin-top: var(--rui-space-1);
 	min-width: 100%;
-	z-index: var(--rui-z-dropdown);
+	z-index: var(--rui-z-popover); /* Use popover z-index (1060) to ensure it appears above cards */
 }
 
 /* Remove default bootstrap dropdown menu styles */

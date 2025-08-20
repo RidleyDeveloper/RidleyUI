@@ -38,7 +38,7 @@ export interface RuiDropdownProps {
 	/** Whether the dropdown is disabled */
 	disabled?: boolean;
 	/** Size variant for the dropdown */
-	size?: "sm" | "md" | "lg";
+	size?: "xs" | "sm" | "md" | "lg";
 	/** Custom button content (overrides buttonText) */
 	customButton?: React.ReactNode;
 	/** Pre-selected option value */
