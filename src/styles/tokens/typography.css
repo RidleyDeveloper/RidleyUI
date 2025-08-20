@@ -166,6 +166,13 @@
 	letter-spacing: var(--rui-label-s-letter-spacing);
 }
 
+.rui-label-xxs {
+	font-size: var(--rui-label-xxs-size);
+	font-weight: var(--rui-label-xxs-weight);
+	line-height: var(--rui-label-xxs-line-height);
+	letter-spacing: var(--rui-label-xxs-letter-spacing);
+}
+
 /* === LEGACY COMPATIBILITY CLASSES === */
 
 /* Font Weight Classes */
