@@ -4,7 +4,7 @@ import React from "react";
 // === TYPE DEFINITIONS === //
 
 export type TextType = "title" | "paragraph" | "label";
-export type TextSize = "s" | "m" | "l" | "xl";
+export type TextSize = "xxs" | "xs" | "s" | "m" | "l" | "xl";
 export type TextDecoration =
 	| "none"
 	| "underline"

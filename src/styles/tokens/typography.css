@@ -59,6 +59,11 @@
 	--rui-label-s-line-height: 1.625rem; /* 26px */
 	--rui-label-s-letter-spacing: -0.02em; /* -2% */
 
+	--rui-label-xxs-size: 0.625rem; /* 10px */
+	--rui-label-xxs-weight: var(--rui-font-weight-medium);
+	--rui-label-xxs-line-height: 1rem; /* 16px */
+	--rui-label-xxs-letter-spacing: -0.02em; /* -2% */
+
 	/* === BASE FONT SIZES (for compatibility) === */
 	--rui-font-size-xs: 0.75rem; /* 12px */
 	--rui-font-size-sm: var(--rui-label-s-size); /* 14px */
