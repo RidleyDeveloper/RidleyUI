@@ -1,0 +1,48 @@
+/* -------------------------------
+   Ridley Text Components
+   Typography styles with explicit font-family to prevent inheritance
+----------------------------------*/
+
+/* === RUI TEXT BASE STYLES === */
+/* Ensure all RUI text components use Geist font regardless of consuming app's styles */
+
+.rui-title-xl,
+.rui-title-l,
+.rui-title-m,
+.rui-title-s,
+.rui-paragraph-m,
+.rui-label-m,
+.rui-label-s {
+	font-family: var(--rui-font-sans) !important;
+}
+
+/* === ADDITIONAL TEXT UTILITIES === */
+
+.rui-text {
+	font-family: var(--rui-font-sans) !important;
+}
+
+/* Special class for when font inheritance is explicitly desired */
+.rui-text-inherit {
+	font-family: inherit !important;
+}
+
+/* Override any potential parent font inheritance */
+.rui-text * {
+	font-family: var(--rui-font-sans);
+}
+
+/* === FOCUS STYLES FOR TEXT ELEMENTS === */
+
+.rui-text:focus-visible,
+.rui-title-xl:focus-visible,
+.rui-title-l:focus-visible,
+.rui-title-m:focus-visible,
+.rui-title-s:focus-visible,
+.rui-paragraph-m:focus-visible,
+.rui-label-m:focus-visible,
+.rui-label-s:focus-visible {
+	outline: none;
+	box-shadow: var(--rui-shadow-focus);
+	border-radius: var(--rui-radius-sm);
+}

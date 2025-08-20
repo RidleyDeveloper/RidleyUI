@@ -204,7 +204,7 @@ export const RuiText: React.FC<RuiTextProps> = ({
 	return React.createElement(
 		Element,
 		{
-			className: clsx(textClass, className),
+			className: clsx(textClass, "rui-text", className),
 			style: combinedStyle,
 			...props,
 		},
