@@ -50,6 +50,8 @@ export interface RuiInputProps {
 	required?: boolean;
 	/** Autocomplete attribute */
 	autoComplete?: string;
+	/** Ref for the input - uses callback ref pattern */
+	ref?: (el: HTMLInputElement | null) => void;
 }
 
 // === COMPONENT === //
@@ -76,6 +78,7 @@ export const RuiInput: React.FC<RuiInputProps> = ({
 	id,
 	required = false,
 	autoComplete,
+	ref,
 	...props
 }) => {
 	// Generate unique ID if not provided
@@ -124,6 +127,7 @@ export const RuiInput: React.FC<RuiInputProps> = ({
 						onFocus={onFocus}
 						onBlur={onBlur}
 						onKeyDown={onKeyDown}
+						innerRef={ref}
 						{...props}
 					/>
 					<div className="rui-input-right-section">{rightSection}</div>
@@ -148,6 +152,7 @@ export const RuiInput: React.FC<RuiInputProps> = ({
 				onFocus={onFocus}
 				onBlur={onBlur}
 				onKeyDown={onKeyDown}
+				innerRef={ref}
 				{...props}
 			/>
 		);
