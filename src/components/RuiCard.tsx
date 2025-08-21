@@ -202,9 +202,11 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 				</Collapse>
 			);
 		}
-		// For non-accordion cards, add margin when there's a header
+		// For non-accordion cards, add margin when there's a header and children exist
 		const hasHeader = cardTitle || rightHeaderSection;
-		return <div className={clsx({ "mt-3": hasHeader })}>{children}</div>;
+		return children ? (
+			<div className={clsx({ "mt-3": hasHeader })}>{children}</div>
+		) : null;
 	};
 
 	return (
