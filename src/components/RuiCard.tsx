@@ -174,16 +174,10 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 			return null;
 		}
 
-		// Always add bottom margin when there's content, regardless of expansion state
-		const hasContent = children;
-
 		return (
 			<div
 				className={clsx(
 					"d-flex justify-content-between align-items-start",
-					{
-						"mb-3": hasContent, // Consistent margin when there's content
-					},
 					headerClassName,
 				)}
 				style={{ cursor: accordion ? "pointer" : "default", ...headerStyle }}
@@ -204,11 +198,13 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 		if (accordion) {
 			return (
 				<Collapse isOpen={isExpanded} className="rui-collapse">
-					<div>{children}</div>
+					<div className="mt-3">{children}</div>
 				</Collapse>
 			);
 		}
-		return children;
+		// For non-accordion cards, add margin when there's a header
+		const hasHeader = cardTitle || rightHeaderSection;
+		return <div className={clsx({ "mt-3": hasHeader })}>{children}</div>;
 	};
 
 	return (
