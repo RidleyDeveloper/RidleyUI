@@ -57,6 +57,10 @@ export interface RuiCardProps {
 	footerStyle?: React.CSSProperties;
 	/** Callback when accordion state changes */
 	onToggle?: (isExpanded: boolean) => void;
+	/** Additional CSS classes for the header */
+	headerClassName?: string;
+	/** Override default header styles */
+	headerStyle?: React.CSSProperties;
 }
 
 // === COMPONENT === //
@@ -76,6 +80,8 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 	footerClassName,
 	footerStyle,
 	onToggle,
+	headerClassName,
+	headerStyle,
 	...props
 }) => {
 	const [isExpanded, setIsExpanded] = useState(defaultExpanded);
@@ -169,16 +175,13 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 			return null;
 		}
 
-		const hasMarginBottom = cardSubtitle || (!accordion && children);
-		const shouldHideMargin = accordion && !cardSubtitle && !isExpanded;
-
 		return (
 			<div
-				className={clsx("d-flex justify-content-between align-items-start", {
-					"mb-3": hasMarginBottom,
-					"mb-0": shouldHideMargin,
-				})}
-				style={{ cursor: accordion ? "pointer" : "default" }}
+				className={clsx(
+					"d-flex justify-content-between align-items-start",
+					headerClassName,
+				)}
+				style={{ cursor: accordion ? "pointer" : "default", ...headerStyle }}
 				onClick={accordion ? handleToggle : undefined}
 				onKeyDown={accordion ? handleKeyDown : undefined}
 				role={accordion ? "button" : undefined}
