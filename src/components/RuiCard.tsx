@@ -138,8 +138,7 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 					color="neutral.600"
 					className={clsx({
 						"mt-1": cardTitle,
-						"mb-0": accordion && !isExpanded,
-						"mb-3": !accordion || isExpanded,
+						"mb-0": true, // Always mb-0 to prevent jumping
 					})}
 				>
 					{cardSubtitle}
@@ -175,10 +174,16 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 			return null;
 		}
 
+		// Always add bottom margin when there's content, regardless of expansion state
+		const hasContent = children;
+
 		return (
 			<div
 				className={clsx(
 					"d-flex justify-content-between align-items-start",
+					{
+						"mb-3": hasContent, // Consistent margin when there's content
+					},
 					headerClassName,
 				)}
 				style={{ cursor: accordion ? "pointer" : "default", ...headerStyle }}
