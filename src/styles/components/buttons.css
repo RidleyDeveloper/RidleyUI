@@ -150,6 +150,28 @@
 	color: var(--rui-neutral-400);
 }
 
+/* Neutral Button - Neutral 200 background with neutral 800 text */
+.rui-btn-neutral {
+	background-color: var(--rui-neutral-200);
+	color: var(--rui-neutral-800);
+}
+
+.rui-btn-neutral:hover {
+	background-color: var(--rui-neutral-300);
+	color: var(--rui-neutral-800);
+}
+
+.rui-btn-neutral:active,
+.rui-btn-neutral:focus {
+	background-color: var(--rui-neutral-400);
+	color: var(--rui-neutral-800);
+}
+
+.rui-btn-neutral:disabled {
+	background-color: var(--rui-neutral-200);
+	color: var(--rui-neutral-400);
+}
+
 /* === LEGACY STYLES REMOVED === */
 /* Note: Legacy button styles (.btn-ridley, .btn-group-ridley, .btn-icon) 
    have been removed to avoid conflicts with consuming applications.

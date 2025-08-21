@@ -18,6 +18,7 @@ const meta: Meta<typeof RuiButton> = {
 				"tertiary",
 				"destructive",
 				"transparent",
+				"neutral",
 			],
 			description: "The button variant",
 		},
@@ -77,6 +78,13 @@ export const Transparent: Story = {
 	},
 };
 
+export const Neutral: Story = {
+	args: {
+		variant: "neutral",
+		children: "Neutral Button",
+	},
+};
+
 // === DISABLED STATES === //
 
 export const DisabledStates: Story = {
@@ -97,6 +105,9 @@ export const DisabledStates: Story = {
 			<RuiButton variant="transparent" disabled={true}>
 				Transparent Disabled
 			</RuiButton>
+			<RuiButton variant="neutral" disabled={true}>
+				Neutral Disabled
+			</RuiButton>
 		</div>
 	),
 };
@@ -111,6 +122,7 @@ export const AllVariants: Story = {
 			<RuiButton variant="tertiary">Tertiary</RuiButton>
 			<RuiButton variant="destructive">Destructive</RuiButton>
 			<RuiButton variant="transparent">Transparent</RuiButton>
+			<RuiButton variant="neutral">Neutral</RuiButton>
 		</div>
 	),
 };

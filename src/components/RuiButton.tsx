@@ -9,7 +9,8 @@ export type ButtonVariant =
 	| "secondary"
 	| "tertiary"
 	| "destructive"
-	| "transparent";
+	| "transparent"
+	| "neutral";
 
 export interface RuiButtonProps
 	extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
