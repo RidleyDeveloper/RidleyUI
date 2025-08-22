@@ -30,7 +30,7 @@ const ChevronIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 export interface RuiCardProps {
 	/** Main content of the card */
-	children: React.ReactNode;
+	children?: React.ReactNode;
 	/** Optional card title */
 	cardTitle?: string;
 	/** Optional card subtitle */
