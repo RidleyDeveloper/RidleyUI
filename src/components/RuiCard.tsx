@@ -63,6 +63,8 @@ export interface RuiCardProps {
 	headerClassName?: string;
 	/** Override default header styles */
 	headerStyle?: React.CSSProperties;
+	/** Callback when card is clicked */
+	onClick?: () => void;
 }
 
 // === COMPONENT === //
@@ -85,6 +87,7 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 	onToggle,
 	headerClassName,
 	headerStyle,
+	onClick,
 	...props
 }) => {
 	const [isExpanded, setIsExpanded] = useState(defaultExpanded);
@@ -216,6 +219,7 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 		<Card
 			className={clsx("rui-no-shadow", className)}
 			style={defaultCardStyle}
+			onClick={onClick}
 			{...props}
 		>
 			<CardBody className={clsx(bodyClassName)} style={defaultBodyStyle}>
