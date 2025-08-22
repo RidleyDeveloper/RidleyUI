@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 import type React from "react";
 import { useState } from "react";
 import { Card, CardBody, CardFooter, Collapse } from "reactstrap";
-import { RuiText } from "./RuiText";
+import { type ColorVariant, RuiText } from "./RuiText";
 
 // SVG Icon Component
 const ChevronIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -33,6 +33,8 @@ export interface RuiCardProps {
 	children?: React.ReactNode;
 	/** Optional card title */
 	cardTitle?: string;
+	/** Optional card title color */
+	cardTitleColor?: ColorVariant;
 	/** Optional card subtitle */
 	cardSubtitle?: string;
 	/** Optional footer content */
@@ -68,6 +70,7 @@ export interface RuiCardProps {
 export const RuiCard: React.FC<RuiCardProps> = ({
 	children,
 	cardTitle,
+	cardTitleColor = "neutral.800",
 	cardSubtitle,
 	footerContent,
 	rightHeaderSection,
@@ -127,7 +130,7 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 	const renderTitleSection = () => (
 		<div className="flex-grow-1">
 			{cardTitle && (
-				<RuiText type="title" size="s" color="neutral.800" className="mb-0">
+				<RuiText type="title" size="s" color={cardTitleColor} className="mb-0">
 					{cardTitle}
 				</RuiText>
 			)}
