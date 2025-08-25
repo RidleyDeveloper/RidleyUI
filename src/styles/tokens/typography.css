@@ -40,6 +40,12 @@
 	--rui-title-s-letter-spacing: -0.02em; /* -2% */
 
 	/* === PARAGRAPH === */
+	/* S - font-weight: 400, size: 14px, line height: 20px, -2% letter spacing */
+	--rui-paragraph-s-size: 0.875rem; /* 14px */
+	--rui-paragraph-s-weight: var(--rui-font-weight-normal);
+	--rui-paragraph-s-line-height: 1.25rem; /* 20px */
+	--rui-paragraph-s-letter-spacing: -0.02em; /* -2% */
+
 	/* M - font-weight: 400, size: 16px, line height: 24px, -2% letter spacing */
 	--rui-paragraph-m-size: 1rem; /* 16px */
 	--rui-paragraph-m-weight: var(--rui-font-weight-normal);
@@ -141,6 +147,13 @@
 	font-weight: var(--rui-title-s-weight);
 	line-height: var(--rui-title-s-line-height);
 	letter-spacing: var(--rui-title-s-letter-spacing);
+}
+
+.rui-paragraph-s {
+	font-size: var(--rui-paragraph-s-size);
+	font-weight: var(--rui-paragraph-s-weight);
+	line-height: var(--rui-paragraph-s-line-height);
+	letter-spacing: var(--rui-paragraph-s-letter-spacing);
 }
 
 /* Paragraph Classes */

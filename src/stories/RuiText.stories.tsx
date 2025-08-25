@@ -114,7 +114,16 @@ export const TitleS: Story = {
 	},
 };
 
-export const Paragraph: Story = {
+export const ParagraphS: Story = {
+	args: {
+		type: "paragraph",
+		size: "s",
+		children: "Small Paragraph",
+		color: "neutral.800",
+	},
+};
+
+export const ParagraphM: Story = {
 	args: {
 		type: "paragraph",
 		size: "m",

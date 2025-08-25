@@ -70,6 +70,9 @@ export interface RuiTextProps {
 const getTextClass = (type: TextType, size: TextSize): string => {
 	// Handle paragraph type (only has 'm' size)
 	if (type === "paragraph") {
+		if (size === "s") {
+			return "rui-paragraph-s";
+		}
 		return "rui-paragraph-m";
 	}
 
