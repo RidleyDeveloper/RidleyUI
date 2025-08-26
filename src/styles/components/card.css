@@ -47,3 +47,12 @@
 .text-neutral-600 {
 	color: var(--rui-neutral-600);
 }
+
+/* === RESPONSIVE PADDING === */
+.rui-responsive-padding {
+	/* Mobile-first: space-4 (16px) is set via inline styles */
+	/* Override with space-6 (24px) for larger screens */
+	@media (min-width: 576px) {
+		padding: var(--rui-space-6) !important;
+	}
+}

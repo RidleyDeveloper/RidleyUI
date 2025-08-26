@@ -63,7 +63,8 @@ export interface RuiCardProps {
 	headerClassName?: string;
 	/** Override default header styles */
 	headerStyle?: React.CSSProperties;
-	/** Callback when card is clicked */
+	/** Enable responsive padding for mobile (space-4 on <576px, space-6 on >=576px) */
+	responsivePadding?: boolean;
 }
 
 // === COMPONENT === //
@@ -86,6 +87,7 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 	onToggle,
 	headerClassName,
 	headerStyle,
+	responsivePadding = true,
 	...props
 }) => {
 	const [isExpanded, setIsExpanded] = useState(defaultExpanded);
@@ -108,7 +110,9 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 
 	// Default body styles
 	const defaultBodyStyle: React.CSSProperties = {
-		padding: "var(--rui-space-6)", // 24px all around
+		padding: responsivePadding
+			? "var(--rui-space-4)" // Mobile-first: space-4, will be overridden by CSS for larger screens
+			: "var(--rui-space-6)", // Default: space-6 for all screens
 		...bodyStyle,
 	};
 
@@ -219,7 +223,12 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 			style={defaultCardStyle}
 			{...props}
 		>
-			<CardBody className={clsx(bodyClassName)} style={defaultBodyStyle}>
+			<CardBody
+				className={clsx(bodyClassName, {
+					"rui-responsive-padding": responsivePadding,
+				})}
+				style={defaultBodyStyle}
+			>
 				{renderHeader()}
 				{renderContent()}
 			</CardBody>
