@@ -10,7 +10,8 @@ export type BadgeVariant =
 	| "destructive"
 	| "warning"
 	| "neutral"
-	| "dark";
+	| "dark"
+	| "light";
 export type BadgeSize = "sm" | "md" | "lg";
 
 export interface RuiBadgeProps {
