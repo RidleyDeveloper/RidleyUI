@@ -167,8 +167,8 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 			{accordion && (
 				<div
 					className={clsx("d-flex rui-transition align-items-center", {
-						"rui-accordion-expanded": isExpanded,
-						"rui-accordion-collapsed": !isExpanded,
+						"rui-accordion-expanded": !isExpanded,
+						"rui-accordion-collapsed": isExpanded,
 					})}
 				>
 					<ChevronIcon className="text-neutral-600" />
