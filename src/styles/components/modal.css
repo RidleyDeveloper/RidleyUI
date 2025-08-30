@@ -1,0 +1,205 @@
+/* === RUI MODAL STYLES === */
+
+/* Base modal styles */
+.modal-dialog.rui-modal .modal-content {
+	border: none;
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px
+		rgba(0, 0, 0, 0.04);
+}
+
+/* Desktop and tablet modal styling */
+.rui-modal-content {
+	border-radius: 24px !important;
+	border: none;
+	overflow: hidden;
+}
+
+.rui-modal-wrapper {
+	position: relative;
+	padding: 0;
+	font-family: var(--rui-font-sans), -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, sans-serif;
+}
+
+/* Close button container - positioned absolutely in top right */
+.rui-modal-close-container {
+	position: absolute;
+	top: 24px;
+	right: 24px;
+	z-index: 10;
+}
+
+.rui-modal-close {
+	background: none;
+	border: none;
+	padding: 8px;
+	cursor: pointer;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.2s ease;
+}
+
+.rui-modal-close:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+.rui-modal-close:active {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.rui-modal-close:focus {
+	outline: 2px solid rgba(139, 92, 246, 0.3);
+	outline-offset: 2px;
+}
+
+/* Modal title */
+.rui-modal-title {
+	padding: 48px 32px 0 32px;
+	margin-bottom: 24px;
+}
+
+/* Modal body */
+.rui-modal-body {
+	padding: 0 32px;
+	margin-bottom: 24px;
+}
+
+/* Modal footer */
+.rui-modal-footer {
+	padding: 0 32px 32px 32px;
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	align-items: center;
+}
+
+/* Handle cases where title is missing */
+.rui-modal-wrapper:not(:has(.rui-modal-title)) .rui-modal-body {
+	padding-top: 48px;
+}
+
+/* Handle cases where footer is missing */
+.rui-modal-wrapper:not(:has(.rui-modal-footer)) .rui-modal-body {
+	padding-bottom: 32px;
+}
+
+/* Mobile modal styling - bottom sheet approach */
+@media (max-width: 576px) {
+	.modal-dialog.rui-modal {
+		position: fixed !important;
+		bottom: 0 !important;
+		left: 0 !important;
+		right: 0 !important;
+		margin: 0 !important;
+		max-width: 100% !important;
+		width: 100vw !important;
+		height: auto !important;
+		animation: slideUp 0.3s ease-out;
+		transform: none !important;
+	}
+
+	.modal-dialog.rui-modal .modal-content {
+		border-radius: 24px 24px 0 0 !important;
+		max-height: 80vh !important;
+		overflow: hidden;
+		width: 100vw !important;
+		margin: 0 !important;
+	}
+
+	.rui-modal-wrapper {
+		display: flex;
+		flex-direction: column;
+		max-height: 80vh;
+		overflow: hidden;
+	}
+
+	/* Close button on mobile */
+	.rui-modal-close-container {
+		top: 24px;
+		right: 24px;
+		flex-shrink: 0;
+	}
+
+	/* Title on mobile */
+	.rui-modal-title {
+		padding: 48px 24px 0 24px;
+		margin-bottom: 16px;
+		flex-shrink: 0;
+	}
+
+	/* Body on mobile with scroll */
+	.rui-modal-body {
+		padding: 0 24px;
+		margin-bottom: 24px;
+		flex: 1;
+		overflow-y: auto;
+		min-height: 0; /* Important for flex scrolling */
+	}
+
+	/* Footer on mobile */
+	.rui-modal-footer {
+		padding: 0 24px 32px 24px;
+		flex-shrink: 0;
+		flex-direction: column;
+		gap: 12px;
+		margin-top: auto;
+	}
+
+	.rui-modal-footer .rui-btn {
+		width: 100%;
+		justify-content: center;
+	}
+
+	/* Reverse order on mobile so primary is on top */
+	.rui-modal-primary-btn {
+		order: -1;
+	}
+
+	.rui-modal-secondary-btn {
+		order: 1;
+	}
+
+	/* Adjust spacing when title is missing on mobile */
+	.rui-modal-wrapper:not(:has(.rui-modal-title)) .rui-modal-body {
+		padding-top: 0;
+		margin-top: 24px;
+	}
+
+	/* Adjust spacing when footer is missing on mobile */
+	.rui-modal-wrapper:not(:has(.rui-modal-footer)) .rui-modal-body {
+		padding-bottom: 24px;
+		margin-bottom: 0;
+	}
+}
+
+/* Slide up animation for mobile */
+@keyframes slideUp {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+/* Backdrop adjustments for mobile */
+@media (max-width: 576px) {
+	.modal-dialog.rui-modal ~ .modal-backdrop {
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+}
+
+/* Additional mobile positioning fixes */
+@media (max-width: 576px) {
+	.modal-dialog.rui-modal {
+		bottom: 0 !important;
+		transform: none !important;
+		position: fixed !important;
+	}
+
+	.modal-dialog.rui-modal.show {
+		transform: none !important;
+	}
+}
