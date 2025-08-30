@@ -20,7 +20,7 @@
 	"scripts": {
 		"dev": "concurrently \"npm run build -- --watch\" \"npm run storybook\" \"npm run test\"",
 		"build": "tsup",
-		"build:css": "mkdir -p dist/styles && mkdir -p dist/fonts && postcss src/styles/ridley.css -o dist/styles/ridley.css && cp src/styles/fonts/Geist-VariableFont.ttf dist/fonts/",
+		"build:css": "mkdir -p dist/styles && mkdir -p dist/fonts && postcss src/styles/ridley.css -o dist/styles/ridley.css && cp src/styles/fonts/Geist-VariableFont.ttf dist/fonts/  && cp src/styles/fonts/Geist-VariableFont.ttf dist/styles/",
 		"build:all": "npm run build && npm run build:css",
 		"lint": "biome check --write --unsafe .",
 		"lint:ci": "biome check --unsafe .",
