@@ -48,10 +48,10 @@ const meta: Meta<typeof RuiModal> = {
 			control: "object",
 			description: "Optional left-aligned footer element",
 		},
-		mobileChatOffset: {
-			control: "number",
+		hasMobileChat: {
+			control: "boolean",
 			description:
-				"Bottom offset in pixels for mobile chat (only applies on mobile <576px)",
+				"Whether to offset for mobile chat (only applies on mobile <576px)",
 		},
 	},
 };
@@ -542,14 +542,14 @@ export const LeftFooterWithBothButtons: Story = {
 
 // === MOBILE CHAT OFFSET === //
 
-export const WithMobileChatOffset: Story = {
+export const WithMobileChat: Story = {
 	render: (args) => (
 		<ModalWrapper {...args}>
 			<div>
 				<RuiText type="paragraph" size="m" style={{ marginBottom: "16px" }}>
 					This modal demonstrates the mobile chat offset feature. On mobile
-					devices (under 576px), the modal will render 115px higher to avoid
-					being overlapped by a fixed mobile chat.
+					devices (under 576px), the modal adjusts its height and footer padding
+					to avoid being overlapped by a fixed mobile chat.
 				</RuiText>
 				<RuiText
 					type="paragraph"
@@ -558,8 +558,7 @@ export const WithMobileChatOffset: Story = {
 					style={{ marginBottom: "16px" }}
 				>
 					To test: Resize your browser to mobile width (under 576px) and notice
-					how the modal positions itself above the hypothetical mobile chat
-					area.
+					how the modal adjusts its layout for the mobile chat area.
 				</RuiText>
 				<div
 					style={{
@@ -570,18 +569,17 @@ export const WithMobileChatOffset: Story = {
 					}}
 				>
 					<RuiText type="paragraph" size="s" color="neutral.600">
-						💡 The mobile chat would typically be a fixed element at the bottom
-						of the screen, taking up 115px of height. This modal will render
-						just above it.
+						💡 When hasMobileChat is true, the modal wrapper gets 85vh
+						max-height and footer gets 110px bottom padding on mobile.
 					</RuiText>
 				</div>
 			</div>
 		</ModalWrapper>
 	),
 	args: {
-		title: "Modal with Mobile Chat Offset",
+		title: "Modal with Mobile Chat",
 		showCloseButton: true,
-		mobileChatOffset: 115,
+		hasMobileChat: true,
 		primaryCta: {
 			text: "Continue",
 			onClick: () => alert("Continued!"),
@@ -595,7 +593,7 @@ export const WithMobileChatOffset: Story = {
 		docs: {
 			description: {
 				story:
-					"This story demonstrates how the modal adjusts its position on mobile when a mobile chat is present at the bottom of the screen.",
+					"This story demonstrates how the modal adjusts its layout on mobile when a mobile chat is present at the bottom of the screen.",
 			},
 		},
 	},
@@ -650,7 +648,7 @@ export const ContactModalWithMobileChat: Story = {
 	args: {
 		title: "Contact the seller",
 		showCloseButton: true,
-		mobileChatOffset: 115,
+		hasMobileChat: true,
 		leftFooterElement: (
 			<div className="d-flex align-items-center">
 				<span style={{ fontSize: "14px", color: "#666", marginRight: "8px" }}>
@@ -693,7 +691,7 @@ export const ContactModalWithMobileChat: Story = {
 		docs: {
 			description: {
 				story:
-					"A realistic example showing a contact seller modal that works properly with both left footer element and mobile chat offset.",
+					"A realistic example showing a contact seller modal that works properly with both left footer element and mobile chat support.",
 			},
 		},
 	},

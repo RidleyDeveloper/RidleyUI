@@ -32,8 +32,8 @@ export interface RuiModalProps {
 	};
 	/** Optional left-aligned footer element */
 	leftFooterElement?: React.ReactNode;
-	/** Bottom offset in pixels for mobile chat (only applies on mobile <576px) */
-	mobileChatOffset?: number;
+	/** Whether to offset for mobile chat (only applies on mobile <576px) */
+	hasMobileChat?: boolean;
 	/** Additional CSS classes */
 	className?: string;
 	/** Inline styles for modal content override */
@@ -53,7 +53,7 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 	primaryCta,
 	secondaryCta,
 	leftFooterElement,
-	mobileChatOffset,
+	hasMobileChat,
 	className,
 	style,
 	size = "md",
@@ -65,7 +65,7 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 			size={size}
 			className={clsx(
 				"rui-modal",
-				mobileChatOffset && "rui-modal-with-chat-offset",
+				hasMobileChat && "rui-modal-with-mobile-chat",
 				className,
 			)}
 			contentClassName="rui-modal-content"
@@ -78,10 +78,6 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 				className="rui-modal-wrapper"
 				style={{
 					...style,
-					...(mobileChatOffset &&
-						({
-							"--mobile-chat-offset": `${mobileChatOffset}px`,
-						} as React.CSSProperties)),
 				}}
 			>
 				{/* Close Button - Top Right */}
