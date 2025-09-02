@@ -70,9 +70,32 @@
 .rui-modal-footer {
 	padding: 0 32px 32px 32px;
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* Left-aligned footer element */
+.rui-modal-footer-left {
+	display: flex;
+	align-items: center;
+}
+
+/* Right-aligned buttons container - preserves original spacing */
+.rui-modal-footer-buttons {
+	display: flex;
 	justify-content: flex-end;
 	gap: 12px;
 	align-items: center;
+}
+
+/* When no left element exists, buttons should still be right-aligned */
+.rui-modal-footer:not(:has(.rui-modal-footer-left)) {
+	justify-content: flex-end;
+}
+
+/* When only left element exists (no buttons), left-align it */
+.rui-modal-footer:not(:has(.rui-modal-footer-buttons)) {
+	justify-content: flex-start;
 }
 
 /* Handle cases where title is missing */
@@ -98,6 +121,11 @@
 		height: auto !important;
 		animation: slideUp 0.3s ease-out;
 		transform: none !important;
+	}
+
+	/* Mobile chat offset - modal renders above mobile chat */
+	.modal-dialog.rui-modal.rui-modal-with-chat-offset {
+		bottom: var(--mobile-chat-offset, 0px) !important;
 	}
 
 	.modal-dialog.rui-modal .modal-content {
@@ -145,6 +173,22 @@
 		flex-direction: column;
 		gap: 12px;
 		margin-top: auto;
+		justify-content: flex-start;
+	}
+
+	/* Left footer element on mobile */
+	.rui-modal-footer-left {
+		order: 2;
+		width: 100%;
+		justify-content: flex-start;
+	}
+
+	/* Buttons container on mobile */
+	.rui-modal-footer-buttons {
+		order: 1;
+		width: 100%;
+		flex-direction: column;
+		gap: 12px;
 	}
 
 	.rui-modal-footer .rui-btn {

@@ -30,6 +30,10 @@ export interface RuiModalProps {
 		onClick: () => void;
 		disabled?: boolean;
 	};
+	/** Optional left-aligned footer element */
+	leftFooterElement?: React.ReactNode;
+	/** Bottom offset in pixels for mobile chat (only applies on mobile <576px) */
+	mobileChatOffset?: number;
 	/** Additional CSS classes */
 	className?: string;
 	/** Inline styles for modal content override */
@@ -48,6 +52,8 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 	children,
 	primaryCta,
 	secondaryCta,
+	leftFooterElement,
+	mobileChatOffset,
 	className,
 	style,
 	size = "md",
@@ -57,14 +63,27 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 			isOpen={isOpen}
 			toggle={toggle}
 			size={size}
-			className={clsx("rui-modal", className)}
+			className={clsx(
+				"rui-modal",
+				mobileChatOffset && "rui-modal-with-chat-offset",
+				className,
+			)}
 			contentClassName="rui-modal-content"
 			header={false}
 			fade={true}
 			backdrop={true}
 			keyboard={true}
 		>
-			<div className="rui-modal-wrapper" style={style}>
+			<div
+				className="rui-modal-wrapper"
+				style={{
+					...style,
+					...(mobileChatOffset &&
+						({
+							"--mobile-chat-offset": `${mobileChatOffset}px`,
+						} as React.CSSProperties)),
+				}}
+			>
 				{/* Close Button - Top Right */}
 				{showCloseButton && (
 					<div className="rui-modal-close-container">
@@ -92,27 +111,37 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 				<div className="rui-modal-body">{children}</div>
 
 				{/* Footer with CTAs */}
-				{(primaryCta || secondaryCta) && (
+				{(primaryCta || secondaryCta || leftFooterElement) && (
 					<div className="rui-modal-footer">
-						{secondaryCta && (
-							<RuiButton
-								variant="transparent"
-								onClick={secondaryCta.onClick}
-								disabled={secondaryCta.disabled}
-								className="rui-modal-secondary-btn"
-							>
-								{secondaryCta.text}
-							</RuiButton>
+						{/* Left-aligned footer element */}
+						{leftFooterElement && (
+							<div className="rui-modal-footer-left">{leftFooterElement}</div>
 						)}
-						{primaryCta && (
-							<RuiButton
-								variant="primary"
-								onClick={primaryCta.onClick}
-								disabled={primaryCta.disabled}
-								className="rui-modal-primary-btn"
-							>
-								{primaryCta.text}
-							</RuiButton>
+
+						{/* Right-aligned CTA buttons - preserve original layout */}
+						{(primaryCta || secondaryCta) && (
+							<div className="rui-modal-footer-buttons">
+								{secondaryCta && (
+									<RuiButton
+										variant="transparent"
+										onClick={secondaryCta.onClick}
+										disabled={secondaryCta.disabled}
+										className="rui-modal-secondary-btn"
+									>
+										{secondaryCta.text}
+									</RuiButton>
+								)}
+								{primaryCta && (
+									<RuiButton
+										variant="primary"
+										onClick={primaryCta.onClick}
+										disabled={primaryCta.disabled}
+										className="rui-modal-primary-btn"
+									>
+										{primaryCta.text}
+									</RuiButton>
+								)}
+							</div>
 						)}
 					</div>
 				)}
