@@ -44,6 +44,15 @@ const meta: Meta<typeof RuiModal> = {
 			control: "object",
 			description: "Secondary CTA button configuration",
 		},
+		leftFooterElement: {
+			control: "object",
+			description: "Optional left-aligned footer element",
+		},
+		mobileChatOffset: {
+			control: "number",
+			description:
+				"Bottom offset in pixels for mobile chat (only applies on mobile <576px)",
+		},
 	},
 };
 
@@ -444,6 +453,248 @@ export const MobileScrollTest: Story = {
 	parameters: {
 		viewport: {
 			defaultViewport: "mobile1",
+		},
+	},
+};
+
+// === LEFT FOOTER ELEMENT === //
+
+export const WithLeftFooterElement: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<RuiText type="paragraph" size="m">
+				This modal demonstrates the left footer element feature. The seller info
+				appears on the left while CTA buttons maintain their original spacing on
+				the right.
+			</RuiText>
+		</ModalWrapper>
+	),
+	args: {
+		title: "Contact the seller",
+		showCloseButton: true,
+		leftFooterElement: (
+			<div className="d-flex align-items-center">
+				<span style={{ fontSize: "14px", color: "#666", marginRight: "8px" }}>
+					To:
+				</span>
+				<div className="d-flex align-items-center">
+					<div
+						style={{
+							width: "24px",
+							height: "24px",
+							borderRadius: "50%",
+							backgroundColor: "#6c757d",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+							marginRight: "8px",
+						}}
+					>
+						<span
+							style={{ color: "white", fontSize: "12px", fontWeight: "bold" }}
+						>
+							MC
+						</span>
+					</div>
+					<div>
+						<div style={{ fontSize: "12px", fontWeight: "500" }}>
+							Mike Chambers
+						</div>
+						<div style={{ fontSize: "10px", color: "#666" }}>Seller</div>
+					</div>
+				</div>
+			</div>
+		),
+		primaryCta: {
+			text: "Send",
+			onClick: () => alert("Message sent!"),
+		},
+	},
+};
+
+export const LeftFooterWithBothButtons: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<RuiText type="paragraph" size="m">
+				This example shows both primary and secondary buttons with a left footer
+				element. The button spacing should remain unchanged.
+			</RuiText>
+		</ModalWrapper>
+	),
+	args: {
+		title: "Modal with Left Element and Both CTAs",
+		showCloseButton: true,
+		leftFooterElement: (
+			<RuiText type="paragraph" size="s" color="neutral.600">
+				Need help? Contact support
+			</RuiText>
+		),
+		primaryCta: {
+			text: "Continue",
+			onClick: () => alert("Continued!"),
+		},
+		secondaryCta: {
+			text: "Cancel",
+			onClick: () => alert("Cancelled!"),
+		},
+	},
+};
+
+// === MOBILE CHAT OFFSET === //
+
+export const WithMobileChatOffset: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<div>
+				<RuiText type="paragraph" size="m" style={{ marginBottom: "16px" }}>
+					This modal demonstrates the mobile chat offset feature. On mobile
+					devices (under 576px), the modal will render 115px higher to avoid
+					being overlapped by a fixed mobile chat.
+				</RuiText>
+				<RuiText
+					type="paragraph"
+					size="s"
+					color="neutral.600"
+					style={{ marginBottom: "16px" }}
+				>
+					To test: Resize your browser to mobile width (under 576px) and notice
+					how the modal positions itself above the hypothetical mobile chat
+					area.
+				</RuiText>
+				<div
+					style={{
+						padding: "12px",
+						backgroundColor: "#f8f9fa",
+						borderRadius: "8px",
+						border: "1px solid #dee2e6",
+					}}
+				>
+					<RuiText type="paragraph" size="s" color="neutral.600">
+						💡 The mobile chat would typically be a fixed element at the bottom
+						of the screen, taking up 115px of height. This modal will render
+						just above it.
+					</RuiText>
+				</div>
+			</div>
+		</ModalWrapper>
+	),
+	args: {
+		title: "Modal with Mobile Chat Offset",
+		showCloseButton: true,
+		mobileChatOffset: 115,
+		primaryCta: {
+			text: "Continue",
+			onClick: () => alert("Continued!"),
+		},
+		secondaryCta: {
+			text: "Cancel",
+			onClick: () => alert("Cancelled!"),
+		},
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"This story demonstrates how the modal adjusts its position on mobile when a mobile chat is present at the bottom of the screen.",
+			},
+		},
+	},
+};
+
+export const ContactModalWithMobileChat: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<div>
+				<div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+					<input
+						type="email"
+						placeholder="Your email"
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+						}}
+					/>
+					<input
+						type="tel"
+						placeholder="Phone number"
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+						}}
+					/>
+					<input
+						type="text"
+						placeholder="Your name"
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+						}}
+					/>
+					<textarea
+						placeholder="Your message"
+						rows={3}
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+							resize: "vertical",
+						}}
+					/>
+				</div>
+			</div>
+		</ModalWrapper>
+	),
+	args: {
+		title: "Contact the seller",
+		showCloseButton: true,
+		mobileChatOffset: 115,
+		leftFooterElement: (
+			<div className="d-flex align-items-center">
+				<span style={{ fontSize: "14px", color: "#666", marginRight: "8px" }}>
+					To:
+				</span>
+				<div className="d-flex align-items-center">
+					<div
+						style={{
+							width: "24px",
+							height: "24px",
+							borderRadius: "50%",
+							backgroundColor: "#6c757d",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+							marginRight: "8px",
+						}}
+					>
+						<span
+							style={{ color: "white", fontSize: "12px", fontWeight: "bold" }}
+						>
+							MC
+						</span>
+					</div>
+					<div>
+						<div style={{ fontSize: "12px", fontWeight: "500" }}>
+							Mike Chambers
+						</div>
+						<div style={{ fontSize: "10px", color: "#666" }}>Seller</div>
+					</div>
+				</div>
+			</div>
+		),
+		primaryCta: {
+			text: "Send",
+			onClick: () => alert("Message sent!"),
+		},
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"A realistic example showing a contact seller modal that works properly with both left footer element and mobile chat offset.",
+			},
 		},
 	},
 };
