@@ -136,6 +136,11 @@
 		max-height: 85vh !important;
 	}
 
+	/* Mobile chat with nav offset - adjust modal content height */
+	.modal-dialog.rui-modal.rui-modal-with-mobile-chat-nav .modal-content {
+		max-height: 85vh !important;
+	}
+
 	.rui-modal-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -145,6 +150,11 @@
 
 	/* Mobile chat offset - adjust wrapper height */
 	.modal-dialog.rui-modal.rui-modal-with-mobile-chat .rui-modal-wrapper {
+		max-height: 85vh;
+	}
+
+	/* Mobile chat with nav offset - adjust wrapper height */
+	.modal-dialog.rui-modal.rui-modal-with-mobile-chat-nav .rui-modal-wrapper {
 		max-height: 85vh;
 	}
 
@@ -184,6 +194,11 @@
 	/* Mobile chat offset - adjust footer padding */
 	.modal-dialog.rui-modal.rui-modal-with-mobile-chat .rui-modal-footer {
 		padding: 0 24px 110px 24px;
+	}
+
+	/* Mobile chat with nav offset - adjust footer padding */
+	.modal-dialog.rui-modal.rui-modal-with-mobile-chat-nav .rui-modal-footer {
+		padding: 0 24px 165px 24px;
 	}
 
 	/* Left footer element on mobile */

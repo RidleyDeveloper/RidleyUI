@@ -34,6 +34,8 @@ export interface RuiModalProps {
 	leftFooterElement?: React.ReactNode;
 	/** Whether to offset for mobile chat (only applies on mobile <576px) */
 	hasMobileChat?: boolean;
+	/** Whether to offset for mobile chat with navigation (only applies on mobile <576px) */
+	hasMobileChatWithNav?: boolean;
 	/** Additional CSS classes */
 	className?: string;
 	/** Inline styles for modal content override */
@@ -54,6 +56,7 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 	secondaryCta,
 	leftFooterElement,
 	hasMobileChat,
+	hasMobileChatWithNav,
 	className,
 	style,
 	size = "md",
@@ -66,6 +69,7 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 			className={clsx(
 				"rui-modal",
 				hasMobileChat && "rui-modal-with-mobile-chat",
+				hasMobileChatWithNav && "rui-modal-with-mobile-chat-nav",
 				className,
 			)}
 			contentClassName="rui-modal-content"
