@@ -272,3 +272,30 @@
 		transform: none !important;
 	}
 }
+
+/* === SUB-FOOTER ELEMENT STYLES === */
+
+.rui-sub-footer {
+	padding: 0 32px 32px 32px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+/* Mobile sub-footer styles */
+@media (max-width: 576px) {
+	.rui-sub-footer {
+		padding: 0 24px 32px 24px;
+		flex-shrink: 0;
+	}
+
+	/* Mobile chat offset - adjust sub-footer padding */
+	.modal-dialog.rui-modal.rui-modal-with-mobile-chat .rui-sub-footer {
+		padding: 0 24px 110px 24px;
+	}
+
+	/* Mobile chat with nav offset - adjust sub-footer padding */
+	.modal-dialog.rui-modal.rui-modal-with-mobile-chat-nav .rui-sub-footer {
+		padding: 0 24px 165px 24px;
+	}
+}
