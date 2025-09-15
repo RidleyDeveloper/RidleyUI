@@ -135,7 +135,13 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 	const renderTitleSection = () => (
 		<div className="flex-grow-1">
 			{cardTitle && (
-				<RuiText type="title" size="s" color={cardTitleColor} className="mb-0">
+				<RuiText
+					type="title"
+					size="s"
+					color={cardTitleColor}
+					className="mb-0"
+					style={{ minHeight: "28px" }}
+				>
 					{cardTitle}
 				</RuiText>
 			)}
