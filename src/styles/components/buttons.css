@@ -127,21 +127,21 @@
 /* Transparent Button - Transparent background with purple border and text */
 .rui-btn-transparent {
 	background-color: transparent;
-	border: 1px solid var(--rui-purple-500);
-	color: var(--rui-purple-500);
+	border: 1px solid var(--rui-neutral-800);
+	color: var(--rui-neutral-800);
 }
 
 .rui-btn-transparent:hover {
-	background-color: var(--rui-purple-100);
-	border-color: var(--rui-purple-500);
-	color: var(--rui-purple-500);
+	background-color: var(--rui-neutral-100);
+	border-color: var(--rui-neutral-800);
+	color: var(--rui-neutral-800);
 }
 
 .rui-btn-transparent:active,
 .rui-btn-transparent:focus {
-	background-color: var(--rui-purple-100);
-	border-color: var(--rui-purple-800);
-	color: var(--rui-purple-800);
+	background-color: var(--rui-neutral-100);
+	border-color: var(--rui-neutral-800);
+	color: var(--rui-neutral-800);
 }
 
 .rui-btn-transparent:disabled {
