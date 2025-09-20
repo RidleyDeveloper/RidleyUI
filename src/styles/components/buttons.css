@@ -28,9 +28,9 @@
 
 /* === RUI BUTTON VARIANTS === */
 
-/* Primary Button - Purple 500 */
+/* Primary Button - Orange 400 */
 .rui-btn-primary {
-	background-color: var(--rui-purple-500);
+	background-color: var(--rui-orange-400);
 	color: var(--rui-text-inverse);
 }
 
@@ -39,7 +39,7 @@
 			0deg,
 			rgba(255, 255, 255, 0.1) 0%,
 			rgba(255, 255, 255, 0.1) 100%
-		), var(--rui-purple-500);
+		), var(--rui-orange-400);
 	color: var(--rui-text-inverse);
 }
 
@@ -49,7 +49,7 @@
 			0deg,
 			rgba(255, 255, 255, 0.2) 0%,
 			rgba(255, 255, 255, 0.2) 100%
-		), var(--rui-purple-500);
+		), var(--rui-orange-400);
 	color: var(--rui-text-inverse);
 }
 
