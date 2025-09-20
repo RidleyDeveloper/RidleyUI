@@ -19,6 +19,12 @@
 	--rui-purple-500: #9025b5;
 	--rui-purple-800: #511468;
 
+	/* === RIDLEY ORANGE PALETTE === */
+	--rui-orange-100: #ff7b5e1a;
+	--rui-orange-400: #ff7b5e;
+	--rui-orange-500: #e66446;
+	--rui-orange-800: #c2410c;
+
 	/* === RIDLEY GREEN PALETTE === */
 	--rui-green-100: #9acf8b1a;
 	--rui-green-300: #9acf8b;
@@ -35,9 +41,9 @@
 	--rui-slate-300: #cbd5e1; /* Default border */
 
 	/* === SEMANTIC COLOR MAPPINGS === */
-	--rui-primary: var(--rui-purple-500);
-	--rui-primary-light: var(--rui-purple-100);
-	--rui-primary-dark: var(--rui-purple-800);
+	--rui-primary: var(--rui-orange-400);
+	--rui-primary-light: var(--rui-orange-100);
+	--rui-primary-dark: var(--rui-orange-800);
 
 	--rui-success: var(--rui-green-600);
 	--rui-success-light: var(--rui-green-100);
