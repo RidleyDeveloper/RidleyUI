@@ -140,7 +140,7 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 									)}
 									{primaryCta && (
 										<RuiButton
-											variant="primary"
+											variant="secondary"
 											onClick={primaryCta.onClick}
 											disabled={primaryCta.disabled}
 											className="rui-modal-primary-btn"
