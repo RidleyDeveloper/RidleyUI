@@ -22,6 +22,8 @@ export type ColorVariant =
 	| "purple.100"
 	| "purple.500"
 	| "purple.800"
+	| "orange.100"
+	| "orange.400"
 	| "green.100"
 	| "green.300"
 	| "green.600"
@@ -106,6 +108,8 @@ const getColorStyle = (color: ColorVariant): React.CSSProperties => {
 		"neutral.400": "var(--rui-neutral-400)",
 		"neutral.600": "var(--rui-neutral-600)",
 		"neutral.800": "var(--rui-neutral-800)",
+		"orange.100": "var(--rui-orange-100)",
+		"orange.400": "var(--rui-orange-400)",
 		"purple.100": "var(--rui-purple-100)",
 		"purple.500": "var(--rui-purple-500)",
 		"purple.800": "var(--rui-purple-800)",
