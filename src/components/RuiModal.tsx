@@ -44,6 +44,8 @@ export interface RuiModalProps {
 	style?: React.CSSProperties;
 	/** Size of the modal (small, medium, large) */
 	size?: "sm" | "md" | "lg" | "xl";
+	/** Whether to hide overflow content */
+	overflowHidden?: boolean;
 }
 
 // === COMPONENT === //
@@ -63,6 +65,7 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 	className,
 	style,
 	size = "md",
+	overflowHidden = true,
 }) => {
 	return (
 		<Modal
@@ -75,7 +78,11 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 				hasMobileChatWithNav && "rui-modal-with-mobile-chat-nav",
 				className,
 			)}
-			contentClassName="rui-modal-content"
+			contentClassName={
+				overflowHidden
+					? "rui-modal-content rui-modal-content-overflow-hidden"
+					: "rui-modal-content"
+			}
 			header={false}
 			fade={true}
 			backdrop={true}
