@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type React from "react";
 import { useState } from "react";
+import { FormGroup, Input, Label } from "reactstrap";
 import { RuiButton } from "../components/RuiButton";
 import { RuiModal } from "../components/RuiModal";
 import { RuiText } from "../components/RuiText";
@@ -43,6 +44,19 @@ const meta: Meta<typeof RuiModal> = {
 		secondaryCta: {
 			control: "object",
 			description: "Secondary CTA button configuration",
+		},
+		leftFooterElement: {
+			control: "object",
+			description: "Optional left-aligned footer element",
+		},
+		subFooterElement: {
+			control: "object",
+			description: "Optional sub-footer element",
+		},
+		hasMobileChat: {
+			control: "boolean",
+			description:
+				"Whether to offset for mobile chat (only applies on mobile <576px)",
 		},
 	},
 };
@@ -448,6 +462,246 @@ export const MobileScrollTest: Story = {
 	},
 };
 
+// === LEFT FOOTER ELEMENT === //
+
+export const WithLeftFooterElement: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<RuiText type="paragraph" size="m">
+				This modal demonstrates the left footer element feature. The seller info
+				appears on the left while CTA buttons maintain their original spacing on
+				the right.
+			</RuiText>
+		</ModalWrapper>
+	),
+	args: {
+		title: "Contact the seller",
+		showCloseButton: true,
+		leftFooterElement: (
+			<div className="d-flex align-items-center">
+				<span style={{ fontSize: "14px", color: "#666", marginRight: "8px" }}>
+					To:
+				</span>
+				<div className="d-flex align-items-center">
+					<div
+						style={{
+							width: "24px",
+							height: "24px",
+							borderRadius: "50%",
+							backgroundColor: "#6c757d",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+							marginRight: "8px",
+						}}
+					>
+						<span
+							style={{ color: "white", fontSize: "12px", fontWeight: "bold" }}
+						>
+							MC
+						</span>
+					</div>
+					<div>
+						<div style={{ fontSize: "12px", fontWeight: "500" }}>
+							Mike Chambers
+						</div>
+						<div style={{ fontSize: "10px", color: "#666" }}>Seller</div>
+					</div>
+				</div>
+			</div>
+		),
+		primaryCta: {
+			text: "Send",
+			onClick: () => alert("Message sent!"),
+		},
+	},
+};
+
+export const LeftFooterWithBothButtons: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<RuiText type="paragraph" size="m">
+				This example shows both primary and secondary buttons with a left footer
+				element. The button spacing should remain unchanged.
+			</RuiText>
+		</ModalWrapper>
+	),
+	args: {
+		title: "Modal with Left Element and Both CTAs",
+		showCloseButton: true,
+		leftFooterElement: (
+			<RuiText type="paragraph" size="s" color="neutral.600">
+				Need help? Contact support
+			</RuiText>
+		),
+		primaryCta: {
+			text: "Continue",
+			onClick: () => alert("Continued!"),
+		},
+		secondaryCta: {
+			text: "Cancel",
+			onClick: () => alert("Cancelled!"),
+		},
+	},
+};
+
+// === MOBILE CHAT OFFSET === //
+
+export const WithMobileChat: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<div>
+				<RuiText type="paragraph" size="m" style={{ marginBottom: "16px" }}>
+					This modal demonstrates the mobile chat offset feature. On mobile
+					devices (under 576px), the modal adjusts its height and footer padding
+					to avoid being overlapped by a fixed mobile chat.
+				</RuiText>
+				<RuiText
+					type="paragraph"
+					size="s"
+					color="neutral.600"
+					style={{ marginBottom: "16px" }}
+				>
+					To test: Resize your browser to mobile width (under 576px) and notice
+					how the modal adjusts its layout for the mobile chat area.
+				</RuiText>
+				<div
+					style={{
+						padding: "12px",
+						backgroundColor: "#f8f9fa",
+						borderRadius: "8px",
+						border: "1px solid #dee2e6",
+					}}
+				>
+					<RuiText type="paragraph" size="s" color="neutral.600">
+						💡 When hasMobileChat is true, the modal wrapper gets 85vh
+						max-height and footer gets 110px bottom padding on mobile.
+					</RuiText>
+				</div>
+			</div>
+		</ModalWrapper>
+	),
+	args: {
+		title: "Modal with Mobile Chat",
+		showCloseButton: true,
+		hasMobileChat: true,
+		primaryCta: {
+			text: "Continue",
+			onClick: () => alert("Continued!"),
+		},
+		secondaryCta: {
+			text: "Cancel",
+			onClick: () => alert("Cancelled!"),
+		},
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"This story demonstrates how the modal adjusts its layout on mobile when a mobile chat is present at the bottom of the screen.",
+			},
+		},
+	},
+};
+
+export const ContactModalWithMobileChat: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<div>
+				<div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+					<input
+						type="email"
+						placeholder="Your email"
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+						}}
+					/>
+					<input
+						type="tel"
+						placeholder="Phone number"
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+						}}
+					/>
+					<input
+						type="text"
+						placeholder="Your name"
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+						}}
+					/>
+					<textarea
+						placeholder="Your message"
+						rows={3}
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+							resize: "vertical",
+						}}
+					/>
+				</div>
+			</div>
+		</ModalWrapper>
+	),
+	args: {
+		title: "Contact the seller",
+		showCloseButton: true,
+		hasMobileChat: true,
+		leftFooterElement: (
+			<div className="d-flex align-items-center">
+				<span style={{ fontSize: "14px", color: "#666", marginRight: "8px" }}>
+					To:
+				</span>
+				<div className="d-flex align-items-center">
+					<div
+						style={{
+							width: "24px",
+							height: "24px",
+							borderRadius: "50%",
+							backgroundColor: "#6c757d",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+							marginRight: "8px",
+						}}
+					>
+						<span
+							style={{ color: "white", fontSize: "12px", fontWeight: "bold" }}
+						>
+							MC
+						</span>
+					</div>
+					<div>
+						<div style={{ fontSize: "12px", fontWeight: "500" }}>
+							Mike Chambers
+						</div>
+						<div style={{ fontSize: "10px", color: "#666" }}>Seller</div>
+					</div>
+				</div>
+			</div>
+		),
+		primaryCta: {
+			text: "Send",
+			onClick: () => alert("Message sent!"),
+		},
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"A realistic example showing a contact seller modal that works properly with both left footer element and mobile chat support.",
+			},
+		},
+	},
+};
+
 // === CUSTOM STYLING === //
 
 export const CustomStyling: Story = {
@@ -470,6 +724,268 @@ export const CustomStyling: Story = {
 		primaryCta: {
 			text: "Amazing!",
 			onClick: () => alert("Custom styled modal!"),
+		},
+	},
+};
+
+// === SUB-FOOTER ELEMENT === //
+
+export const WithSubFooterElement: Story = {
+	render: (args) => {
+		const [userAgreementAccepted, setUserAgreementAccepted] = useState(false);
+
+		const handleUserAgreementChange = (
+			e: React.ChangeEvent<HTMLInputElement>,
+		) => {
+			setUserAgreementAccepted(e.target.checked);
+		};
+
+		return (
+			<ModalWrapper
+				{...args}
+				primaryCta={{
+					...args.primaryCta,
+					disabled: !userAgreementAccepted,
+				}}
+				subFooterElement={
+					<div className="flex-grow-1">
+						<FormGroup
+							check={true}
+							style={{
+								display: "flex",
+								justifyContent: "space-between",
+								alignItems: "flex-start",
+								padding: 0,
+							}}
+						>
+							<Label
+								check={true}
+								htmlFor="user-agreement-story"
+								style={{
+									marginBottom: 0,
+									cursor: "pointer",
+									marginRight: "20px",
+								}}
+							>
+								<RuiText
+									type="paragraph"
+									size="s"
+									color="neutral.800"
+									style={{ marginBottom: "4px" }}
+								>
+									I read and agree to the{" "}
+									<a
+										href="https://www.getridley.com/user-services-agreement"
+										style={{
+											fontWeight: 500,
+											textDecoration: "none",
+											color: "black",
+										}}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Ridley User Agreement
+									</a>
+								</RuiText>
+							</Label>
+							<Input
+								type="checkbox"
+								id="user-agreement-story"
+								style={{
+									width: "20px",
+									height: "20px",
+									marginTop: "2px",
+									cursor: "pointer",
+								}}
+								checked={userAgreementAccepted}
+								onChange={handleUserAgreementChange}
+							/>
+						</FormGroup>
+					</div>
+				}
+			>
+				<RuiText type="paragraph" size="m">
+					This modal demonstrates the sub-footer element feature. The user
+					agreement checkbox appears below the main footer and controls the
+					primary CTA state.
+				</RuiText>
+			</ModalWrapper>
+		);
+	},
+	args: {
+		title: "Legal Agreement Modal",
+		showCloseButton: true,
+		primaryCta: {
+			text: "Continue to checkout",
+			onClick: () => alert("Continuing to checkout!"),
+		},
+		secondaryCta: {
+			text: "Cancel",
+			onClick: () => alert("Cancelled!"),
+		},
+	},
+};
+
+export const WithSubFooterAndLeftFooter: Story = {
+	render: (args) => {
+		const [userAgreementAccepted, setUserAgreementAccepted] = useState(false);
+
+		const handleUserAgreementChange = (
+			e: React.ChangeEvent<HTMLInputElement>,
+		) => {
+			setUserAgreementAccepted(e.target.checked);
+		};
+
+		return (
+			<ModalWrapper
+				{...args}
+				primaryCta={{
+					...args.primaryCta,
+					disabled: !userAgreementAccepted,
+				}}
+				leftFooterElement={
+					<div style={{ display: "flex", alignItems: "center" }}>
+						<span
+							style={{ fontSize: "14px", color: "#666", marginRight: "8px" }}
+						>
+							To:
+						</span>
+						<div style={{ display: "flex", alignItems: "center" }}>
+							<div
+								style={{
+									width: "24px",
+									height: "24px",
+									borderRadius: "50%",
+									backgroundColor: "#6c757d",
+									display: "flex",
+									alignItems: "center",
+									justifyContent: "center",
+									marginRight: "8px",
+								}}
+							>
+								<span
+									style={{
+										color: "white",
+										fontSize: "12px",
+										fontWeight: "bold",
+									}}
+								>
+									MC
+								</span>
+							</div>
+							<div>
+								<div style={{ fontSize: "12px", fontWeight: "500" }}>
+									Mike Chambers
+								</div>
+								<div style={{ fontSize: "10px", color: "#666" }}>Seller</div>
+							</div>
+						</div>
+					</div>
+				}
+				subFooterElement={
+					<FormGroup
+						check={true}
+						style={{
+							display: "flex",
+							justifyContent: "space-between",
+							alignItems: "flex-start",
+							padding: 0,
+							marginBottom: 0,
+						}}
+					>
+						<Label
+							check={true}
+							htmlFor="user-agreement-combined"
+							style={{
+								marginBottom: 0,
+								cursor: "pointer",
+								marginRight: "20px",
+							}}
+						>
+							<RuiText
+								type="paragraph"
+								size="s"
+								color="neutral.800"
+								style={{ marginBottom: "4px" }}
+							>
+								I read and agree to the{" "}
+								<a
+									href="https://www.getridley.com/user-services-agreement"
+									style={{
+										fontWeight: 500,
+										textDecoration: "none",
+										color: "black",
+									}}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Ridley User Agreement
+								</a>
+							</RuiText>
+						</Label>
+						<Input
+							type="checkbox"
+							id="user-agreement-combined"
+							style={{
+								width: "20px",
+								height: "20px",
+								marginTop: "2px",
+								cursor: "pointer",
+							}}
+							checked={userAgreementAccepted}
+							onChange={handleUserAgreementChange}
+						/>
+					</FormGroup>
+				}
+			>
+				<div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+					<input
+						type="email"
+						placeholder="Your email"
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+						}}
+					/>
+					<input
+						type="tel"
+						placeholder="Phone number"
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+						}}
+					/>
+					<input
+						type="text"
+						placeholder="Your name"
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+						}}
+					/>
+					<textarea
+						placeholder="Your message"
+						rows={3}
+						style={{
+							padding: "8px",
+							borderRadius: "4px",
+							border: "1px solid #ddd",
+							resize: "vertical",
+						}}
+					/>
+				</div>
+			</ModalWrapper>
+		);
+	},
+	args: {
+		title: "Contact the seller",
+		showCloseButton: true,
+		primaryCta: {
+			text: "Send",
+			onClick: () => alert("Message sent!"),
 		},
 	},
 };
