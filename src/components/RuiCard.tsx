@@ -65,6 +65,8 @@ export interface RuiCardProps {
 	headerStyle?: React.CSSProperties;
 	/** Enable responsive padding for mobile (space-4 on <576px, space-6 on >=576px) */
 	responsivePadding?: boolean;
+	/** Show bottom margin when there's a header and children exist */
+	showBottomMargin?: boolean;
 }
 
 // === COMPONENT === //
@@ -88,6 +90,7 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 	headerClassName,
 	headerStyle,
 	responsivePadding = true,
+	showBottomMargin = true,
 	...props
 }) => {
 	const [isExpanded, setIsExpanded] = useState(defaultExpanded);
@@ -216,9 +219,9 @@ export const RuiCard: React.FC<RuiCardProps> = ({
 				</Collapse>
 			);
 		}
-		// For non-accordion cards, add margin when there's a header and children exist
+		// For non-accordion cards, add margin when there's a header and children exist & showBottomMargin is not false
 		const hasHeader = cardTitle || rightHeaderSection;
-		return children ? (
+		return children && showBottomMargin ? (
 			<div className={clsx({ "mt-3": hasHeader })}>{children}</div>
 		) : null;
 	};
