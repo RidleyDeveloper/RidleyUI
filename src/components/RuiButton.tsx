@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import { ChevronDown } from "lucide-react";
 import type React from "react";
 import { RuiText } from "./RuiText";
 
@@ -10,7 +11,8 @@ export type ButtonVariant =
 	| "tertiary"
 	| "destructive"
 	| "transparent"
-	| "neutral";
+	| "neutral"
+	| "filter";
 
 export interface RuiButtonProps
 	extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
@@ -26,6 +28,10 @@ export interface RuiButtonProps
 	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 	/** HTML button type */
 	type?: "submit" | "reset" | "button";
+	/** Icon to display on the left (for filter variant) */
+	icon?: React.ReactNode;
+	/** Whether to show the chevron down icon (for filter variant) */
+	showChevron?: boolean;
 }
 
 // === UTILITY FUNCTIONS === //
@@ -47,10 +53,22 @@ const isStringChild = (children: React.ReactNode): children is string => {
 };
 
 /**
- * Wraps string children in RuiText component with label small styling
+ * Wraps string children in RuiText component with appropriate styling
  */
-const wrapChildrenIfNeeded = (children: React.ReactNode): React.ReactNode => {
+const wrapChildrenIfNeeded = (
+	children: React.ReactNode,
+	variant: ButtonVariant,
+): React.ReactNode => {
 	if (isStringChild(children)) {
+		// Use paragraph small for filter variant
+		if (variant === "filter") {
+			return (
+				<RuiText type="paragraph" size="s">
+					{children}
+				</RuiText>
+			);
+		}
+		// Use label small for other variants
 		return (
 			<RuiText type="label" size="s">
 				{children}
@@ -69,14 +87,40 @@ export const RuiButton: React.FC<RuiButtonProps> = ({
 	disabled = false,
 	onClick,
 	type = "button",
+	icon,
+	showChevron = true,
 	...props
 }) => {
 	// Build the CSS class
 	const buttonClass = getButtonClass(variant);
 
 	// Wrap string children in RuiText if needed
-	const processedChildren = wrapChildrenIfNeeded(children);
+	const processedChildren = wrapChildrenIfNeeded(children, variant);
 
+	// Render filter button layout
+	if (variant === "filter") {
+		return (
+			<button
+				type={type}
+				className={clsx(buttonClass, className)}
+				disabled={disabled}
+				onClick={onClick}
+				{...props}
+			>
+				<div className="rui-btn-filter-content">
+					{icon && <div className="rui-btn-filter-icon">{icon}</div>}
+					<div className="rui-btn-filter-text">{processedChildren}</div>
+					{showChevron && (
+						<div className="rui-btn-filter-chevron">
+							<ChevronDown size={12} />
+						</div>
+					)}
+				</div>
+			</button>
+		);
+	}
+
+	// Render standard button layout
 	return (
 		<button
 			type={type}

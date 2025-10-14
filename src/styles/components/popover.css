@@ -1,0 +1,31 @@
+/* === POPOVER COMPONENT === */
+
+.rui-popover-body {
+	/* Ensure proper box sizing and text wrapping */
+	box-sizing: border-box;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+/* Ensure all content inside popover respects the container width */
+.rui-popover-body > * {
+	box-sizing: border-box;
+	max-width: 100%;
+}
+
+/* Specific handling for form elements that might overflow */
+.rui-popover-body input,
+.rui-popover-body select,
+.rui-popover-body textarea {
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+/* Ensure flex containers work properly with width constraints */
+.rui-popover-body [style*="display: flex"],
+.rui-popover-body [style*="display:flex"],
+.rui-popover-body [style*="display: grid"],
+.rui-popover-body [style*="display:grid"] {
+	min-width: 0;
+	box-sizing: border-box;
+}

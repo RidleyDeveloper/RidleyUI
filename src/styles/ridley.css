@@ -20,6 +20,8 @@
 
 /* === COMPONENTS === */
 @import "./components/buttons.css";
+@import "./components/filter-button.css";
+@import "./components/popover.css";
 @import "./components/text.css";
 @import "./components/card.css";
 @import "./components/badge.css";

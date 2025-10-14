@@ -172,6 +172,66 @@
 	color: var(--rui-neutral-400);
 }
 
+/* Filter Button - White background with subtle border */
+.rui-btn-filter {
+	background-color: var(--rui-white);
+	border: 1px solid #0000001a;
+	color: var(--rui-neutral-800);
+	border-radius: 16px;
+	padding: 1rem;
+}
+
+.rui-btn-filter:hover {
+	background-color: var(--rui-neutral-100);
+	border-color: #0000001a;
+	color: var(--rui-neutral-800);
+}
+
+.rui-btn-filter:active,
+.rui-btn-filter:focus {
+	background-color: var(--rui-neutral-100);
+	border-color: #0000001a;
+	color: var(--rui-neutral-800);
+}
+
+.rui-btn-filter:disabled {
+	background-color: var(--rui-neutral-200);
+	border-color: var(--rui-neutral-300);
+	color: var(--rui-neutral-400);
+}
+
+/* Filter Button Content Layout */
+.rui-btn-filter-content {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	width: 100%;
+}
+
+.rui-btn-filter-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+}
+
+.rui-btn-filter-text {
+	display: flex;
+	align-items: center;
+	flex: 1;
+}
+
+.rui-btn-filter-chevron {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 12px;
+	height: 12px;
+	flex-shrink: 0;
+}
+
 /* === LEGACY STYLES REMOVED === */
 /* Note: Legacy button styles (.btn-ridley, .btn-group-ridley, .btn-icon) 
    have been removed to avoid conflicts with consuming applications.
