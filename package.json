@@ -122,7 +122,8 @@
 		"reactstrap": "^9.2.0"
 	},
 	"dependencies": {
-		"clsx": "^2.1.1"
+		"clsx": "^2.1.1",
+		"styled-jsx": "^5.1.7"
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",

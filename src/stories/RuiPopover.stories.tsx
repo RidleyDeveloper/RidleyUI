@@ -26,11 +26,6 @@ const meta: Meta<typeof RuiPopover> = {
 			options: ["top", "bottom", "left", "right", "auto"],
 			description: "Placement of the popover relative to trigger",
 		},
-		width: {
-			control: { type: "text" },
-			description:
-				"Width of the popover (CSS value) - if not provided, uses Bootstrap default (276px)",
-		},
 		disabled: {
 			control: { type: "boolean" },
 			description: "Whether the popover is disabled",
@@ -90,261 +85,54 @@ export const BasicHoverPopover: Story = {
 	},
 };
 
-// === FILTER BUTTON STORIES === //
+// === CONTENT-DRIVEN WIDTH EXAMPLES === //
 
-export const FilterButtonBasic: Story = {
+export const SmallContentPopover: Story = {
 	args: {
 		trigger: "click",
 		placement: "bottom",
-		width: "300px",
 		content: (
 			<div style={{ padding: "8px" }}>
-				<RuiText type="title" size="s" style={{ marginBottom: "12px" }}>
-					Filter Options
+				<RuiText type="paragraph" size="s">
+					Small content
 				</RuiText>
-				<div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-					<label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-						<input type="checkbox" />
-						<RuiText type="paragraph" size="s">
-							Option 1
-						</RuiText>
-					</label>
-					<label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-						<input type="checkbox" />
-						<RuiText type="paragraph" size="s">
-							Option 2
-						</RuiText>
-					</label>
-					<label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-						<input type="checkbox" />
-						<RuiText type="paragraph" size="s">
-							Option 3
-						</RuiText>
-					</label>
-				</div>
 			</div>
 		),
 		children: (
-			<RuiFilterButton icon={<Filter size={16} />}>Filter</RuiFilterButton>
+			<RuiFilterButton icon={<Filter size={16} />}>Small</RuiFilterButton>
 		),
 	},
 };
 
-export const FilterButtonWithLocation: Story = {
+export const MediumContentPopover: Story = {
 	args: {
 		trigger: "click",
 		placement: "bottom",
-		width: "250px",
-		content: (
-			<div style={{ padding: "8px" }}>
-				<RuiText type="title" size="s" style={{ marginBottom: "12px" }}>
-					Select Location
-				</RuiText>
-				<div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-					<button
-						type="button"
-						style={{
-							padding: "8px",
-							border: "none",
-							background: "#f8f9fa",
-							borderRadius: "4px",
-							textAlign: "left",
-						}}
-					>
-						<RuiText type="paragraph" size="s">
-							New York, NY
-						</RuiText>
-					</button>
-					<button
-						type="button"
-						style={{
-							padding: "8px",
-							border: "none",
-							background: "#f8f9fa",
-							borderRadius: "4px",
-							textAlign: "left",
-						}}
-					>
-						<RuiText type="paragraph" size="s">
-							Los Angeles, CA
-						</RuiText>
-					</button>
-					<button
-						type="button"
-						style={{
-							padding: "8px",
-							border: "none",
-							background: "#f8f9fa",
-							borderRadius: "4px",
-							textAlign: "left",
-						}}
-					>
-						<RuiText type="paragraph" size="s">
-							Chicago, IL
-						</RuiText>
-					</button>
-				</div>
-			</div>
-		),
-		children: (
-			<RuiFilterButton icon={<MapPin size={16} />}>Location</RuiFilterButton>
-		),
-	},
-};
-
-export const FilterButtonWithDateRange: Story = {
-	args: {
-		trigger: "hover",
-		placement: "bottom",
-		width: "280px",
-		hoverDelay: 300,
 		content: (
 			<div style={{ padding: "12px" }}>
-				<RuiText type="title" size="s" style={{ marginBottom: "12px" }}>
-					Date Range
+				<RuiText type="title" size="s" style={{ marginBottom: "8px" }}>
+					Medium Content Example
 				</RuiText>
-				<div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-					<div>
-						<RuiText
-							type="label"
-							size="s"
-							style={{ marginBottom: "4px", display: "block" }}
-						>
-							From
-						</RuiText>
-						<input
-							type="date"
-							style={{
-								width: "100%",
-								padding: "8px",
-								border: "1px solid #ddd",
-								borderRadius: "4px",
-							}}
-						/>
-					</div>
-					<div>
-						<RuiText
-							type="label"
-							size="s"
-							style={{ marginBottom: "4px", display: "block" }}
-						>
-							To
-						</RuiText>
-						<input
-							type="date"
-							style={{
-								width: "100%",
-								padding: "8px",
-								border: "1px solid #ddd",
-								borderRadius: "4px",
-							}}
-						/>
-					</div>
-				</div>
+				<RuiText type="paragraph" size="s">
+					This popover has medium-sized content that will naturally expand the
+					popover width to fit the content, up to the 600px maximum.
+				</RuiText>
 			</div>
 		),
 		children: (
-			<RuiFilterButton icon={<Calendar size={16} />}>
-				Date Range
-			</RuiFilterButton>
+			<RuiFilterButton icon={<Filter size={16} />}>Medium</RuiFilterButton>
 		),
 	},
 };
 
-export const FilterButtonWithPriceRange: Story = {
+export const LargeContentPopover: Story = {
 	args: {
 		trigger: "click",
 		placement: "bottom",
-		width: "320px",
-		content: (
-			<div style={{ padding: "12px" }}>
-				<RuiText type="title" size="s" style={{ marginBottom: "12px" }}>
-					Price Range
-				</RuiText>
-				<div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-					<div
-						style={{
-							display: "flex",
-							gap: "8px",
-							alignItems: "center",
-						}}
-					>
-						<input
-							type="number"
-							placeholder="Min"
-							style={{
-								flex: 1,
-								padding: "8px",
-								border: "1px solid #ddd",
-								borderRadius: "4px",
-								boxSizing: "border-box",
-							}}
-						/>
-						<RuiText type="paragraph" size="s">
-							to
-						</RuiText>
-						<input
-							type="number"
-							placeholder="Max"
-							style={{
-								flex: 1,
-								padding: "8px",
-								border: "1px solid #ddd",
-								borderRadius: "4px",
-								boxSizing: "border-box",
-							}}
-						/>
-					</div>
-					<div style={{ display: "flex", gap: "8px" }}>
-						<button
-							type="button"
-							style={{
-								flex: 1,
-								padding: "6px",
-								border: "1px solid #ddd",
-								background: "white",
-								borderRadius: "4px",
-							}}
-						>
-							<RuiText type="paragraph" size="s">
-								$0 - $100
-							</RuiText>
-						</button>
-						<button
-							type="button"
-							style={{
-								flex: 1,
-								padding: "6px",
-								border: "1px solid #ddd",
-								background: "white",
-								borderRadius: "4px",
-							}}
-						>
-							<RuiText type="paragraph" size="s">
-								$100 - $500
-							</RuiText>
-						</button>
-					</div>
-				</div>
-			</div>
-		),
-		children: (
-			<RuiFilterButton icon={<DollarSign size={16} />}>
-				Price Range
-			</RuiFilterButton>
-		),
-	},
-};
-
-export const LargeWidthPopover: Story = {
-	args: {
-		trigger: "click",
-		placement: "bottom",
-		width: "500px",
 		content: (
 			<div style={{ padding: "16px" }}>
 				<RuiText type="title" size="s" style={{ marginBottom: "16px" }}>
-					Advanced Property Filters
+					Large Content Example with Advanced Filters
 				</RuiText>
 				<div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
 					<div
@@ -452,40 +240,6 @@ export const LargeWidthPopover: Story = {
 						</div>
 					</div>
 
-					<div>
-						<RuiText
-							type="label"
-							size="s"
-							style={{ marginBottom: "8px", display: "block" }}
-						>
-							Property Type
-						</RuiText>
-						<div
-							style={{
-								display: "grid",
-								gridTemplateColumns: "1fr 1fr",
-								gap: "8px",
-							}}
-						>
-							{["House", "Condo", "Townhouse", "Apartment"].map((type) => (
-								<label
-									key={type}
-									style={{
-										display: "flex",
-										alignItems: "center",
-										gap: "6px",
-										fontSize: "14px",
-									}}
-								>
-									<input type="checkbox" />
-									<RuiText type="paragraph" size="s">
-										{type}
-									</RuiText>
-								</label>
-							))}
-						</div>
-					</div>
-
 					<div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
 						<button
 							type="button"
@@ -523,8 +277,248 @@ export const LargeWidthPopover: Story = {
 			</div>
 		),
 		children: (
-			<RuiFilterButton icon={<Filter size={16} />}>
-				Advanced Filters
+			<RuiFilterButton icon={<Filter size={16} />}>Large</RuiFilterButton>
+		),
+	},
+};
+
+// === FILTER BUTTON EXAMPLES === //
+
+export const FilterButtonBasic: Story = {
+	args: {
+		trigger: "click",
+		placement: "bottom",
+		content: (
+			<div style={{ padding: "8px" }}>
+				<RuiText type="title" size="s" style={{ marginBottom: "12px" }}>
+					Filter Options
+				</RuiText>
+				<div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+					<label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+						<input type="checkbox" />
+						<RuiText type="paragraph" size="s">
+							Option 1
+						</RuiText>
+					</label>
+					<label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+						<input type="checkbox" />
+						<RuiText type="paragraph" size="s">
+							Option 2
+						</RuiText>
+					</label>
+					<label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+						<input type="checkbox" />
+						<RuiText type="paragraph" size="s">
+							Option 3
+						</RuiText>
+					</label>
+				</div>
+			</div>
+		),
+		children: (
+			<RuiFilterButton icon={<Filter size={16} />}>Filter</RuiFilterButton>
+		),
+	},
+};
+
+export const FilterButtonWithLocation: Story = {
+	args: {
+		trigger: "click",
+		placement: "bottom",
+		content: (
+			<div style={{ padding: "8px" }}>
+				<RuiText type="title" size="s" style={{ marginBottom: "12px" }}>
+					Select Location
+				</RuiText>
+				<div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+					<button
+						type="button"
+						style={{
+							padding: "8px",
+							border: "none",
+							background: "#f8f9fa",
+							borderRadius: "4px",
+							textAlign: "left",
+						}}
+					>
+						<RuiText type="paragraph" size="s">
+							New York, NY
+						</RuiText>
+					</button>
+					<button
+						type="button"
+						style={{
+							padding: "8px",
+							border: "none",
+							background: "#f8f9fa",
+							borderRadius: "4px",
+							textAlign: "left",
+						}}
+					>
+						<RuiText type="paragraph" size="s">
+							Los Angeles, CA
+						</RuiText>
+					</button>
+					<button
+						type="button"
+						style={{
+							padding: "8px",
+							border: "none",
+							background: "#f8f9fa",
+							borderRadius: "4px",
+							textAlign: "left",
+						}}
+					>
+						<RuiText type="paragraph" size="s">
+							Chicago, IL
+						</RuiText>
+					</button>
+				</div>
+			</div>
+		),
+		children: (
+			<RuiFilterButton icon={<MapPin size={16} />}>Location</RuiFilterButton>
+		),
+	},
+};
+
+export const FilterButtonWithDateRange: Story = {
+	args: {
+		trigger: "hover",
+		placement: "bottom",
+		hoverDelay: 300,
+		content: (
+			<div style={{ padding: "12px" }}>
+				<RuiText type="title" size="s" style={{ marginBottom: "12px" }}>
+					Date Range
+				</RuiText>
+				<div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+					<div>
+						<RuiText
+							type="label"
+							size="s"
+							style={{ marginBottom: "4px", display: "block" }}
+						>
+							From
+						</RuiText>
+						<input
+							type="date"
+							style={{
+								width: "100%",
+								padding: "8px",
+								border: "1px solid #ddd",
+								borderRadius: "4px",
+							}}
+						/>
+					</div>
+					<div>
+						<RuiText
+							type="label"
+							size="s"
+							style={{ marginBottom: "4px", display: "block" }}
+						>
+							To
+						</RuiText>
+						<input
+							type="date"
+							style={{
+								width: "100%",
+								padding: "8px",
+								border: "1px solid #ddd",
+								borderRadius: "4px",
+							}}
+						/>
+					</div>
+				</div>
+			</div>
+		),
+		children: (
+			<RuiFilterButton icon={<Calendar size={16} />}>
+				Date Range
+			</RuiFilterButton>
+		),
+	},
+};
+
+export const FilterButtonWithPriceRange: Story = {
+	args: {
+		trigger: "click",
+		placement: "bottom",
+		content: (
+			<div style={{ padding: "12px" }}>
+				<RuiText type="title" size="s" style={{ marginBottom: "12px" }}>
+					Price Range
+				</RuiText>
+				<div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+					<div
+						style={{
+							display: "flex",
+							gap: "8px",
+							alignItems: "center",
+						}}
+					>
+						<input
+							type="number"
+							placeholder="Min"
+							style={{
+								flex: 1,
+								padding: "8px",
+								border: "1px solid #ddd",
+								borderRadius: "4px",
+								boxSizing: "border-box",
+							}}
+						/>
+						<RuiText type="paragraph" size="s">
+							to
+						</RuiText>
+						<input
+							type="number"
+							placeholder="Max"
+							style={{
+								flex: 1,
+								padding: "8px",
+								border: "1px solid #ddd",
+								borderRadius: "4px",
+								boxSizing: "border-box",
+							}}
+						/>
+					</div>
+					<div style={{ display: "flex", gap: "8px" }}>
+						<button
+							type="button"
+							style={{
+								flex: 1,
+								padding: "6px",
+								border: "1px solid #ddd",
+								background: "white",
+								borderRadius: "4px",
+							}}
+						>
+							<RuiText type="paragraph" size="s">
+								$0 - $100
+							</RuiText>
+						</button>
+						<button
+							type="button"
+							style={{
+								flex: 1,
+								padding: "6px",
+								border: "1px solid #ddd",
+								background: "white",
+								borderRadius: "4px",
+							}}
+						>
+							<RuiText type="paragraph" size="s">
+								$100 - $500
+							</RuiText>
+						</button>
+					</div>
+				</div>
+			</div>
+		),
+		children: (
+			<RuiFilterButton icon={<DollarSign size={16} />}>
+				Price Range
 			</RuiFilterButton>
 		),
 	},
@@ -541,7 +535,6 @@ export const FilterButtonsInRow: Story = {
 						<RuiPopover
 							trigger="click"
 							placement="bottom"
-							width="200px"
 							content={
 								<div style={{ padding: "8px" }}>
 									<RuiText type="paragraph" size="s">
@@ -558,7 +551,6 @@ export const FilterButtonsInRow: Story = {
 						<RuiPopover
 							trigger="click"
 							placement="bottom"
-							width="200px"
 							content={
 								<div style={{ padding: "8px" }}>
 									<RuiText type="paragraph" size="s">
@@ -575,7 +567,6 @@ export const FilterButtonsInRow: Story = {
 						<RuiPopover
 							trigger="hover"
 							placement="bottom"
-							width="200px"
 							content={
 								<div style={{ padding: "8px" }}>
 									<RuiText type="paragraph" size="s">
@@ -592,7 +583,6 @@ export const FilterButtonsInRow: Story = {
 						<RuiPopover
 							trigger="click"
 							placement="bottom"
-							width="250px"
 							content={
 								<div style={{ padding: "8px" }}>
 									<RuiText type="paragraph" size="s">
@@ -637,7 +627,6 @@ export const SinglePopoverDemo: Story = {
 								<RuiPopover
 									trigger="click"
 									placement="bottom"
-									width="250px"
 									content={
 										<div style={{ padding: "12px" }}>
 											<RuiText
@@ -661,7 +650,6 @@ export const SinglePopoverDemo: Story = {
 								<RuiPopover
 									trigger="click"
 									placement="bottom"
-									width="250px"
 									content={
 										<div style={{ padding: "12px" }}>
 											<RuiText
@@ -686,7 +674,6 @@ export const SinglePopoverDemo: Story = {
 								<RuiPopover
 									trigger="click"
 									placement="bottom"
-									width="250px"
 									content={
 										<div style={{ padding: "12px" }}>
 											<RuiText
@@ -711,7 +698,6 @@ export const SinglePopoverDemo: Story = {
 								<RuiPopover
 									trigger="click"
 									placement="bottom"
-									width="250px"
 									content={
 										<div style={{ padding: "12px" }}>
 											<RuiText
@@ -745,7 +731,6 @@ export const FilterButtonWithoutIcon: Story = {
 	args: {
 		trigger: "click",
 		placement: "bottom",
-		width: "200px",
 		content: (
 			<div style={{ padding: "12px" }}>
 				<RuiText type="title" size="s" style={{ marginBottom: "8px" }}>
@@ -805,7 +790,6 @@ export const FilterButtonWithoutChevron: Story = {
 	args: {
 		trigger: "click",
 		placement: "bottom",
-		width: "200px",
 		content: (
 			<div style={{ padding: "8px" }}>
 				<RuiText type="paragraph" size="s">
@@ -855,7 +839,6 @@ export const InteractiveDemo: Story = {
 									<RuiPopover
 										trigger="click"
 										placement="bottom"
-										width="250px"
 										content={
 											<div style={{ padding: "12px" }}>
 												<RuiText
@@ -904,7 +887,6 @@ export const InteractiveDemo: Story = {
 									<RuiPopover
 										trigger="hover"
 										placement="bottom"
-										width="200px"
 										content={
 											<div style={{ padding: "8px" }}>
 												<RuiText type="paragraph" size="s">

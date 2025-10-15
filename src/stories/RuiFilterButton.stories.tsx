@@ -84,7 +84,6 @@ export const FilterWithPopover: Story = {
 		<RuiPopover
 			trigger="click"
 			placement="bottom"
-			width="300px"
 			content={
 				<div style={{ padding: "12px" }}>
 					<RuiText type="title" size="s" style={{ marginBottom: "12px" }}>
@@ -129,7 +128,6 @@ export const LocationFilter: Story = {
 		<RuiPopover
 			trigger="click"
 			placement="bottom"
-			width="250px"
 			content={
 				<div style={{ padding: "12px" }}>
 					<RuiText type="title" size="s" style={{ marginBottom: "12px" }}>
@@ -173,7 +171,6 @@ export const PriceRangeFilter: Story = {
 		<RuiPopover
 			trigger="click"
 			placement="bottom"
-			width="320px"
 			content={
 				<div style={{ padding: "12px" }}>
 					<RuiText type="title" size="s" style={{ marginBottom: "12px" }}>
@@ -284,7 +281,6 @@ export const MultipleFiltersDemo: Story = {
 									<RuiPopover
 										trigger="click"
 										placement="bottom"
-										width="250px"
 										content={
 											<div style={{ padding: "12px" }}>
 												<RuiText
@@ -331,7 +327,6 @@ export const MultipleFiltersDemo: Story = {
 									<RuiPopover
 										trigger="click"
 										placement="bottom"
-										width="200px"
 										content={
 											<div style={{ padding: "12px" }}>
 												<RuiText
@@ -383,7 +378,6 @@ export const MultipleFiltersDemo: Story = {
 									<RuiPopover
 										trigger="click"
 										placement="bottom"
-										width="200px"
 										content={
 											<div style={{ padding: "12px" }}>
 												<RuiText
@@ -435,7 +429,6 @@ export const MultipleFiltersDemo: Story = {
 									<RuiPopover
 										trigger="click"
 										placement="bottom"
-										width="280px"
 										content={
 											<div style={{ padding: "12px" }}>
 												<RuiText

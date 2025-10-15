@@ -59,8 +59,6 @@ export interface RuiPopoverProps {
 	trigger?: PopoverTrigger;
 	/** Placement of the popover relative to trigger */
 	placement?: PopoverPlacement;
-	/** Width of the popover (CSS value) - if not provided, uses Bootstrap default (276px) */
-	width?: string;
 	/** Whether the popover is disabled */
 	disabled?: boolean;
 	/** Additional CSS classes for the popover */
@@ -80,7 +78,6 @@ export const RuiPopover: React.FC<RuiPopoverProps> = ({
 	content,
 	trigger = "click",
 	placement = "bottom",
-	width,
 	disabled = false,
 	className,
 	style,
@@ -226,12 +223,6 @@ export const RuiPopover: React.FC<RuiPopoverProps> = ({
 	// Build popover classes
 	const popoverClasses = clsx("rui-popover", className);
 
-	// Build popover styles - override Bootstrap's CSS custom property if width is provided
-	const popoverStyle: React.CSSProperties = {
-		...(width && ({ "--bs-popover-max-width": width } as React.CSSProperties)),
-		...style,
-	};
-
 	return (
 		<>
 			{triggerElement}
@@ -241,7 +232,7 @@ export const RuiPopover: React.FC<RuiPopoverProps> = ({
 				toggle={toggle}
 				placement={placement}
 				className={popoverClasses}
-				style={popoverStyle}
+				style={style}
 				onMouseEnter={handlePopoverMouseEnter}
 				onMouseLeave={handlePopoverMouseLeave}
 				hideArrow={true}

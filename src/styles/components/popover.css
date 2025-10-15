@@ -1,5 +1,14 @@
 /* === POPOVER COMPONENT === */
 
+/* Reset Bootstrap's CSS custom property to unset, then control it ourselves */
+.rui-popover {
+	--bs-popover-max-width: 600px;
+
+	.popover {
+		--bs-popover-max-width: 600px;
+	}
+}
+
 .rui-popover-body {
 	/* Ensure proper box sizing and text wrapping */
 	box-sizing: border-box;
