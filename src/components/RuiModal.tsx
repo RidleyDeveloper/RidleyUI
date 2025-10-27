@@ -46,6 +46,26 @@ export interface RuiModalProps {
 	size?: "sm" | "md" | "lg" | "xl";
 	/** Whether to hide overflow content */
 	overflowHidden?: boolean;
+	/** Whether to use centered content layout */
+	isCenteredContent?: boolean;
+	/** Centered title content (ReactNode for logo + title) */
+	centeredTitle?: React.ReactNode;
+	/** Centered subtitle text */
+	centeredSubtitle?: string;
+	/** Additional CSS classes for centered subtitle */
+	centeredSubtitleClass?: string;
+	/** Primary CTA for centered layout */
+	centeredPrimaryCta?: {
+		text: string;
+		onClick: () => void;
+		disabled?: boolean;
+	};
+	/** Secondary CTA for centered layout */
+	centeredSecondaryCta?: {
+		text: string;
+		onClick: () => void;
+		disabled?: boolean;
+	};
 }
 
 // === COMPONENT === //
@@ -66,6 +86,12 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 	style,
 	size = "md",
 	overflowHidden = true,
+	isCenteredContent = false,
+	centeredTitle,
+	centeredSubtitle,
+	centeredSubtitleClass,
+	centeredPrimaryCta,
+	centeredSecondaryCta,
 }) => {
 	return (
 		<Modal
@@ -88,80 +114,141 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 			backdrop={true}
 			keyboard={true}
 		>
-			<div
-				className="rui-modal-wrapper"
-				style={{
-					...style,
-				}}
-			>
-				{/* Close Button - Top Right */}
-				{showCloseButton && (
-					<div className="rui-modal-close-container">
-						<button
-							type="button"
-							className="rui-modal-close"
-							onClick={toggle}
-							aria-label="Close modal"
-						>
-							<X size={20} color="#232323" strokeWidth={1.5} />
-						</button>
-					</div>
-				)}
+			{isCenteredContent ? (
+				/* Centered Content Layout */
+				<div
+					className="rui-modal-wrapper rui-modal-centered"
+					style={{
+						...style,
+					}}
+				>
+					{/* Close Button - Top Right */}
+					{showCloseButton && (
+						<div className="rui-modal-close-container">
+							<button
+								type="button"
+								className="rui-modal-close"
+								onClick={toggle}
+								aria-label="Close modal"
+							>
+								<X size={20} color="#232323" strokeWidth={1.5} />
+							</button>
+						</div>
+					)}
 
-				{/* Title - Below close button */}
-				{title && (
-					<div className="rui-modal-title">
-						<RuiText type="title" size="m" color="neutral.800">
-							{title}
-						</RuiText>
-					</div>
-				)}
+					{/* Centered Title (Logo + Title) */}
+					{centeredTitle && (
+						<div className="rui-modal-centered-title">{centeredTitle}</div>
+					)}
 
-				{/* Body */}
-				<div className="rui-modal-body">{children}</div>
+					{/* Centered Content Body */}
+					<div className="rui-modal-centered-body">{children}</div>
 
-				{/* Footer with CTAs */}
-				{(primaryCta ||
-					secondaryCta ||
-					leftFooterElement ||
-					subFooterElement) && (
-					<>
-						<div className="rui-modal-footer">
-							{/* Left-aligned footer element */}
-							{leftFooterElement && (
-								<div className="rui-modal-footer-left">{leftFooterElement}</div>
+					{/* Centered CTAs - Vertically Stacked */}
+					{(centeredPrimaryCta || centeredSecondaryCta) && (
+						<div className="rui-modal-centered-ctas">
+							{centeredPrimaryCta && (
+								<RuiButton
+									variant="secondary"
+									onClick={centeredPrimaryCta.onClick}
+									disabled={centeredPrimaryCta.disabled}
+									className="rui-modal-centered-primary-btn"
+								>
+									{centeredPrimaryCta.text}
+								</RuiButton>
 							)}
-
-							{/* Right-aligned CTA buttons - preserve original layout */}
-							{(primaryCta || secondaryCta) && (
-								<div className="rui-modal-footer-buttons">
-									{secondaryCta && (
-										<RuiButton
-											variant="transparent"
-											onClick={secondaryCta.onClick}
-											disabled={secondaryCta.disabled}
-											className="rui-modal-secondary-btn"
-										>
-											{secondaryCta.text}
-										</RuiButton>
-									)}
-									{primaryCta && (
-										<RuiButton
-											variant="secondary"
-											onClick={primaryCta.onClick}
-											disabled={primaryCta.disabled}
-											className="rui-modal-primary-btn"
-										>
-											{primaryCta.text}
-										</RuiButton>
-									)}
-								</div>
+							{centeredSecondaryCta && (
+								<RuiButton
+									variant="tertiary"
+									onClick={centeredSecondaryCta.onClick}
+									disabled={centeredSecondaryCta.disabled}
+									className="rui-modal-centered-secondary-btn"
+								>
+									{centeredSecondaryCta.text}
+								</RuiButton>
 							)}
 						</div>
-						<div className="rui-sub-footer">{subFooterElement}</div>
-					</>
-				)}
-			</div>
+					)}
+				</div>
+			) : (
+				/* Original Layout */
+				<div
+					className="rui-modal-wrapper"
+					style={{
+						...style,
+					}}
+				>
+					{/* Close Button - Top Right */}
+					{showCloseButton && (
+						<div className="rui-modal-close-container">
+							<button
+								type="button"
+								className="rui-modal-close"
+								onClick={toggle}
+								aria-label="Close modal"
+							>
+								<X size={20} color="#232323" strokeWidth={1.5} />
+							</button>
+						</div>
+					)}
+
+					{/* Title - Below close button */}
+					{title && (
+						<div className="rui-modal-title">
+							<RuiText type="title" size="m" color="neutral.800">
+								{title}
+							</RuiText>
+						</div>
+					)}
+
+					{/* Body */}
+					<div className="rui-modal-body">{children}</div>
+
+					{/* Footer with CTAs */}
+					{(primaryCta ||
+						secondaryCta ||
+						leftFooterElement ||
+						subFooterElement) && (
+						<>
+							<div className="rui-modal-footer">
+								{/* Left-aligned footer element */}
+								{leftFooterElement && (
+									<div className="rui-modal-footer-left">
+										{leftFooterElement}
+									</div>
+								)}
+
+								{/* Right-aligned CTA buttons - preserve original layout */}
+								{(primaryCta || secondaryCta) && (
+									<div className="rui-modal-footer-buttons">
+										{secondaryCta && (
+											<RuiButton
+												variant="transparent"
+												onClick={secondaryCta.onClick}
+												disabled={secondaryCta.disabled}
+												className="rui-modal-secondary-btn"
+											>
+												{secondaryCta.text}
+											</RuiButton>
+										)}
+										{primaryCta && (
+											<RuiButton
+												variant="secondary"
+												onClick={primaryCta.onClick}
+												disabled={primaryCta.disabled}
+												className="rui-modal-primary-btn"
+											>
+												{primaryCta.text}
+											</RuiButton>
+										)}
+									</div>
+								)}
+							</div>
+							<div className="rui-sub-footer">{subFooterElement}</div>
+						</>
+					)}
+				</div>
+			)}
 		</Modal>
 	);
 };

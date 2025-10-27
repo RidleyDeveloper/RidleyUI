@@ -989,3 +989,177 @@ export const WithSubFooterAndLeftFooter: Story = {
 		},
 	},
 };
+
+// === CENTERED CONTENT MODAL === //
+
+export const CenteredContentModal: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+				{/* Public Listings */}
+				<div
+					style={{
+						padding: "16px",
+						backgroundColor: "#f8f9fa",
+						borderRadius: "8px",
+						border: "1px solid #e9ecef",
+						display: "flex",
+						alignItems: "flex-start",
+						gap: "12px",
+					}}
+				>
+					<div
+						style={{
+							width: "20px",
+							height: "20px",
+							backgroundColor: "#6c757d",
+							borderRadius: "4px",
+							flexShrink: 0,
+							marginTop: "2px",
+						}}
+					/>
+					<div>
+						<RuiText
+							type="title"
+							size="s"
+							color="dark"
+							style={{ marginBottom: "4px" }}
+						>
+							Public Listings
+						</RuiText>
+						<RuiText type="paragraph" size="s" color="neutral.600">
+							Live, visible listings posted by sellers using Ridley.
+						</RuiText>
+					</div>
+				</div>
+
+				{/* Ridley Private */}
+				<div
+					style={{
+						padding: "16px",
+						backgroundColor: "#f8f9fa",
+						borderRadius: "8px",
+						border: "1px solid #e9ecef",
+						display: "flex",
+						alignItems: "flex-start",
+						gap: "12px",
+					}}
+				>
+					<div
+						style={{
+							width: "20px",
+							height: "20px",
+							backgroundColor: "#6c757d",
+							borderRadius: "4px",
+							flexShrink: 0,
+							marginTop: "2px",
+						}}
+					/>
+					<div>
+						<RuiText
+							type="title"
+							size="s"
+							color="dark"
+							style={{ marginBottom: "4px" }}
+						>
+							Ridley Private
+						</RuiText>
+						<RuiText type="paragraph" size="s" color="neutral.600">
+							Off-market homes shared privately or open to offers only through
+							Ridley.
+						</RuiText>
+					</div>
+				</div>
+
+				{/* Ridley PredictScore */}
+				<div
+					style={{
+						padding: "16px",
+						backgroundColor: "#f8f9fa",
+						borderRadius: "8px",
+						border: "1px solid #e9ecef",
+						display: "flex",
+						alignItems: "flex-start",
+						gap: "12px",
+					}}
+				>
+					<div
+						style={{
+							width: "20px",
+							height: "20px",
+							backgroundColor: "#6c757d",
+							borderRadius: "4px",
+							flexShrink: 0,
+							marginTop: "2px",
+						}}
+					/>
+					<div>
+						<RuiText
+							type="title"
+							size="s"
+							color="dark"
+							style={{ marginBottom: "4px" }}
+						>
+							Ridley PredictScore
+						</RuiText>
+						<RuiText type="paragraph" size="s" color="neutral.600">
+							Algorithmically surfaced homes most likely to list soon.
+						</RuiText>
+					</div>
+				</div>
+			</div>
+		</ModalWrapper>
+	),
+	args: {
+		isCenteredContent: true,
+		showCloseButton: true,
+		centeredTitle: (
+			<div style={{ textAlign: "center", marginBottom: "16px" }}>
+				<div style={{ marginBottom: "16px" }}>
+					<svg
+						width="120"
+						height="40"
+						viewBox="0 0 120 40"
+						fill="none"
+						aria-label="Ridley Logo"
+					>
+						<title>Ridley Logo</title>
+						{/* Ridley Logo Placeholder - you can replace with actual SVG */}
+						<rect width="120" height="40" fill="#ff6b35" rx="8" />
+						<text
+							x="60"
+							y="25"
+							textAnchor="middle"
+							fill="white"
+							fontSize="14"
+							fontWeight="bold"
+						>
+							RIDLEY
+						</text>
+					</svg>
+				</div>
+				<RuiText type="title" size="m" color="dark">
+					A better way to find and buy your dream home.
+				</RuiText>
+			</div>
+		),
+		centeredSubtitle:
+			"Ridley connects buyers and sellers for commission-free transactions.",
+		centeredPrimaryCta: {
+			text: "Start exploring",
+			onClick: () => alert("Start exploring clicked!"),
+		},
+		// centeredSecondaryCta: {
+		// 	text: "Learn more",
+		// 	onClick: () => alert("Learn more clicked!"),
+		// },
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"A centered content modal layout perfect for onboarding, feature introductions, or welcome screens. Features a logo, title, subtitle, content sections, and vertically stacked CTAs.",
+			},
+		},
+	},
+};

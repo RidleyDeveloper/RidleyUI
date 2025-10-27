@@ -302,3 +302,85 @@
 		padding: 0 24px 165px 24px;
 	}
 }
+
+/* === CENTERED CONTENT MODAL STYLES === */
+
+/* Centered modal wrapper */
+.rui-modal-centered {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Centered title (Logo + Title) */
+.rui-modal-centered-title {
+	padding: 2rem 32px 0 32px;
+	margin-bottom: 16px;
+	width: 100%;
+}
+
+/* Centered content body */
+.rui-modal-centered-body {
+	padding: 0 32px;
+	margin-bottom: 32px;
+	width: 100%;
+}
+
+/* Centered CTAs container */
+.rui-modal-centered-ctas {
+	padding: 0 32px 32px 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	width: 100%;
+	align-items: center;
+}
+
+/* Centered CTA buttons */
+.rui-modal-centered-primary-btn,
+.rui-modal-centered-secondary-btn {
+	min-width: 200px;
+}
+
+/* Mobile styles for centered content */
+@media (max-width: 576px) {
+	/* Centered title on mobile */
+	.rui-modal-centered-title {
+		padding: 2rem 24px 0 24px;
+		margin-bottom: 16px;
+	}
+
+	/* Centered content body on mobile */
+	.rui-modal-centered-body {
+		padding: 0 24px;
+		margin-bottom: 32px;
+		flex: 1;
+		overflow-y: auto;
+		min-height: 0;
+	}
+
+	/* Centered CTAs on mobile */
+	.rui-modal-centered-ctas {
+		padding: 0 24px 32px 24px;
+		flex-shrink: 0;
+		margin-top: auto;
+	}
+
+	/* Mobile chat offset for centered content */
+	.modal-dialog.rui-modal.rui-modal-with-mobile-chat .rui-modal-centered-ctas {
+		padding: 0 24px 110px 24px;
+	}
+
+	.modal-dialog.rui-modal.rui-modal-with-mobile-chat-nav
+		.rui-modal-centered-ctas {
+		padding: 0 24px 165px 24px;
+	}
+
+	/* Full width buttons on mobile */
+	.rui-modal-centered-primary-btn,
+	.rui-modal-centered-secondary-btn {
+		width: 100%;
+		min-width: auto;
+	}
+}

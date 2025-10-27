@@ -59,6 +59,8 @@ export interface RuiPopoverProps {
 	trigger?: PopoverTrigger;
 	/** Placement of the popover relative to trigger */
 	placement?: PopoverPlacement;
+	/** Horizontal offset percentage (0 = left aligned, -50 = centered, etc.) */
+	offsetX?: number;
 	/** Whether the popover is disabled */
 	disabled?: boolean;
 	/** Additional CSS classes for the popover */
@@ -78,6 +80,7 @@ export const RuiPopover: React.FC<RuiPopoverProps> = ({
 	content,
 	trigger = "click",
 	placement = "bottom",
+	offsetX = 0,
 	disabled = false,
 	className,
 	style,

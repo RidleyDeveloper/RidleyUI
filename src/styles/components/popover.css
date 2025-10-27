@@ -8,6 +8,7 @@
 		--bs-popover-max-width: 600px;
 		box-shadow: 0 4px 6px 0 #00000017;
 		border: 1px solid #0000001a;
+		border-radius: 16px;
 	}
 }
 

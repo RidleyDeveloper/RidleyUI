@@ -38,6 +38,11 @@ const meta: Meta<typeof RuiPopover> = {
 			control: { type: "number" },
 			description: "Delay before hiding popover on hover leave (ms)",
 		},
+		offsetX: {
+			control: { type: "number" },
+			description:
+				"Horizontal offset percentage (0 = left aligned, -50 = centered, -100 = right aligned)",
+		},
 	},
 };
 
