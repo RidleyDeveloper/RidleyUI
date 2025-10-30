@@ -80,7 +80,6 @@ export const RuiPopover: React.FC<RuiPopoverProps> = ({
 	content,
 	trigger = "click",
 	placement = "bottom",
-	offsetX = 0,
 	disabled = false,
 	className,
 	style,
@@ -93,6 +92,8 @@ export const RuiPopover: React.FC<RuiPopoverProps> = ({
 	);
 	const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 	const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+	const popoverRef = useRef<HTMLDivElement>(null);
+	const triggerRef = useRef<HTMLElement | null>(null);
 	const popoverManager = PopoverManager.getInstance();
 
 	// Register/unregister with popover manager
@@ -107,6 +108,39 @@ export const RuiPopover: React.FC<RuiPopoverProps> = ({
 			popoverManager.unregister(targetId);
 		};
 	}, [targetId, popoverManager]);
+
+	// Handle outside clicks
+	useEffect(() => {
+		if (!isOpen) {
+			return;
+		}
+
+		const handleClickOutside = (event: MouseEvent) => {
+			const target = event.target as Node;
+
+			// Don't close if clicking on the trigger element
+			if (triggerRef.current?.contains(target)) {
+				return;
+			}
+
+			// Don't close if clicking inside the popover
+			if (popoverRef.current?.contains(target)) {
+				return;
+			}
+
+			// Close the popover if clicking outside
+			popoverManager.close(targetId);
+			setIsOpen(false);
+		};
+
+		// Add event listener
+		document.addEventListener("mousedown", handleClickOutside);
+
+		// Cleanup
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [isOpen, popoverManager, targetId]);
 
 	// Clear any existing timeouts
 	const clearTimeouts = useCallback(() => {
@@ -186,7 +220,7 @@ export const RuiPopover: React.FC<RuiPopoverProps> = ({
 		handleMouseLeave();
 	}, [trigger, handleMouseLeave]);
 
-	// Toggle popover (for external control)
+	// Toggle popover (for external control and outside clicks)
 	const toggle = useCallback(() => {
 		if (isOpen) {
 			popoverManager.close(targetId);
@@ -200,6 +234,11 @@ export const RuiPopover: React.FC<RuiPopoverProps> = ({
 	// Clone the trigger element and add event handlers
 	const triggerElement = React.cloneElement(children, {
 		id: targetId,
+		ref: (el: HTMLElement) => {
+			if (el) {
+				triggerRef.current = el;
+			}
+		},
 		onClick: (e: React.MouseEvent) => {
 			// Call original onClick if it exists
 			if (children.props.onClick) {
@@ -239,6 +278,8 @@ export const RuiPopover: React.FC<RuiPopoverProps> = ({
 				onMouseEnter={handlePopoverMouseEnter}
 				onMouseLeave={handlePopoverMouseLeave}
 				hideArrow={true}
+				trigger="legacy" // Ensures outside click behavior works properly
+				innerRef={popoverRef} // Add ref to track popover element
 			>
 				<PopoverBody className="rui-popover-body">{content}</PopoverBody>
 			</Popover>
