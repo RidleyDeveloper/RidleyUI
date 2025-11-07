@@ -996,7 +996,7 @@ export const CenteredContentModal: Story = {
 	render: (args) => (
 		<ModalWrapper {...args}>
 			<div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-				{/* Public Listings */}
+				{/* Public listings */}
 				<div
 					style={{
 						padding: "16px",
@@ -1025,7 +1025,7 @@ export const CenteredContentModal: Story = {
 							color="dark"
 							style={{ marginBottom: "4px" }}
 						>
-							Public Listings
+							Public listings
 						</RuiText>
 						<RuiText type="paragraph" size="s" color="neutral.600">
 							Live, visible listings posted by sellers using Ridley.

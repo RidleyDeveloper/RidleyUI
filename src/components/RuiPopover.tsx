@@ -280,6 +280,11 @@ export const RuiPopover: React.FC<RuiPopoverProps> = ({
 				hideArrow={true}
 				trigger="legacy" // Ensures outside click behavior works properly
 				innerRef={popoverRef} // Add ref to track popover element
+				transition={{ timeout: 150 }}
+				fade={true}
+				flip={true}
+				offset={[0, 0]}
+				popperClassName=""
 			>
 				<PopoverBody className="rui-popover-body">{content}</PopoverBody>
 			</Popover>
