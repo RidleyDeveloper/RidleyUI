@@ -43,11 +43,9 @@
 
 /* === FOCUS STATES === */
 .rui-input:focus {
-	border: 2px solid var(--rui-slate-400) !important; /* #94A3B8 */
+	border: 1px solid #000000 !important; /* Black border */
 	box-shadow: none !important;
 	outline: none !important;
-	/* Adjust padding to account for thicker border */
-	padding: calc(var(--rui-space-3) - 1px) calc(var(--rui-space-4) - 1px) !important;
 }
 
 /* === DISABLED STATES === */
@@ -82,7 +80,7 @@
 }
 
 .rui-input-with-right:focus {
-	padding-right: calc(var(--rui-space-12) - 1px) !important; /* Adjust for border */
+	padding-right: var(--rui-space-12) !important;
 }
 
 .rui-input-right-section {
@@ -119,8 +117,7 @@
 }
 
 .rui-input-error:focus {
-	border-color: var(--rui-red-600) !important;
-	border-width: 2px !important;
+	border: 1px solid var(--rui-red-600) !important;
 }
 
 .rui-input-error-label {
@@ -133,8 +130,7 @@
 }
 
 .rui-input-success:focus {
-	border-color: var(--rui-green-600) !important;
-	border-width: 2px !important;
+	border: 1px solid var(--rui-green-600) !important;
 }
 
 .rui-input-success-label {
@@ -147,17 +143,9 @@
 	font-size: var(--rui-font-size-sm) !important; /* 14px */
 }
 
-.rui-input-sm:focus {
-	padding: calc(var(--rui-space-1-5) - 1px) calc(var(--rui-space-3) - 1px) !important;
-}
-
 .rui-input-lg {
 	padding: var(--rui-space-3-5) var(--rui-space-5) !important; /* 14px 20px */
 	font-size: var(--rui-font-size-lg) !important; /* 18px */
-}
-
-.rui-input-lg:focus {
-	padding: calc(var(--rui-space-3-5) - 1px) calc(var(--rui-space-5) - 1px) !important;
 }
 
 /* === CUSTOM COLOR VARIANTS === */

@@ -46,11 +46,9 @@
 
 /* === FOCUS STATES === */
 .rui-textarea:focus {
-	border: 2px solid var(--rui-slate-400) !important; /* #94A3B8 */
+	border: 1px solid #000000 !important; /* Black border */
 	box-shadow: none !important;
 	outline: none !important;
-	/* Adjust padding to account for thicker border */
-	padding: calc(var(--rui-space-3) - 1px) calc(var(--rui-space-4) - 1px) !important;
 }
 
 /* === DISABLED STATES === */
@@ -97,8 +95,7 @@
 }
 
 .rui-textarea-error:focus {
-	border-color: var(--rui-red-600) !important;
-	border-width: 2px !important;
+	border: 1px solid var(--rui-red-600) !important;
 }
 
 .rui-textarea-error-label {
@@ -111,8 +108,7 @@
 }
 
 .rui-textarea-success:focus {
-	border-color: var(--rui-green-600) !important;
-	border-width: 2px !important;
+	border: 1px solid var(--rui-green-600) !important;
 }
 
 .rui-textarea-success-label {
@@ -125,17 +121,9 @@
 	font-size: var(--rui-font-size-sm) !important; /* 14px */
 }
 
-.rui-textarea-sm:focus {
-	padding: calc(var(--rui-space-1-5) - 1px) calc(var(--rui-space-3) - 1px) !important;
-}
-
 .rui-textarea-lg {
 	padding: var(--rui-space-3-5) var(--rui-space-5) !important; /* 14px 20px */
 	font-size: var(--rui-font-size-lg) !important; /* 18px */
-}
-
-.rui-textarea-lg:focus {
-	padding: calc(var(--rui-space-3-5) - 1px) calc(var(--rui-space-5) - 1px) !important;
 }
 
 /* === RESIZE VARIANTS === */
