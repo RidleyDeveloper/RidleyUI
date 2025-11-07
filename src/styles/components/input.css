@@ -6,24 +6,23 @@
 /* === INPUT BASE STYLES === */
 .rui-input {
 	/* Typography */
-	font-size: var(--rui-paragraph-m-size) !important; /* 16px */
-	font-weight: var(--rui-paragraph-m-weight) !important; /* 400 */
-	line-height: var(--rui-paragraph-m-line-height) !important; /* 24px */
-	letter-spacing: var(--rui-paragraph-m-letter-spacing) !important; /* -2% */
+	font-size: 15px !important;
+	font-weight: 400 !important;
+	line-height: 1.5 !important;
 	font-family: var(--rui-font-sans) !important;
-	color: var(--rui-slate-900) !important; /* #0F172A */
+	color: #000000 !important;
 
 	/* Layout */
 	width: 100% !important;
-	padding: var(--rui-space-3) var(--rui-space-4) !important; /* 12px 16px */
-	border-radius: var(--rui-radius-md) !important; /* 6px */
+	padding: 0.75rem !important; /* 12px */
+	border-radius: 6px !important;
 
 	/* Default Border */
-	border: 1px solid var(--rui-slate-300) !important; /* #CBD5E1 */
+	border: 1px solid #0000001a !important;
 	background-color: var(--rui-white);
 
 	/* Transitions */
-	transition: all var(--rui-duration-fast) var(--rui-ease-in-out) !important;
+	transition: border-color 0.2s ease !important;
 
 	/* Remove default styles */
 	box-shadow: none !important;
@@ -32,27 +31,23 @@
 
 /* === PLACEHOLDER STYLES === */
 .rui-input::placeholder {
-	/* Placeholder Typography - Paragraph Medium */
-	font-size: var(--rui-paragraph-m-size) !important; /* 16px */
-	font-weight: var(--rui-paragraph-m-weight) !important; /* 400 */
-	line-height: var(--rui-paragraph-m-line-height) !important; /* 24px */
-	letter-spacing: var(--rui-paragraph-m-letter-spacing) !important; /* -2% */
-	color: var(--rui-slate-400) !important; /* #94A3B8 */
+	font-size: 15px !important;
+	font-weight: 400 !important;
+	color: var(--rui-neutral-600) !important;
 	opacity: 1 !important; /* Ensure consistent opacity across browsers */
 }
 
 /* === FOCUS STATES === */
 .rui-input:focus {
-	border: 1px solid #000000 !important; /* Black border */
+	border-color: #232323 !important;
 	box-shadow: none !important;
 	outline: none !important;
 }
 
 /* === DISABLED STATES === */
 .rui-input:disabled {
-	background-color: var(--rui-neutral-100) !important;
-	color: var(--rui-neutral-400) !important;
-	border-color: var(--rui-neutral-300) !important;
+	background-color: #f8f9fa !important;
+	opacity: 0.6 !important;
 	cursor: not-allowed !important;
 }
 
@@ -113,11 +108,12 @@
 
 /* === ERROR STATES === */
 .rui-input-error {
-	border-color: var(--rui-red-600) !important;
+	border-color: var(--rui-danger) !important;
 }
 
 .rui-input-error:focus {
-	border: 1px solid var(--rui-red-600) !important;
+	border-color: var(--rui-danger) !important;
+	box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25) !important;
 }
 
 .rui-input-error-label {
@@ -130,7 +126,7 @@
 }
 
 .rui-input-success:focus {
-	border: 1px solid var(--rui-green-600) !important;
+	border-color: var(--rui-green-600) !important;
 }
 
 .rui-input-success-label {
