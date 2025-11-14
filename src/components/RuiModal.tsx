@@ -38,6 +38,8 @@ export interface RuiModalProps {
 	hasMobileChat?: boolean;
 	/** Whether to offset for mobile chat with navigation (only applies on mobile <576px) */
 	hasMobileChatWithNav?: boolean;
+	/** Whether to display as full page overlay on mobile devices (≤576px) */
+	fullPageOnMobile?: boolean;
 	/** Additional CSS classes */
 	className?: string;
 	/** Inline styles for modal content override */
@@ -82,14 +84,13 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 	subFooterElement,
 	hasMobileChat,
 	hasMobileChatWithNav,
+	fullPageOnMobile = false,
 	className,
 	style,
 	size = "md",
 	overflowHidden = true,
 	isCenteredContent = false,
 	centeredTitle,
-	centeredSubtitle,
-	centeredSubtitleClass,
 	centeredPrimaryCta,
 	centeredSecondaryCta,
 }) => {
@@ -102,6 +103,7 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 				"rui-modal",
 				hasMobileChat && "rui-modal-with-mobile-chat",
 				hasMobileChatWithNav && "rui-modal-with-mobile-chat-nav",
+				fullPageOnMobile && "rui-modal-full-page-mobile",
 				className,
 			)}
 			contentClassName={

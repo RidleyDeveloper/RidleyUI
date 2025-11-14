@@ -58,6 +58,11 @@ const meta: Meta<typeof RuiModal> = {
 			description:
 				"Whether to offset for mobile chat (only applies on mobile <576px)",
 		},
+		fullPageOnMobile: {
+			control: "boolean",
+			description:
+				"Whether to display as full page overlay on mobile devices (≤576px)",
+		},
 	},
 };
 
@@ -986,6 +991,144 @@ export const WithSubFooterAndLeftFooter: Story = {
 		primaryCta: {
 			text: "Send",
 			onClick: () => alert("Message sent!"),
+		},
+	},
+};
+
+// === FULL PAGE MOBILE MODAL === //
+
+export const FullPageOnMobile: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<div>
+				<RuiText type="paragraph" size="m" style={{ marginBottom: "16px" }}>
+					This modal demonstrates the full page mobile overlay feature. On
+					mobile devices (≤576px), the modal takes up the entire screen for
+					maximum content real estate.
+				</RuiText>
+				<RuiText type="paragraph" size="m" style={{ marginBottom: "16px" }}>
+					On desktop, it behaves like a normal modal. On mobile, it becomes a
+					full-screen overlay with no bottom sheet behavior.
+				</RuiText>
+				{Array.from({ length: 10 }, (_, i) => (
+					<RuiText
+						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						key={`paragraph-${i}`}
+						type="paragraph"
+						size="m"
+						style={{ marginBottom: "16px" }}
+					>
+						This is paragraph {i + 1}. Lorem ipsum dolor sit amet, consectetur
+						adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua.
+					</RuiText>
+				))}
+			</div>
+		</ModalWrapper>
+	),
+	args: {
+		title: "Full Page Mobile Modal",
+		showCloseButton: true,
+		fullPageOnMobile: true,
+		primaryCta: {
+			text: "Continue",
+			onClick: () => alert("Continued!"),
+		},
+		secondaryCta: {
+			text: "Cancel",
+			onClick: () => alert("Cancelled!"),
+		},
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"A modal that takes up the full screen on mobile devices for scenarios requiring more content real estate. Perfect for forms, detailed content, or complex workflows on mobile.",
+			},
+		},
+		viewport: {
+			defaultViewport: "mobile1",
+		},
+	},
+};
+
+export const FullPageOnMobileCentered: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+				<div
+					style={{
+						padding: "16px",
+						backgroundColor: "#f8f9fa",
+						borderRadius: "8px",
+						border: "1px solid #e9ecef",
+					}}
+				>
+					<RuiText type="title" size="s" color="dark">
+						Feature 1
+					</RuiText>
+					<RuiText type="paragraph" size="s" color="neutral.600">
+						Description of the first feature with more details.
+					</RuiText>
+				</div>
+				<div
+					style={{
+						padding: "16px",
+						backgroundColor: "#f8f9fa",
+						borderRadius: "8px",
+						border: "1px solid #e9ecef",
+					}}
+				>
+					<RuiText type="title" size="s" color="dark">
+						Feature 2
+					</RuiText>
+					<RuiText type="paragraph" size="s" color="neutral.600">
+						Description of the second feature with more details.
+					</RuiText>
+				</div>
+				<div
+					style={{
+						padding: "16px",
+						backgroundColor: "#f8f9fa",
+						borderRadius: "8px",
+						border: "1px solid #e9ecef",
+					}}
+				>
+					<RuiText type="title" size="s" color="dark">
+						Feature 3
+					</RuiText>
+					<RuiText type="paragraph" size="s" color="neutral.600">
+						Description of the third feature with more details.
+					</RuiText>
+				</div>
+			</div>
+		</ModalWrapper>
+	),
+	args: {
+		isCenteredContent: true,
+		showCloseButton: true,
+		fullPageOnMobile: true,
+		centeredTitle: (
+			<div style={{ textAlign: "center", marginBottom: "16px" }}>
+				<RuiText type="title" size="m" color="dark">
+					Welcome to Full Page Mobile
+				</RuiText>
+			</div>
+		),
+		centeredPrimaryCta: {
+			text: "Get Started",
+			onClick: () => alert("Started!"),
+		},
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"A centered content modal with full page mobile overlay. Great for onboarding flows or feature introductions that need maximum screen space on mobile.",
+			},
+		},
+		viewport: {
+			defaultViewport: "mobile1",
 		},
 	},
 };
