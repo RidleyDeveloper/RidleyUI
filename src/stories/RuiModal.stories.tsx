@@ -63,6 +63,11 @@ const meta: Meta<typeof RuiModal> = {
 			description:
 				"Whether to display as full page overlay on mobile devices (≤576px)",
 		},
+		closeOnBackdropClick: {
+			control: "boolean",
+			description:
+				"Whether clicking the backdrop or pressing ESC closes the modal (default: true)",
+		},
 	},
 };
 
@@ -1302,6 +1307,139 @@ export const CenteredContentModal: Story = {
 			description: {
 				story:
 					"A centered content modal layout perfect for onboarding, feature introductions, or welcome screens. Features a logo, title, subtitle, content sections, and vertically stacked CTAs.",
+			},
+		},
+	},
+};
+
+// === FORCED ACTION MODAL === //
+
+export const ForcedActionModal: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<div>
+				<RuiText type="paragraph" size="m" style={{ marginBottom: "16px" }}>
+					This modal demonstrates the <code>closeOnBackdropClick=false</code>{" "}
+					feature. Try clicking outside the modal or pressing the ESC key - the
+					modal will not close.
+				</RuiText>
+				<RuiText type="paragraph" size="m" style={{ marginBottom: "16px" }}>
+					This is perfect for critical actions, terms acceptance, or onboarding
+					flows where you want to ensure the user completes the action before
+					proceeding.
+				</RuiText>
+				<div
+					style={{
+						padding: "16px",
+						backgroundColor: "#fff3cd",
+						borderRadius: "8px",
+						border: "1px solid #ffc107",
+					}}
+				>
+					<RuiText type="paragraph" size="s" color="neutral.800">
+						⚠️ The only way to close this modal is by clicking the "I Understand"
+						button below.
+					</RuiText>
+				</div>
+			</div>
+		</ModalWrapper>
+	),
+	args: {
+		title: "Important Notice",
+		showCloseButton: false,
+		closeOnBackdropClick: false,
+		primaryCta: {
+			text: "I Understand",
+			onClick: () => alert("Action confirmed!"),
+		},
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"A modal that cannot be dismissed by clicking outside or pressing ESC. Perfect for critical confirmations, terms acceptance, or required actions. Users must interact with the CTA button to close it.",
+			},
+		},
+	},
+};
+
+export const TermsAcceptanceModal: Story = {
+	render: (args) => {
+		const [termsAccepted, setTermsAccepted] = useState(false);
+
+		return (
+			<ModalWrapper
+				{...args}
+				primaryCta={{
+					...args.primaryCta,
+					disabled: !termsAccepted,
+				}}
+			>
+				<div>
+					<RuiText type="paragraph" size="m" style={{ marginBottom: "16px" }}>
+						Please read and accept our terms of service to continue.
+					</RuiText>
+					<div
+						style={{
+							padding: "16px",
+							backgroundColor: "#f8f9fa",
+							borderRadius: "8px",
+							border: "1px solid #dee2e6",
+							marginBottom: "16px",
+							maxHeight: "200px",
+							overflowY: "auto",
+						}}
+					>
+						<RuiText type="paragraph" size="s" color="neutral.600">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation ullamco laboris
+							nisi ut aliquip ex ea commodo consequat.
+						</RuiText>
+						<br />
+						<RuiText type="paragraph" size="s" color="neutral.600">
+							Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+							cupidatat non proident, sunt in culpa qui officia deserunt mollit
+							anim id est laborum.
+						</RuiText>
+					</div>
+					<FormGroup check={true} style={{ marginBottom: 0 }}>
+						<Input
+							type="checkbox"
+							id="terms-acceptance"
+							checked={termsAccepted}
+							onChange={(e) => setTermsAccepted(e.target.checked)}
+							style={{ cursor: "pointer" }}
+						/>
+						<Label
+							check={true}
+							htmlFor="terms-acceptance"
+							style={{ cursor: "pointer", marginLeft: "8px" }}
+						>
+							<RuiText type="paragraph" size="s" color="neutral.800">
+								I have read and agree to the terms of service
+							</RuiText>
+						</Label>
+					</FormGroup>
+				</div>
+			</ModalWrapper>
+		);
+	},
+	args: {
+		title: "Terms of Service",
+		showCloseButton: false,
+		closeOnBackdropClick: false,
+		primaryCta: {
+			text: "Accept and Continue",
+			onClick: () => alert("Terms accepted!"),
+		},
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"A realistic example of a terms acceptance modal that requires user interaction. The modal cannot be dismissed by clicking outside, and the primary CTA is disabled until the user checks the acceptance checkbox.",
 			},
 		},
 	},

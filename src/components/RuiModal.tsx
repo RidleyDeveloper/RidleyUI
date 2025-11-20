@@ -40,6 +40,8 @@ export interface RuiModalProps {
 	hasMobileChatWithNav?: boolean;
 	/** Whether to display as full page overlay on mobile devices (≤576px) */
 	fullPageOnMobile?: boolean;
+	/** Whether clicking the backdrop closes the modal (default: true) */
+	closeOnBackdropClick?: boolean;
 	/** Additional CSS classes */
 	className?: string;
 	/** Inline styles for modal content override */
@@ -85,6 +87,7 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 	hasMobileChat,
 	hasMobileChatWithNav,
 	fullPageOnMobile = false,
+	closeOnBackdropClick = true,
 	className,
 	style,
 	size = "md",
@@ -97,7 +100,7 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 	return (
 		<Modal
 			isOpen={isOpen}
-			toggle={toggle}
+			toggle={closeOnBackdropClick ? toggle : undefined}
 			size={size}
 			className={clsx(
 				"rui-modal",
@@ -113,8 +116,8 @@ export const RuiModal: React.FC<RuiModalProps> = ({
 			}
 			header={false}
 			fade={true}
-			backdrop={true}
-			keyboard={true}
+			backdrop={closeOnBackdropClick ? true : "static"}
+			keyboard={closeOnBackdropClick}
 		>
 			{isCenteredContent ? (
 				/* Centered Content Layout */
