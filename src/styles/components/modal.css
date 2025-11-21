@@ -415,19 +415,31 @@
 	.modal-dialog.rui-modal.rui-modal-full-page-mobile .rui-modal-wrapper {
 		max-height: 100vh;
 		height: 100vh;
+		display: flex;
+		flex-direction: column;
 	}
 
-	/* Adjust body to fill available space */
+	/* Adjust body to fill available space and enable scrolling */
 	.modal-dialog.rui-modal.rui-modal-full-page-mobile .rui-modal-body {
 		flex: 1;
 		overflow-y: auto;
 		margin-bottom: 0;
+		min-height: 0; /* Important for flex scrolling */
 	}
 
-	/* Adjust centered body to fill available space */
+	/* Adjust centered body to fill available space and enable scrolling */
 	.modal-dialog.rui-modal.rui-modal-full-page-mobile .rui-modal-centered-body {
 		flex: 1;
 		overflow-y: auto;
 		margin-bottom: 0;
+		min-height: 0; /* Important for flex scrolling */
+	}
+
+	/* Ensure centered wrapper also has flex display for full page mobile */
+	.modal-dialog.rui-modal.rui-modal-full-page-mobile .rui-modal-centered {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		max-height: 100vh;
 	}
 }

@@ -1444,3 +1444,241 @@ export const TermsAcceptanceModal: Story = {
 		},
 	},
 };
+
+// === FULL PAGE MOBILE WITH SCROLLING === //
+
+export const FullPageMobileWithScroll: Story = {
+	render: (args) => (
+		<ModalWrapper {...args}>
+			<div>
+				<RuiText type="paragraph" size="m" style={{ marginBottom: "16px" }}>
+					This modal demonstrates the full page mobile overlay with scrolling
+					capability. On mobile devices (≤576px), scroll down to see all the
+					content.
+				</RuiText>
+				<div
+					style={{
+						padding: "16px",
+						backgroundColor: "#e3f2fd",
+						borderRadius: "8px",
+						border: "1px solid #2196f3",
+						marginBottom: "16px",
+					}}
+				>
+					<RuiText type="paragraph" size="s" color="neutral.800">
+						📱 Resize your browser to mobile width (under 576px) to test the
+						scrolling behavior. The content should scroll smoothly while the
+						header and footer remain fixed.
+					</RuiText>
+				</div>
+				{Array.from({ length: 30 }, (_, i) => (
+					<RuiText
+						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						key={`paragraph-${i}`}
+						type="paragraph"
+						size="m"
+						style={{ marginBottom: "16px" }}
+					>
+						Paragraph {i + 1}: Lorem ipsum dolor sit amet, consectetur
+						adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+						exercitation ullamco laboris.
+					</RuiText>
+				))}
+				<div
+					style={{
+						padding: "16px",
+						backgroundColor: "#c8e6c9",
+						borderRadius: "8px",
+						border: "1px solid #4caf50",
+						marginBottom: "16px",
+					}}
+				>
+					<RuiText type="paragraph" size="s" color="neutral.800">
+						✅ If you can see this, scrolling is working correctly!
+					</RuiText>
+				</div>
+			</div>
+		</ModalWrapper>
+	),
+	args: {
+		title: "Full Page Mobile Scroll Test",
+		showCloseButton: true,
+		fullPageOnMobile: true,
+		primaryCta: {
+			text: "Got it!",
+			onClick: () => alert("Scrolling works!"),
+		},
+		secondaryCta: {
+			text: "Cancel",
+			onClick: () => alert("Cancelled!"),
+		},
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"A full page mobile modal with extensive scrollable content. On mobile, the modal takes up the entire screen and the body content scrolls while the header and footer remain fixed. Perfect for testing scroll behavior on mobile devices.",
+			},
+		},
+		viewport: {
+			defaultViewport: "mobile1",
+		},
+	},
+};
+
+export const FullPageMobileCenteredWithScroll: Story = {
+	render: (args) => {
+		const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
+
+		return (
+			<ModalWrapper
+				{...args}
+				centeredPrimaryCta={{
+					...args.centeredPrimaryCta,
+					disabled: !disclaimerAccepted,
+				}}
+			>
+				<div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+					<RuiText type="paragraph" size="s" color="neutral.600">
+						This demonstrates a centered content modal with full page mobile and
+						scrolling. Scroll down to see all features and accept the
+						disclaimer.
+					</RuiText>
+
+					{/* Feature sections */}
+					{Array.from({ length: 8 }, (_, i) => (
+						<div
+							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+							key={`feature-${i}`}
+							style={{
+								padding: "16px",
+								backgroundColor: "#f8f9fa",
+								borderRadius: "8px",
+								border: "1px solid #e9ecef",
+								display: "flex",
+								alignItems: "flex-start",
+								gap: "12px",
+							}}
+						>
+							<div
+								style={{
+									width: "20px",
+									height: "20px",
+									backgroundColor: "#6c757d",
+									borderRadius: "4px",
+									flexShrink: 0,
+									marginTop: "2px",
+								}}
+							/>
+							<div>
+								<RuiText
+									type="title"
+									size="s"
+									color="dark"
+									style={{ marginBottom: "4px" }}
+								>
+									Feature {i + 1}
+								</RuiText>
+								<RuiText type="paragraph" size="s" color="neutral.600">
+									Description of feature {i + 1} with detailed information about
+									what this feature does and why it's important.
+								</RuiText>
+							</div>
+						</div>
+					))}
+
+					{/* Disclaimer section */}
+					<div
+						style={{
+							padding: "16px",
+							backgroundColor: "#fff3cd",
+							borderRadius: "8px",
+							border: "1px solid #ffc107",
+							marginTop: "8px",
+						}}
+					>
+						<RuiText
+							type="paragraph"
+							size="s"
+							color="neutral.800"
+							style={{ marginBottom: "12px" }}
+						>
+							Important: By continuing, you agree to our terms and conditions.
+							This is a long disclaimer that explains various legal points and
+							user responsibilities.
+						</RuiText>
+						<FormGroup check={true} style={{ marginBottom: 0 }}>
+							<Input
+								type="checkbox"
+								id="disclaimer-acceptance"
+								checked={disclaimerAccepted}
+								onChange={(e) => setDisclaimerAccepted(e.target.checked)}
+								style={{ cursor: "pointer" }}
+							/>
+							<Label
+								check={true}
+								htmlFor="disclaimer-acceptance"
+								style={{ cursor: "pointer", marginLeft: "8px" }}
+							>
+								<RuiText type="paragraph" size="s" color="neutral.800">
+									I understand and acknowledge the disclosure
+								</RuiText>
+							</Label>
+						</FormGroup>
+					</div>
+				</div>
+			</ModalWrapper>
+		);
+	},
+	args: {
+		isCenteredContent: true,
+		showCloseButton: false,
+		fullPageOnMobile: true,
+		closeOnBackdropClick: false,
+		centeredTitle: (
+			<div style={{ textAlign: "center", marginBottom: "16px" }}>
+				<div style={{ marginBottom: "16px" }}>
+					<svg
+						width="120"
+						height="40"
+						viewBox="0 0 120 40"
+						fill="none"
+						aria-label="App Logo"
+					>
+						<title>App Logo</title>
+						<rect width="120" height="40" fill="#2196f3" rx="8" />
+						<text
+							x="60"
+							y="25"
+							textAnchor="middle"
+							fill="white"
+							fontSize="14"
+							fontWeight="bold"
+						>
+							WELCOME
+						</text>
+					</svg>
+				</div>
+				<RuiText type="title" size="m" color="dark">
+					Welcome to our app
+				</RuiText>
+			</div>
+		),
+		centeredPrimaryCta: {
+			text: "Start exploring",
+			onClick: () => alert("Started!"),
+		},
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"A centered content modal with full page mobile overlay and extensive scrollable content. This demonstrates how the centered layout handles scrolling on mobile with a disclaimer checkbox that must be accepted before proceeding. Perfect for onboarding flows with terms acceptance.",
+			},
+		},
+		viewport: {
+			defaultViewport: "mobile1",
+		},
+	},
+};
